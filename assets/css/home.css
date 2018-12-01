@@ -1,0 +1,197 @@
+.dataTables_info, .dataTables_filter {
+    display: none !important;
+}
+
+td.hover {
+    background: gray;
+}
+
+/* Цвета таблицы*/
+.blue {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #2196f3 50%);
+    color: black;
+}
+
+.orange {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #fb8c00 50%);
+    color: black;
+}
+
+.red {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #f44336 50%);
+    color: black;
+}
+
+.green {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #4caf50 50%);
+    color: black;
+}
+
+.blue_evening {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #fff 50%);
+    color: black;
+}
+
+.orange_evening {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #fff 50%);
+    color: black;
+}
+
+.red_evening {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #fff 50%);
+    color: black;
+}
+
+.green_evening {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #fff 50%);
+    color: black;
+}
+
+.blue_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #2196f3 50%);
+    color: black;
+}
+
+.orange_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #fb8c00 50%);
+    color: black;
+}
+
+.red_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #f44336 50%);
+    color: black;
+}
+
+.green_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #4caf50 50%);
+    color: black;
+}
+
+.blue_evening.blue_morning {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 48%, #fff 50%, #2196f3 52%);
+    color: black;
+}
+
+.orange_evening.blue_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #2196f3 50%);
+    color: black;
+}
+
+.red_evening.blue_morning {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #2196f3 50%);
+    color: black;
+}
+
+.green_evening.blue_morning {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #2196f3 50%);
+    color: black;
+}
+
+.blue_evening.orange_morning {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #fb8c00 50%);
+    color: black;
+}
+
+.orange_evening.orange_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 48%, #fff 50%, #fb8c00 52%);
+    color: black;
+}
+
+.red_evening.orange_morning {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #fb8c00 50%);
+    color: black;
+}
+
+.green_evening.orange_morning {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #fb8c00 50%);
+    color: black;
+}
+
+.blue_evening.red_morning {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #f44336 50%);
+    color: black;
+}
+
+.orange_evening.red_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #f44336 50%);
+    color: black;
+}
+
+.red_evening.red_morning {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 48%, #fff 50%, #f44336 52%);
+    color: black;
+}
+
+.green_evening.red_morning {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #f44336 50%);
+    color: black;
+}
+
+.blue_evening.green_morning {
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #4caf50 50%);
+    color: black;
+}
+
+.orange_evening.green_morning {
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #4caf50 50%);
+    color: black;
+}
+
+.red_evening.green_morning {
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #4caf50 50%);
+    color: black;
+}
+
+.green_evening.green_morning {
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 48%, #fff 50%, #4caf50 52%);
+    color: black;
+}
+
+
+.single_td.hover{background: #f5f5f5;position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;}
+
+
+
+.evening.blue.hover {
+    background: linear-gradient(135deg, transparent 50%, rgba(33, 150, 243, 0.5) 0);
+    color: black;
+}
+
+.evening.orange.hover {
+    background: linear-gradient(135deg, transparent 50%, rgba(251, 140, 0, 0.5) 0);
+    color: black;
+}
+
+.evening.red.hover {
+    background: linear-gradient(135deg, transparent 50%, rgba(244, 67, 54, 0.5) 0);
+    color: black;
+}
+
+.evening.green.hover {
+    background: linear-gradient(135deg, transparent 50%, rgba(76, 175, 80, 0.5) 0);
+    color: black;
+}
+
+.morning.blue.hover {
+    background: linear-gradient(-45deg, transparent 50%, rgba(33, 150, 243, 0.5) 0);
+    color: black;
+}
+
+.morning.orange.hover {
+    background: linear-gradient(-45deg, transparent 50%, rgba(251, 140, 0, 0.5) 0);
+    color: black;
+}
+
+.morning.red.hover {
+    background: linear-gradient(-45deg, transparent 50%, rgba(244, 67, 54, 0.5) 0);
+    color: black;
+}
+
+.morning.green.hover {
+    background: linear-gradient(-45deg, transparent 50%, rgba(76, 175, 80, 0.5)    0);
+    color: black;
+}

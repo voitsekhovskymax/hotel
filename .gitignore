@@ -5,6 +5,7 @@ test/e2e/videos
 # Nuxt Plugin
 static/sw.js
 static/browserconfig.xml
+dist/
 
 # Logs
 logs

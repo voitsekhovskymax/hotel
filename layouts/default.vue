@@ -88,14 +88,12 @@
         </v-toolbar>
         <v-content>
             <div class="pa-3">
-                <no-ssr>
+
                     <nuxt/>
-                </no-ssr>
+
             </div>
         </v-content>
-        <v-footer :fixed="fixed" app>
-            <span>&copy; {{ new Date().getFullYear() }}</span>
-        </v-footer>
+
     </v-app>
 </template>
 

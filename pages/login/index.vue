@@ -19,8 +19,8 @@
                         <v-card-actions>
                             <v-spacer></v-spacer>
                             <v-btn color="primary" @click="login">Вход</v-btn>
-                            <v-spacer></v-spacer>
-                            <v-btn outline  color="success" to="/login/reset">Сбросить пароль</v-btn>
+                            <!--<v-spacer></v-spacer>-->
+                            <!--<v-btn outline  color="success" to="/login/reset">Сбросить пароль</v-btn>-->
                         </v-card-actions>
                     </v-card>
                 </v-flex>

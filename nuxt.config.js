@@ -66,6 +66,14 @@ export default {
     // https://nuxtjs.org/api/configuration-css
     css: ["~/assets/styles/fonts.css", "~/assets/styles/vuetify.styl", "~/assets/styles/main.css"],
 
+    // https://ru.nuxtjs.org/faq/
+    script: [
+        // { src: 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js' }
+    ],
+    link: [
+        // { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto' }
+    ],
+
     // https://nuxtjs.org/api/configuration-build
     build: {
         extractCSS: true,

@@ -14,18 +14,7 @@
                     <v-btn color="primary">Новая заявка</v-btn>
                 </v-toolbar>
 
-                <ag-grid-vue class="ag-theme-balham"
-                             :gridOptions="gridOptions"
-                             :columnDefs="columns"
-                             :rowData="rowData"
-                             :enableColResize="true"
-                             :enableSorting="true"
-                             :enableFilter="true"
-                             :groupHeaders="true"
-                             :suppressRowClickSelection="true"
-                             rowSelection="multiple"
-                >
-                </ag-grid-vue>
+
 
             </v-card>
 
@@ -34,12 +23,8 @@
 </template>
 
 <script>
-    import {AgGridVue} from "ag-grid-vue";
 
     export default {
-        components: {
-            AgGridVue
-        },
         name: 'requests',
         data() {
             return {
@@ -202,7 +187,3 @@
         }
     };
 </script>
-<style>
-    @import "../../node_modules/ag-grid-community/dist/styles/ag-grid.css";
-    @import "../../node_modules/ag-grid-community/dist/styles/ag-theme-balham.css";
-</style>
