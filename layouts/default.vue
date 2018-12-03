@@ -70,27 +70,38 @@
         </v-navigation-drawer>
         <v-toolbar clipped-left color="primary" dark="" fixed app>
             <v-toolbar-side-icon @click="drawer = !drawer;"/>
-            <v-toolbar-title v-text="title" class="ml-3 mr-5"/>
+            <v-toolbar-title v-text="title" class="ml-3 mr-5 hidden-sm-and-down"/>
+
             <v-autocomplete
                     :loading="loading"
                     :items="search_items"
                     :search-input.sync="search"
                     v-model="select"
                     cache-items
-                    class="mx-3"
+                    class="mx-3 toolbar-input"
                     flat
                     clearable
                     hide-no-data
                     label="Поиск.."
                     solo-inverted
+                    :width="100"
+
             ></v-autocomplete>
+            <v-tooltip bottom>
+                <v-btn icon slot="activator">
+                    <v-icon>credit_card</v-icon>
+                    33333
+                </v-btn>
+                <span>Сумма полученных наличных денег, помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
+            </v-tooltip>
             <v-spacer></v-spacer>
+            <v-btn color="success" :to="{name:'requests-add'}">
+                Новая заявка
+            </v-btn>
         </v-toolbar>
         <v-content>
             <div class="pa-3">
-
-                    <nuxt/>
-
+                <nuxt/>
             </div>
         </v-content>
 
@@ -112,42 +123,42 @@
                         text: 'Заявки',
                         model: false,
                         children: [
-                            {icon: 'add', text: 'Новые заявки', src: 'requests'},
-                            {icon: 'add', text: 'Все брони', src: 'reservations'},
+                            {icon: 'add', text: 'Новые заявки', src: {name: 'requests'}},
+                            {icon: 'add', text: 'Все брони', src: {name: 'reservations'}},
                         ]
                     },
-                    {icon: 'attach_money', text: 'Цены на номера', src: 'prices'},
-                    {icon: 'list', text: 'Очередь', src: "queue"},
+                    {icon: 'attach_money', text: 'Цены на номера', src: {name: 'prices'}},
+                    {icon: 'list', text: 'Очередь', src: {name:"queue"}},
                     {
                         icon: 'keyboard_arrow_up',
                         'icon-alt': 'calendar_view_day',
                         text: 'Отчеты',
                         model: false,
                         children: [
-                            {icon: 'directions_car', text: 'Трансфер', src: 'transfer'},
-                            {icon: 'local_parking', text: 'Паркоместа', src: 'parking'},
-                            {icon: 'donut_large', text: 'Статистика предоплат', src: 'prepaid'},
-                            {icon: 'donut_small', text: 'Статистика оплат', src: 'payment'},
-                            {icon: 'supervised_user_circle', text: 'Клиенты', src: 'clients'}
+                            {icon: 'directions_car', text: 'Трансфер', src: {name:'transfer'}},
+                            {icon: 'local_parking', text: 'Паркоместа', src: {name:'parking'}},
+                            {icon: 'donut_large', text: 'Статистика предоплат', src: {name:'prepaid'}},
+                            {icon: 'donut_small', text: 'Статистика оплат', src: {name:'payment'}},
+                            {icon: 'supervised_user_circle', text: 'Клиенты', src: {name:'clients'}}
                         ]
                     },
-                    {icon: 'mail_outline', text: 'Рассылка писем', src: 'messages'},
+                    {icon: 'mail_outline', text: 'Рассылка писем', src: {name:'messages'}},
                     {
                         icon: 'keyboard_arrow_up',
                         'icon-alt': 'settings_applications',
                         text: 'Параметры приложения',
                         model: false,
                         children: [
-                            {icon: 'person', text: 'Пользователи', src: 'users'},
-                            {icon: 'local_grocery_store', text: 'Тип оплаты', src: 'payment_types'},
-                            {icon: 'home', text: 'Тип номеров', src: 'room_types'},
-                            {icon: 'done_all', text: 'Статус номеров', src: 'room_statuses'},
-                            {icon: 'local_hotel', text: 'Все номера', src: 'rooms'},
-                            {icon: 'backup', text: 'Восстановление данных', src: 'backup'},
+                            {icon: 'person', text: 'Пользователи', src: {name:'users'}},
+                            {icon: 'local_grocery_store', text: 'Тип оплаты', src: {name:'payment_types'}},
+                            {icon: 'home', text: 'Тип номеров', src: {name:'room_types'}},
+                            {icon: 'done_all', text: 'Статус номеров', src: {name:'room_statuses'}},
+                            {icon: 'local_hotel', text: 'Все номера', src: {name:'rooms'}},
+                            {icon: 'backup', text: 'Восстановление данных', src: {name:'backup'}},
                         ]
                     },
-                    {icon: 'settings', text: 'Настройки', src: 'settings'},
-                    {icon: 'exit_to_app', text: 'Выйти', src: 'logout'}
+                    {icon: 'settings', text: 'Настройки', src: {name:'settings'}},
+                    {icon: 'exit_to_app', text: 'Выйти', src: {name:'logout'}}
                 ],
                 miniVariant: false,
                 right: true,

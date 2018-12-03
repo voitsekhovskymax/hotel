@@ -14,3 +14,13 @@
 .no-shadow {
     box-shadow: none !important;
 }
+
+.headline {
+    font-size: 18px !important;
+
+    line-height: 18px !important;
+}
+
+.toolbar-input .v-input__slot{
+    margin-bottom: 0px !important;
+}
