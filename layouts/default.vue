@@ -234,7 +234,6 @@
         beforeCreate() {
             var token = this.$cookies.get('token');
             if (token != undefined) {
-                console.log(token);
                 this.$store.commit('set', {type: 'token', value: token})
 
             } else {
@@ -249,7 +248,7 @@
         },
         methods: {
             initializationRouter(src) {
-                console.log(src);
+                // console.log(src);
             },
             querySelections(v) {
                 this.loading = true;

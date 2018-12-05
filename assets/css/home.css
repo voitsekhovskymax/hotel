@@ -1,9 +1,10 @@
-.dataTables_info, .dataTables_filter {
-    display: none !important;
-}
 
 .table.home tbody td{
     border: 1px solid #6c757d !important;
+}
+
+.order_table {
+    cursor: pointer;
 }
 
 td.hover {
@@ -158,8 +159,13 @@ td.hover {
     right: 0;
     bottom: 0;}
 
+.parking-row{
+    background: #65d869;
+}
 
-
+.beds-row{
+    background: lightgreen;
+}
 .evening.blue.hover {
     background: linear-gradient(135deg, transparent 50%, rgba(33, 150, 243, 0.5) 0);
     color: black;

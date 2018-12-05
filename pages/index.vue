@@ -4,38 +4,63 @@
             <v-layout wrap>
                 <v-flex sm6 md6 xs12>
                     <v-toolbar class="no-shadow">
-                        <v-menu :nudge-width="100">
-                            <v-toolbar-title slot="activator">
-                                <span>Июнь</span>
-                                <v-icon>arrow_drop_down</v-icon>
-                            </v-toolbar-title>
 
-                            <v-list>
-                                <v-list-tile
-                                        v-for="mount in mounts"
-                                        :key="mount"
-                                        @click=""
-                                >
-                                    <v-list-tile-title v-text="mount"></v-list-tile-title>
-                                </v-list-tile>
-                            </v-list>
-                        </v-menu>
-                        <v-menu :nudge-width="100">
-                            <v-toolbar-title slot="activator">
-                                <span>2018</span>
-                                <v-icon>arrow_drop_down</v-icon>
-                            </v-toolbar-title>
+                        <v-dialog
+                                ref="dialog_update"
+                                v-model="modal_update"
+                                :return-value.sync="date_update"
+                                persistent
+                                lazy
+                                full-width
+                                width="290px"
+                        >
+                            <v-text-field
+                                    slot="activator"
+                                    v-model="date_update"
+                                    label="Выбор даты"
+                                    prepend-icon="event"
+                                    solo
+                                    readonly
+                            ></v-text-field>
+                            <v-date-picker v-model="date_update" type="month" scrollable locale="ru" :no-title="true">
 
-                            <v-list>
-                                <v-list-tile
-                                        v-for="year in years"
-                                        :key="year"
-                                        @click=""
-                                >
-                                    <v-list-tile-title v-text="year"></v-list-tile-title>
-                                </v-list-tile>
-                            </v-list>
-                        </v-menu>
+                                <v-btn color="success" @click="getUpdate(date_update)">Подтвердить</v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn flat color="primary" @click="modal_update = false">Закрыть</v-btn>
+                            </v-date-picker>
+                        </v-dialog>
+                        <!--<v-menu :nudge-width="100">-->
+                        <!--<v-toolbar-title slot="activator">-->
+                        <!--<span>Июнь</span>-->
+                        <!--<v-icon>arrow_drop_down</v-icon>-->
+                        <!--</v-toolbar-title>-->
+
+                        <!--<v-list>-->
+                        <!--<v-list-tile-->
+                        <!--v-for="mount in mounts"-->
+                        <!--:key="mount"-->
+                        <!--@click=""-->
+                        <!--&gt;-->
+                        <!--<v-list-tile-title v-text="mount"></v-list-tile-title>-->
+                        <!--</v-list-tile>-->
+                        <!--</v-list>-->
+                        <!--</v-menu>-->
+                        <!--<v-menu :nudge-width="100">-->
+                        <!--<v-toolbar-title slot="activator">-->
+                        <!--<span>2018</span>-->
+                        <!--<v-icon>arrow_drop_down</v-icon>-->
+                        <!--</v-toolbar-title>-->
+
+                        <!--<v-list>-->
+                        <!--<v-list-tile-->
+                        <!--v-for="year in years"-->
+                        <!--:key="year"-->
+                        <!--@click=""-->
+                        <!--&gt;-->
+                        <!--<v-list-tile-title v-text="year"></v-list-tile-title>-->
+                        <!--</v-list-tile>-->
+                        <!--</v-list>-->
+                        <!--</v-menu>-->
 
                         <v-spacer></v-spacer>
 
@@ -58,36 +83,54 @@
             </v-layout>
 
         </v-card>
-        <table id="DataTable" ref="DataTable" class="table table-bordered home" style="width:100%">
-            <thead>
-            <tr>
-                <th></th>
-                <th v-for="day in days">{{day}}</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr v-for="room in rooms">
-                <td>{{room.name}}</td>
-                <template v-for="(day, index) in col_days ">
-                    <td v-if="typeof room.day[index+1] !== 'undefined'" :class="[ room.day[index+1].class ]"
-                        @click="dialogActivator(day)">
+        <div class="loader-table">
+            <loading :active.sync="loader" :is-full-page="false"></loading>
+            <table id="DataTable" ref="dataTable" class="table table-bordered home" style="width:100%">
+                <thead>
+                <tr>
+                    <th>1</th>
+                    <th v-for="day in response.days">{{day}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for="room in response.table">
+                    <td>{{room.name}}</td>
+                    <template  v-for="(day, index) in response.days">
+                        <td v-if="typeof room.day !== 'undefined' && typeof room.day[index+1] !== 'undefined'"
+                        :class="[ room.day[index+1].class, 'order_table' ]"
+                        @click="getOrder(room.day[index+1].id)">
                         <!--{{index + 1}}-->
-                    </td>
-                    <td v-else></td>
+                        </td>
+                        <td v-else></td>
+                        <!--<td>{{typeof room.day}}</td>-->
+                    </template>
 
-                </template>
+                </tr>
+                </tbody>
+                <tfoot>
+                <!--<tr class="parking-row">-->
+                <!--<td>Парк.</td>-->
+                <!--<template v-for="(day, index) in col_days ">-->
+                <!--<td v-if="typeof parking[index] !== 'undefined'">-->
+                <!--{{parking[index]}}-->
+                <!--</td>-->
+                <!--<td v-else></td>-->
+                <!--</template>-->
+                <!--</tr>-->
+                <!--<tr class="beds-row">-->
+                <!--<td>Кров.</td>-->
+                <!--<td v-for="bed_count in beds"> {{settings_beds - bed_count}}</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
 
-            </tr>
-            <tr class="green-row">
-                <td>Парк.</td>
-                <td v-for="park_count in parking">{{settings_parking - park_count}}</td>
-            </tr>
-            <tr class="red-row">
-                <td>Кров.</td>
-                <td v-for="bed_count in beds"> {{settings_beds - bed_count}}</td>
-            </tr>
-            </tbody>
-        </table>
+                <!--<th></th>-->
+                <!--<th v-for="day in days">{{day}}</th>-->
+                <!--</tr>-->
+                </tfoot>
+
+            </table>
+        </div>
+
         <v-dialog v-model="dialog" max-width="290" persistent>
             <v-card>
                 <v-card-title class="headline">ID - {{dialogWindow.id}}</v-card-title>
@@ -105,66 +148,71 @@
     import $ from 'jquery';  // подключаем jQuery
     import 'datatables.net'; // подключаем сам плагин
     import 'datatables.net-fixedcolumns/js/dataTables.fixedColumns.min'
-    import 'datatables.net-fixedcolumns-bs4/js/fixedColumns.bootstrap4.min'
+    // import 'datatables.net-fixedcolumns-bs4/js/fixedColumns.bootstrap4.min'
+    import Loading from 'vue-loading-overlay';
+    import 'vue-loading-overlay/dist/vue-loading.css';
 
+    import {DATA} from '../assets/response'
 
     export default {
-        components: {},
+        components: {
+            Loading
+        },
         data: function () {
             return {
+                //data
                 select_year: 2018,
-                select_month: 6,
+                select_month: 9,
                 years: [2015, 2016, 2017, 2018, 2019],
                 mounts: ['Май', 'Июнь', 'Июль', 'Август', "Сентябрь"],
-                days: [],
-                rooms: [],
-                parking: [],
-                beds: [],
+                response: {
+                    days: [],
+                    col_days: '',
+                    col_beds: [],
+                    col_parking: [],
+                    month: '',
+                    settings_beds: 0,
+                    settings_parking: 0,
+                    table: {}
+                },
                 dialog: false,
                 dialogWindow: {
                     class: '',
                     id: ""
                 },
+                not_data: {},
                 col_days: '',
                 settings_beds: '',
                 settings_parking: '',
-                API: 'http://test.voitsekhovsky.studio/data.json'
+                //helpers
+                date_update: new Date().toISOString().substr(0, 7),
+                menu_update: false,
+                modal_update: false,
+
+                loader: false,
 
             }
         },
-        beforeMount() {
+        created() {
+            this.loader = true;
 
-            this.axios.get('table/' + this.select_month + '/' + this.select_year).then((response) => {
-                console.log(response.data);
-                this.days = response.data.days;
-                this.parking = response.data.col_parking;
-                this.beds = response.data.col_beds;
-                this.rooms = response.data.table;
-                this.settings_parking = response.data.settings_parking;
-                this.settings_beds = response.data.settings_beds;
-                this.col_days = response.data.col_days;
-            });
+        },
+        beforeMount() {
 
 
         },
         mounted() {
-            //Инициализация  таблицы
+            console.log('created');
+            this.axios.get('table/' + this.select_month + '/' + this.select_year).then((response) => {
+                console.log('Данные получены');
 
-            var totalHeight = null;
-
-            totalHeight = $(window).height() - 250;
-            console.log("totalHeight - " + totalHeight);
-            let DATATABLE = $('#DataTable').DataTable({
-                "ordering": false,
-                paging: false,
-                scrollY: "600px",
-                scrollX: true,
-                scrollCollapse: true,
+                console.log(response.data);
+                this.response = response.data;
+                this.generateTable();
             });
 
-            // new $.fn.dataTable.FixedColumns(DATATABLE, {
-            //     leftColumns: 1
-            // });
+//Инициализация  таблицы     ( и только в mounted)
+
 
             // //Ховер для таблицы
             // $("td").on("mouseover", function () {
@@ -178,21 +226,62 @@
 
 
             //    https://datatables.net/examples/api/highlight.html
+            // $('#DataTable tbody').on( 'mouseenter', 'td', function () {
+            //     console.log('mouseenter');
+            //     var colIdx = DATATABLE.cell(this).index().column;
+            //     $( DATATABLE.cells().nodes() ).removeClass( 'hover' );
+            //     $( DATATABLE.column( colIdx ).nodes() ).addClass( 'hover' );
+            // } );
 
-            // $('#example tbody')
-            //     .on( 'mouseenter', 'td', function () {
-            //         var colIdx = table.cell(this).index().column;
-            //
-            //         $( table.cells().nodes() ).removeClass( 'highlight' );
-            //         $( table.column( colIdx ).nodes() ).addClass( 'highlight' );
-            //     } );
         },
         updated: function () {
         },
         methods: {
-            dialogActivator(day) {
-                this.dialogWindow = day;
+            generateTable() {
+                $(document).ready(function () {
+                    var totalHeight = null;
+
+                    totalHeight = $(window).height() - 250;
+                    console.log("Монтирование таблицы" + totalHeight);
+                    let DATATABLE = $('#DataTable').DataTable({
+                        "ordering": false,
+                        paging: false,
+                        scrollY: totalHeight + 'px',
+                        "scrollX": true,
+                        scrollCollapse: true,
+                        fixedHeader: true,
+                        // autoFill: {
+                        //     update: false
+                        // }
+                    });
+
+                    new $.fn.dataTable.FixedColumns(DATATABLE, {
+                        leftColumns: 1,
+                        heightMatch: 'auto'
+                    });
+
+
+                });
+                this.loader = false;
+            },
+            getOrder(order_id) {
+                this.dialogWindow.id = order_id;
                 this.dialog = true;
+            },
+            getUpdate(date_update) {
+                this.loader = true;
+                console.log(date_update);
+                let arrayDATE = date_update.split("-");
+                var year = arrayDATE[0];
+                var month = arrayDATE[1];
+
+                this.$refs.dialog_update.save(this.date_update);
+                this.axios.get('table/' + month + '/' + year).then((response) => {
+                    console.log('Данные получены');
+                    console.log(response.data);
+                    this.response = response.data;
+                    this.loader = false;
+                });
             }
         }
     }
@@ -203,9 +292,10 @@
 <style src="~/assets/datatables/css/dataTables.bootstrap4.css" scoped/>
 <style src="~/node_modules/datatables.net-fixedcolumns-bs4/css/fixedColumns.bootstrap4.min.css" scoped/>
 <style src="~/assets/css/home.css" scoped/>
+
 <style>
     .dataTables_info, .dataTables_filter {
         display: none !important;
     }
-</style>
 
+</style>
