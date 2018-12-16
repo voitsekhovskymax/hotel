@@ -52,6 +52,10 @@ export default {
         ],
         'cookie-universal-nuxt',
     ],
+    loading: {
+        color: '#4caf50',
+        height: '10px'
+    },
 
     // https://github.com/nuxt-community/sentry-module#readme
     sentry: {

@@ -1,13 +1,15 @@
-.navigation-link{
+.navigation-link {
     display: flex;
     text-decoration: none;
     color: inherit;
     flex: 1;
 }
-.v-navigation-drawer{
+
+.v-navigation-drawer {
     z-index: 5;
 }
-.v-content__wrap .title{
+
+.v-content__wrap .title {
     margin-bottom: 15px;
 }
 
@@ -21,6 +23,18 @@
     line-height: 18px !important;
 }
 
-.toolbar-input .v-input__slot{
+.toolbar-input .v-input__slot {
     margin-bottom: 0px !important;
+}
+
+.v-list__group--active {
+    background: #f5f5f5;
+}
+
+.v-list__group--active .v-list__group__header {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.v-list__group__items .v-list__tile:hover {
+    background: rgba(0, 0, 0, 0.04);
 }
