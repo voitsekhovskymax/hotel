@@ -8,6 +8,12 @@ const store = () => new Vuex.Store({
     state: {
         auth: null,
         token:null,
+        date:{
+          object:null,
+          year:null,
+          month:null,
+          day:null,
+        }
     },
     getters: {
         getUser(state) {
