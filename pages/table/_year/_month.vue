@@ -92,9 +92,60 @@
       </table>
     </div>
 
-    <v-dialog v-model="dialog" max-width="290" persistent>
-      <v-card>
-        <v-card-title class="headline">ID - {{dialogWindow.id}}</v-card-title>
+    <v-dialog v-model="dialog" max-width="290" persistent fullscreen hide-overlay transition="dialog-bottom-transition">
+      <v-card v-if="progress" class="progress_loader">
+        <v-progress-circular :size="70" :width="7" color="purple" indeterminate></v-progress-circular>
+      </v-card>
+
+      <v-card v-else>
+        <v-layout wrap>
+          <v-flex sm6 md6 xs12>
+            <v-toolbar class="no-shadow">
+              <v-btn icon @click="routerBack">
+                <v-icon>arrow_back</v-icon>
+              </v-btn>
+              <v-toolbar-title>Бронь <b>{{order.orderRoom.order_num}}</b></v-toolbar-title>
+              <v-spacer></v-spacer>
+            </v-toolbar>
+          </v-flex>
+
+          <v-flex sm6 md6 xs12>
+            <v-toolbar class="no-shadow">
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialog = false">
+                <v-icon>close</v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-flex>
+        </v-layout>
+        <v-card-text class="card-content">
+          <v-layout wrap>
+            <v-flex sm6 md6 xs12>
+              <v-text-field
+                label="id"
+                box
+                v-model="order.orderRoom.id"
+              ></v-text-field>
+
+
+              <v-text-field
+                label="ФИО"
+                v-model="order.client.name"
+              ></v-text-field>
+
+                  <v-text-field
+                label="Почта"
+                v-model="order.client.email"
+              ></v-text-field>
+
+
+
+            </v-flex>
+
+            <v-flex sm6 md6 xs12>
+            </v-flex>
+          </v-layout>
+        </v-card-text>
         <v-card-actions>
           <v-btn color="green darken-1" flat="flat" @click="dialog = false">
             Закрыть
@@ -132,9 +183,105 @@
           table: {}
         },
         dialog: false,
-        dialogWindow: {
-          class: '',
-          id: ""
+        order: {
+          "orderRoom": {
+            "id": null,
+            "room_id": null,
+            "client_id": null,
+            "room_status_id": null,
+            "payment_type_id": null,
+            "date_checkin": null,
+            "date_prepaid": null,
+            "days_count": null,
+            "discount": null,
+            "order_num": null,
+            "total_payment": null,
+            "sum_nal": null,
+            "sum_besnal": null,
+            "sum_payed": null,
+            "sum_prepaid": null,
+            "was_payed": null,
+            "was_prepaid": null,
+            "info_prepaid": null,
+            "is_payed": null,
+            "is_close": null,
+            "parking": null,
+            "parking_current_count": null,
+            "parking_number": null,
+            "adult": null,
+            "kids": null,
+            "beds": null,
+            "begin_date": null,
+            "end_date": null,
+            "date_transfer": null,
+            "sum_transfer": null,
+            "info_transfer": null,
+            "date_transfer_back": null,
+            "sum_transfer_back": null,
+            "info_transfer_back": null,
+            "col_prepaid_days": null,
+            "info": null,
+            "order_author": null,
+            "is_queue": null,
+            "deleted_at": null,
+            "created_at": null,
+            "updated_at": null,
+            "room": {
+              "id": null,
+              "name": null,
+              "room_type_id": null,
+              "quantity": null,
+              "type": null,
+              "created_at": null,
+              "updated_at": null
+            },
+            "room_status": {
+              "id": null,
+              "name": null,
+              "info": null,
+              "created_at": null,
+              "updated_at": null
+            },
+            "payment_type": {
+              "id": null,
+              "name": null,
+              "info": null,
+              "created_at": null,
+              "updated_at": null
+            }
+          },
+          "client": {
+            "id": null,
+            "name": null,
+            "passport": null,
+            "phone": null,
+            "email": null,
+            "address": null,
+            "info": null,
+            "is_black_list": null,
+            "deleted_at": null,
+            "created_at": null,
+            "updated_at": null
+          },
+          "parking": [],
+          "order_parking": [],
+          "busy_parking": [],
+          "states": {
+            "1": "Весенняя скидка",
+            "2": "Майские праздники",
+            "9": "бронь",
+            "13": "Тест отправки письма",
+            "14": "очередь",
+            "15": "предоплата получена",
+            "16": "замена номера",
+            "17": "снятие брони",
+            "18": "Трансфер",
+            "19": "освободился номер",
+            "20": "отсутствие предоплаты",
+            "21": "уточнение брони"
+          },
+          "liq_prepaid": null,
+          "liq_paid": null
         },
         not_data: {},
         col_days: '',
@@ -142,20 +289,19 @@
         settings_parking: '',
         //helpers
         date_update: new Date().toISOString().substr(0, 7),
-        menu_update: false,
         modal_update: false,
         loader: false,
-
+        progress: false,
       }
     },
     created() {
       this.loader = true;
-
     },
-    beforeMount() {    },
+    beforeMount() {
+    },
     mounted() {
       console.log('created');
-      this.axios.get('table/' + this.$route.params.month + '/' + this.$route.params.year ).then((response) => {
+      this.axios.get('table/' + this.$route.params.month + '/' + this.$route.params.year).then((response) => {
         console.log('Данные получены');
         console.log(response.data);
         this.response = response.data;
@@ -185,13 +331,17 @@
         this.loader = false;
       },
       getOrder(order_id) {
-        this.dialogWindow.id = order_id;
         this.dialog = true;
+        this.progress = true;
+        this.axios.get('orders/' + order_id + '/edit').then((response) => {
+          this.order = response.data;
+          this.progress = false;
+        });
       },
       getUpdate(date_update) {
         console.log(date_update);
         let arrayDATE = date_update.split("-");
-        this.$router.push({name:'table-year-month', params:{year: arrayDATE[0], month: arrayDATE[1]}});
+        this.$router.push({name: 'table-year-month', params: {year: arrayDATE[0], month: arrayDATE[1]}});
       }
     }
   }
@@ -207,5 +357,10 @@
   .dataTables_info, .dataTables_filter {
     display: none !important;
   }
-
+.progress_loader{
+  height: 200px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
 </style>

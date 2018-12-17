@@ -38,3 +38,7 @@
 .v-list__group__items .v-list__tile:hover {
     background: rgba(0, 0, 0, 0.04);
 }
+
+button {
+  outline: none !important;
+}
