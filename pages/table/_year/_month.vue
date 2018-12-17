@@ -24,46 +24,12 @@
               ></v-text-field>
               <v-date-picker v-model="date_update" type="month" scrollable locale="ru" :no-title="true">
 
-                <v-btn color="success" @click="getUpdate(date_update)">Подтвердить</v-btn>
-                <v-spacer></v-spacer>
                 <v-btn flat color="primary" @click="modal_update = false">Закрыть</v-btn>
+                <v-spacer></v-spacer>
+                <v-btn color="success" @click="getUpdate(date_update)">Подтвердить</v-btn>
               </v-date-picker>
             </v-dialog>
-            <!--<v-menu :nudge-width="100">-->
-            <!--<v-toolbar-title slot="activator">-->
-            <!--<span>Июнь</span>-->
-            <!--<v-icon>arrow_drop_down</v-icon>-->
-            <!--</v-toolbar-title>-->
-
-            <!--<v-list>-->
-            <!--<v-list-tile-->
-            <!--v-for="mount in mounts"-->
-            <!--:key="mount"-->
-            <!--@click=""-->
-            <!--&gt;-->
-            <!--<v-list-tile-title v-text="mount"></v-list-tile-title>-->
-            <!--</v-list-tile>-->
-            <!--</v-list>-->
-            <!--</v-menu>-->
-            <!--<v-menu :nudge-width="100">-->
-            <!--<v-toolbar-title slot="activator">-->
-            <!--<span>2018</span>-->
-            <!--<v-icon>arrow_drop_down</v-icon>-->
-            <!--</v-toolbar-title>-->
-
-            <!--<v-list>-->
-            <!--<v-list-tile-->
-            <!--v-for="year in years"-->
-            <!--:key="year"-->
-            <!--@click=""-->
-            <!--&gt;-->
-            <!--<v-list-tile-title v-text="year"></v-list-tile-title>-->
-            <!--</v-list-tile>-->
-            <!--</v-list>-->
-            <!--</v-menu>-->
-
             <v-spacer></v-spacer>
-
           </v-toolbar>
         </v-flex>
 

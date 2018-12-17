@@ -66,7 +66,7 @@
               v-model="client.info"
               label="Информация о клиенте"
               required
-              hint="Краткая инфорамация о клиенте. Используется внутри-корпоративно."
+              hint="Краткая информация о клиенте. Используется внутри-корпоративно."
             ></v-text-field>
 
           </v-flex>
@@ -77,12 +77,12 @@
 
       </v-card-actions>
     </v-card>
+
   </div>
 </template>
 
 <script>
   export default {
-    name: 'client-new',
     data() {
       return {
         client: {

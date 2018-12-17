@@ -1,5 +1,13 @@
 <template>
   <v-app>
+    <!--<v-snackbar-->
+      <!--v-model="snackbar.state" :color="snackbar.color" :timeout="snackbar.timeout" multi-line>-->
+      <!--{{ snackbar.text }}-->
+      <!--<v-btn dark flat icon @click="snackbar.state = false">-->
+        <!--<v-icon>close</v-icon>-->
+      <!--</v-btn>-->
+    <!--</v-snackbar>-->
+
     <v-navigation-drawer
       v-model="drawer"
       clipped
@@ -134,11 +142,57 @@
             text: 'Отчеты',
             model: false,
             children: [
-              {icon: 'directions_car', text: 'Трансфер', src: {name: 'transfer-from_date-to_date'}},
-              {icon: 'local_parking', text: 'Паркоместа', src: {name: 'parking'}},
-              {icon: 'donut_large', text: 'Статистика предоплат', src: {name: 'prepaid'}},
-              {icon: 'donut_small', text: 'Статистика оплат', src: {name: 'payment'}},
-              {icon: 'supervised_user_circle', text: 'Клиенты', src: {name: 'clients'}}
+              {
+                icon: 'directions_car',
+                text: 'Трансфер',
+                src: {
+                  name: 'transfer-begin_date-end_date',
+                  params: {begin_date: this.currentYear + '-01-01', end_date: this.currentDateISO} // Переход на текущий календарный год
+                }
+              },
+              {
+                icon: 'local_parking',
+                text: 'Паркоместа',
+                src: {
+                  name: 'parking-begin_date-end_date',
+                  params: {
+                    begin_date: this.currentYear + '-01-01',
+                    end_date: this.currentDateISO
+                  } // Переход на текущий календарный год
+                }
+              },
+              {
+                icon: 'donut_large',
+                text: 'Статистика предоплат',
+                src: {
+                  name: 'prepaid-begin_date-end_date',
+                  params: {
+                    begin_date: this.currentYear + '-01-01',
+                    end_date: this.currentDateISO
+                  } // Переход на текущий календарный год
+                }
+              },
+              {
+                icon: 'donut_small',
+                text: 'Статистика оплат',
+                src: {
+                  name: 'payment-begin_date-end_date',
+                  params: {
+                    begin_date: this.currentYear + '-01-01',
+                    end_date: this.currentDateISO
+                  } // Переход на текущий календарный год
+                }
+              },
+              {
+                icon: 'supervised_user_circle',
+                text: 'Клиенты',
+                src: {
+                  name: 'clients-page',
+                  params: {
+                    page: 1
+                  }
+                }
+              }
             ]
           },
           {icon: 'mail_outline', text: 'Рассылка писем', src: {name: 'messages'}},
@@ -169,65 +223,19 @@
         select: null,
         states: [
           'Alabama',
-          'Alaska',
-          'American Samoa',
-          'Arizona',
-          'Arkansas',
-          'California',
-          'Colorado',
-          'Connecticut',
-          'Delaware',
-          'District of Columbia',
-          'Federated States of Micronesia',
-          'Florida',
-          'Georgia',
-          'Guam',
-          'Hawaii',
-          'Idaho',
-          'Illinois',
-          'Indiana',
-          'Iowa',
-          'Kansas',
-          'Kentucky',
-          'Louisiana',
-          'Maine',
-          'Marshall Islands',
-          'Maryland',
-          'Massachusetts',
-          'Michigan',
-          'Minnesota',
-          'Mississippi',
-          'Missouri',
-          'Montana',
-          'Nebraska',
-          'Nevada',
-          'New Hampshire',
-          'New Jersey',
-          'New Mexico',
-          'New York',
-          'North Carolina',
-          'North Dakota',
-          'Northern Mariana Islands',
-          'Ohio',
-          'Oklahoma',
-          'Oregon',
-          'Palau',
-          'Pennsylvania',
-          'Puerto Rico',
-          'Rhode Island',
-          'South Carolina',
-          'South Dakota',
-          'Tennessee',
-          'Texas',
-          'Utah',
-          'Vermont',
-          'Virgin Island',
-          'Virginia',
-          'Washington',
-          'West Virginia',
-          'Wisconsin',
-          'Wyoming'
-        ]
+
+        ],
+        currentYear: null,
+        currentMonth: null,
+        currentDay: null,
+        currentDateISO: null,
+
+        snackbar: {
+          state: null,
+          color: null,
+          timeout: null,
+          text: null,
+        }
       };
     },
     beforeCreate() {
@@ -235,11 +243,30 @@
       if (token != undefined) {
         console.log('токен найден в куки');
         this.$store.commit('set', {type: 'token', value: token});
-        // let currentDate = new Date();
-        // let currentYear = currentDate.getFullYear();
-        // let currentMonth = currentDate.getMonth() + 1;
+        let currentDate = new Date();
+        this.currentYear = currentDate.getFullYear();
+        this.currentMonth = currentDate.getMonth() + 1;
+        this.currentDay = currentDate.getDate();
+        this.currentDateISO = currentDate.toISOString().substr(0, 10);
+
         // this.$router.push({name: 'table-year-month', params: {year: currentYear, month: currentMonth}});
+
       }
+    },
+    created() {
+      this.$store.watch(state => state.snackbar, () => {
+        const snackbar_watcher = this.$store.state.snackbar.state;
+        if (snackbar_watcher) {
+          this.snackbar = this.$store.state.snackbar;
+          let snackbar = {
+            state: null,
+            color: null,
+            timeout: null,
+            text: null,
+          };
+          this.$store.commit('set', {type: 'snackbar', value: snackbar})
+        }
+      })
     },
     watch: {
       search(val) {
@@ -249,7 +276,8 @@
     methods: {
       initializationRouter(src) {
         // console.log(src);
-      },
+      }
+      ,
       querySelections(v) {
         this.loading = true;
         // Simulated ajax query
@@ -261,5 +289,6 @@
         }, 500)
       }
     }
-  };
+  }
+  ;
 </script>

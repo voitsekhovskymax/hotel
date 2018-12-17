@@ -13,6 +13,12 @@ const store = () => new Vuex.Store({
           year:null,
           month:null,
           day:null,
+        },
+        snackbar:{
+          state:null,
+          color:null,
+          timeout:null,
+          text:null,
         }
     },
     getters: {
@@ -28,6 +34,7 @@ const store = () => new Vuex.Store({
         set(state, {type, value}) {
             state[type] = value;
         },
+
     }
 })
 

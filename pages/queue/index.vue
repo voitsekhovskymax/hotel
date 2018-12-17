@@ -61,7 +61,6 @@
     import 'datatables.net-buttons/js/buttons.html5.min';
     import 'datatables.net-buttons/js/buttons.html5.min';
     import JSZip from 'jszip';
-    import {formateDate} from '../../libs/utils';
 
     export default {
         name:'queue',
@@ -111,8 +110,8 @@
                             },
                             columns: '.export'
                         },
-                        filename: 'Отель Маяк - Заявки ' + formateDate(new Date()),
-                        title: 'Отчет по заявкам на ' + formateDate(new Date()),
+                        filename: 'Отель Маяк - Заявки ',
+                        title: 'Отчет по заявкам на ',
 
 
                     }
