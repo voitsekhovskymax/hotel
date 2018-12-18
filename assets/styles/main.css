@@ -42,3 +42,5 @@
 button {
   outline: none !important;
 }
+
+.card-content .flex {padding: 0px 10px;}

@@ -1,19 +1,8 @@
 <template>
   <v-app>
-    <!--<v-snackbar-->
-      <!--v-model="snackbar.state" :color="snackbar.color" :timeout="snackbar.timeout" multi-line>-->
-      <!--{{ snackbar.text }}-->
-      <!--<v-btn dark flat icon @click="snackbar.state = false">-->
-        <!--<v-icon>close</v-icon>-->
-      <!--</v-btn>-->
-    <!--</v-snackbar>-->
 
-    <v-navigation-drawer
-      v-model="drawer"
-      clipped
-      fixed
-      app
-    >
+
+    <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list dense>
         <v-list-tile>
           <nuxt-link to="/" class="navigation-link">
@@ -58,10 +47,8 @@
               </nuxt-link>
             </v-list-tile>
           </v-list-group>
-          <!-- Единичная ссылка -->
-          <v-list-tile v-else :key="item.text" @click="initializationRouter(item)">
+          <v-list-tile v-else :key="item.text">
             <nuxt-link :to="item.src" class="navigation-link">
-
               <v-list-tile-action>
                 <v-icon>{{ item.icon }}</v-icon>
               </v-list-tile-action>
@@ -74,8 +61,8 @@
           </v-list-tile>
         </template>
       </v-list>
-
     </v-navigation-drawer>
+
     <v-toolbar clipped-left color="primary" dark="" fixed app>
       <v-toolbar-side-icon @click="drawer = !drawer;"/>
       <v-toolbar-title v-text="title" class="ml-3 mr-5 hidden-sm-and-down"/>
@@ -107,6 +94,7 @@
         Новая заявка
       </v-btn>
     </v-toolbar>
+
     <v-content>
       <div class="pa-3">
         <nuxt/>
@@ -243,52 +231,12 @@
       if (token != undefined) {
         console.log('токен найден в куки');
         this.$store.commit('set', {type: 'token', value: token});
-        let currentDate = new Date();
-        this.currentYear = currentDate.getFullYear();
-        this.currentMonth = currentDate.getMonth() + 1;
-        this.currentDay = currentDate.getDate();
-        this.currentDateISO = currentDate.toISOString().substr(0, 10);
-
-        // this.$router.push({name: 'table-year-month', params: {year: currentYear, month: currentMonth}});
-
       }
     },
     created() {
-      this.$store.watch(state => state.snackbar, () => {
-        const snackbar_watcher = this.$store.state.snackbar.state;
-        if (snackbar_watcher) {
-          this.snackbar = this.$store.state.snackbar;
-          let snackbar = {
-            state: null,
-            color: null,
-            timeout: null,
-            text: null,
-          };
-          this.$store.commit('set', {type: 'snackbar', value: snackbar})
-        }
-      })
+
     },
-    watch: {
-      search(val) {
-        val && val !== this.select && this.querySelections(val)
-      }
-    },
-    methods: {
-      initializationRouter(src) {
-        // console.log(src);
-      }
-      ,
-      querySelections(v) {
-        this.loading = true;
-        // Simulated ajax query
-        setTimeout(() => {
-          this.search_items = this.states.filter(e => {
-            return (e || '').toLowerCase().indexOf((v || '').toLowerCase()) > -1
-          })
-          this.loading = false
-        }, 500)
-      }
-    }
-  }
-  ;
+    watch: {},
+    methods: {}
+  };
 </script>

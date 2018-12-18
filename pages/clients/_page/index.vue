@@ -86,16 +86,13 @@
     },
     methods: {
       generateTable() {
-        let app = this;
         $(document).ready(function () {
           window.JSZip = JSZip;
-          var totalHeight = $(window).height() - 250;
-          console.log("totalHeight - " + totalHeight);
           let DATATABLE = $('#DataTable').DataTable({
             "paging": false,
             "searching": false,
             "info": false,
-            scrollY: totalHeight + "px",
+            scrollY:  $(window).height() - 250 + "px",
             scrollX: true,
             scrollCollapse: true,
           });

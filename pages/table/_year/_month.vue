@@ -101,9 +101,7 @@
         <v-layout wrap>
           <v-flex sm6 md6 xs12>
             <v-toolbar class="no-shadow">
-              <v-btn icon @click="routerBack">
-                <v-icon>arrow_back</v-icon>
-              </v-btn>
+
               <v-toolbar-title>Бронь <b>{{order.orderRoom.order_num}}</b></v-toolbar-title>
               <v-spacer></v-spacer>
             </v-toolbar>
@@ -118,39 +116,96 @@
             </v-toolbar>
           </v-flex>
         </v-layout>
-        <v-card-text class="card-content">
+        <v-card-text class="card-content ">
           <v-layout wrap>
             <v-flex sm6 md6 xs12>
-              <v-text-field
-                label="id"
-                box
-                v-model="order.orderRoom.id"
-              ></v-text-field>
+              <v-text-field label="ФИО" v-model="order.client.name"></v-text-field>
 
+              <v-text-field label="Почта" v-model="order.client.email"></v-text-field>
 
-              <v-text-field
-                label="ФИО"
-                v-model="order.client.name"
-              ></v-text-field>
+              <v-text-field label="Телефон" v-model="order.client.phone"></v-text-field>
 
-                  <v-text-field
-                label="Почта"
-                v-model="order.client.email"
-              ></v-text-field>
+              <v-text-field label="Сумма без скидки" v-model="order.orderRoom.total_payment"></v-text-field>
 
+              <v-text-field label="Скидка" v-model="order.orderRoom.discount"></v-text-field>
 
+              <v-text-field label="Количество дней предоплаты" v-model="order.orderRoom.col_prepaid_days"></v-text-field>
+
+              <v-text-field label="Сумма предоплаты" v-model="order.orderRoom.sum_prepaid"></v-text-field>
+
+              <v-text-field label="Получена предоплата" v-model="order.orderRoom.was_prepaid"></v-text-field>
+
+              <v-text-field label="Доплата" v-model="order.orderRoom.was_payed"></v-text-field>
+
+              <v-text-field label="Уплачено всего" v-model="order.orderRoom.sum_payed"></v-text-field>
+
+              <v-text-field label="Способ оплаты" v-model="order.orderRoom.payment_type.name"
+                            :hint="order.orderRoom.payment_type.info"></v-text-field>
+
+              <v-text-field label="Статус номера" v-model="order.orderRoom.room_status.name"
+                            :hint="order.orderRoom.room_status.info"></v-text-field>
 
             </v-flex>
 
             <v-flex sm6 md6 xs12>
+
+              <v-text-field label="Дата заезда" v-model="order.orderRoom.begin_date"></v-text-field>
+
+              <v-text-field label="Дата выезда" v-model="order.orderRoom.end_date"></v-text-field>
+
+              <v-text-field label="Взрослые" v-model="order.orderRoom.adult"></v-text-field>
+
+              <v-text-field label="Дети" v-model="order.orderRoom.kids"></v-text-field>
+
+              <v-text-field label="Паркоместа (не готово)"></v-text-field>
+
+              <v-text-field label="Дополнительные кровати" v-model="order.orderRoom.beds"></v-text-field>
+
+              <v-textarea
+                label="Информация"
+                v-model="order.orderRoom.info"
+                auto-grow
+                rows="1"
+              ></v-textarea>
+
+              <template>
+                <v-card color="grey lighten-3">
+
+                  <v-card-title>Трансфер на вьезд</v-card-title>
+                  <v-card-text>
+                    <v-text-field label="Сумма" v-model="order.orderRoom.sum_transfer"></v-text-field>
+                    <v-textarea
+                      label="Информация"
+                      v-model="order.orderRoom.info_transfer"
+                      hint="Информация о трансфере на вьезд"
+                      auto-grow
+                      rows="1"
+                    ></v-textarea>
+                    <v-text-field label="Дата" v-model="order.orderRoom.date_transfer"></v-text-field>
+                  </v-card-text>
+                </v-card>
+              </template>
+
+              <template >
+                <v-card color="grey lighten-3 mt-2">
+
+                  <v-card-title>Трансфер на выезд</v-card-title>
+                  <v-card-text>
+                    <v-text-field label="Сумма" v-model="order.orderRoom.sum_transfer_back"></v-text-field>
+                    <v-textarea
+                      label="Информация"
+                      v-model="order.orderRoom.info_transfer_back"
+                      hint="Информация о трансфере на выезд"
+                      auto-grow
+                      rows="1"
+                    ></v-textarea>
+                    <v-text-field label="Дата" v-model="order.orderRoom.date_transfer_back"></v-text-field>
+                  </v-card-text>
+                </v-card>
+              </template>
             </v-flex>
           </v-layout>
         </v-card-text>
-        <v-card-actions>
-          <v-btn color="green darken-1" flat="flat" @click="dialog = false">
-            Закрыть
-          </v-btn>
-        </v-card-actions>
       </v-card>
     </v-dialog>
   </div>
