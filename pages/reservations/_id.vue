@@ -244,13 +244,15 @@
           "liq_prepaid": null,
           "liq_paid": null
         },
+        params_id: this.$route.params.id
       };
     },
     mounted() {
-      this.axios.get('orders/' + this.$route.params.id + '/edit').then((response) => {
-        console.log(response);
-        this.response = response.data;
-      });
+      console.log(this.$route.params.id );
+      // this.axios.get('orders/' + this.$route.params.id + '/edit').then((response) => {
+      //   console.log(response);
+      //   this.response = response.data;
+      // });
     },
     methods: {
       routerBack() {

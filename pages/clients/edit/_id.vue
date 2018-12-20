@@ -7,7 +7,7 @@
             <v-btn icon class="hidden-xs-only" :to="{name:'clients-page', params:{page:1}}">
               <v-icon>arrow_back</v-icon>
             </v-btn>
-            <v-toolbar-title>Новый клиент</v-toolbar-title>
+            <v-toolbar-title>Редактирование профиля клиента</v-toolbar-title>
             <v-spacer></v-spacer>
           </v-toolbar>
         </v-flex>

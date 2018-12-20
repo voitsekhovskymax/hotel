@@ -99,10 +99,10 @@
       newClient() {
         console.log(this.client);
 
-        this.axios.post('clients', {client: this.client}).then((response) => {
+        this.axios.post('clients', this.client).then((response) => {
           console.log(response);
 
-        }).catch((error)=>{
+        }).catch((error) => {
           console.log(error);
 
         });
