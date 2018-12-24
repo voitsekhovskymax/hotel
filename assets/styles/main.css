@@ -39,8 +39,23 @@
     background: rgba(0, 0, 0, 0.04);
 }
 
+.theme--light.v-list .v-list__tile__mask {
+  color: rgb(0, 0, 0);
+  background: #d2d2d2;
+  border-radius: 5px;
+  padding: 0px 2px;
+}
+
 button {
   outline: none !important;
+}
+
+
+.progress_loader {
+  height: 200px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .card-content .flex {padding: 0px 10px;}

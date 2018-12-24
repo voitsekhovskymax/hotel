@@ -64,24 +64,34 @@
     </v-navigation-drawer>
 
     <v-toolbar clipped-left color="primary" dark="" fixed app>
-      <v-toolbar-side-icon @click="drawer = !drawer;"/>
+      <v-toolbar-side-icon @click="drawer = !drawer"/>
       <v-toolbar-title v-text="title" class="ml-3 mr-5 hidden-sm-and-down"/>
 
-      <v-autocomplete
-        :loading="loading"
-        :items="search_items"
-        :search-input.sync="search"
-        v-model="select"
-        cache-items
-        class="mx-3 toolbar-input"
-        flat
-        clearable
-        hide-no-data
-        label="Поиск.."
-        solo-inverted
-        :width="100"
+      <v-autocomplete v-model="search"
+                      :items="results"
+                      :loading="isLoading"
+                      :search-input.sync="keywords"
+                      return-object
+                      flat
+                      solo-inverted
+                      class="mx-3"
+                      clearable
+                      :item-text="(results_type == 'clients' ) ? 'name' : 'order_num'"
+                      label="Найти клиента.."
+                      @input="inputChange"
+                      @change="change"
+      >
+        <!--<template-->
+        <!--slot="item"-->
+        <!--slot-scope="{ item }"-->
+        <!--&gt;-->
+        <!--<v-list-tile-content>-->
+        <!--<v-list-tile-title>item</v-list-tile-title>-->
+        <!--</v-list-tile-content>-->
+        <!--</template>-->
+      </v-autocomplete>
 
-      ></v-autocomplete>
+
       <v-tooltip bottom>
         <v-btn icon slot="activator">
           <v-icon>credit_card</v-icon>
@@ -90,7 +100,7 @@
         <span>Сумма полученных наличных денег, помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
       </v-tooltip>
       <v-spacer></v-spacer>
-      <v-btn color="success" :to="{name:'requests-add'}">
+      <v-btn color="success" :to="{name:'requests-new'}">
         Новая заявка
       </v-btn>
     </v-toolbar>
@@ -206,8 +216,6 @@
         rightDrawer: false,
         title: "Отель Маяк",
         loading: false,
-        search: null,
-        search_items: [],
         select: null,
         states: [
           'Alabama',
@@ -223,8 +231,31 @@
           color: null,
           timeout: null,
           text: null,
-        }
+        },
+        //search data
+        isLoading: false,
+        search: {},
+        results: [],
+        results_type: null,
+        keywords: null,
       };
+    },
+    watch: {
+      keywords(after, before) {
+        if (this.keywords != null) {
+          if (this.keywords.length > 2) {
+            this.isLoading = true;
+            this.getSearch();
+          } else {
+            this.results = [];
+            this.results_type = null;
+          }
+        } else {
+          this.results = [];
+          this.keywords = "";
+          this.results_type = null;
+        }
+      }
     },
     beforeCreate() {
       var token = this.$cookies.get('token');
@@ -236,7 +267,34 @@
     created() {
 
     },
-    watch: {},
-    methods: {}
+
+    methods: {
+
+      inputChange(val) {
+        console.log('inputChange');
+        console.log(val);
+        if (this.results_type == 'clients') {
+          this.$router.push({name: 'clients-edit-id', params: {id: val.id}})
+        }
+        if (this.results_type == 'order_rooms') {
+            this.$router.push({name: 'reservations-id', params: {id: val.id}})
+
+        }
+      },
+      change() {
+
+
+      },
+      getSearch() {
+        this.axios.post('data-search', {
+          keywords: this.keywords
+        }).then((response) => {
+          console.log(response);
+          this.results = response.data.clients;
+          this.results_type = response.data.type;
+          this.isLoading = false;
+        })
+      },
+    }
   };
 </script>

@@ -45,13 +45,13 @@
 
             <v-layout wrap>
               <v-flex lg6 sm6 md6 xs12>
-                <v-text-field label="ФИО" v-model="response.data.full_name"></v-text-field>
+                <v-text-field label="ФИО" v-model="response.data.full_name" @change="changeInputs"></v-text-field>
 
                 <v-dialog ref="ref_modal_begin_date" v-model="modal_begin_date"
                           :return-value.sync="response.data.begin_date" persistent lazy full-width
                           width="290px">
                   <v-text-field slot="activator" v-model="response.data.begin_date" label="Дата заезда"
-                                required></v-text-field>
+                                required  @change="changeInputs"></v-text-field>
                   <v-date-picker v-model="response.data.begin_date" scrollable :first-day-of-week="1"
                                  locale="ru-ru">
                     <v-spacer></v-spacer>
@@ -68,7 +68,7 @@
                           :return-value.sync="response.data.end_date" persistent lazy full-width
                           width="290px">
                   <v-text-field slot="activator" v-model="response.data.end_date" label="Дата выезда"
-                                readonly required></v-text-field>
+                                readonly required  @change="changeInputs"></v-text-field>
                   <v-date-picker v-model="response.data.end_date" scrollable :first-day-of-week="1"
                                  :min="response.data.begin_date"
                                  locale="ru-ru">
@@ -81,38 +81,45 @@
                 </v-dialog>
 
 
-                <v-text-field label="Почта" v-model="response.data.email"></v-text-field>
-                <v-text-field label="Телефон" v-model="response.data.phone"></v-text-field>
-                <v-text-field label="Предоплата" v-model="response.prepaid"></v-text-field>
-                <v-text-field label="Скидка" v-model="discount"></v-text-field>
+                <v-text-field label="Почта" v-model="response.data.email"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Телефон" v-model="response.data.phone"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Предоплата" v-model="response.prepaid"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Скидка" v-model="discount"  @change="changeInputs"></v-text-field>
 
 
               </v-flex>
 
               <v-flex lg6 sm6 md6 xs12>
                 <v-select label="Номер отеля" v-model="select_room" :items="rooms" item-text="name"
-                          return-object></v-select>
+                          return-object  @change="changeInputs"></v-select>
 
-                <v-text-field label="Взрослые" v-model="response.data.adult"></v-text-field>
-                <v-text-field label="Дети" v-model="response.data.kids"></v-text-field>
-                <v-text-field label="Паркоместа" v-model="response.data.parking"></v-text-field>
-                <v-text-field label="Доп. кровати" v-model="response.data.beds"></v-text-field>
+                <v-text-field label="Взрослые" v-model="response.data.adult"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Дети" v-model="response.data.kids"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Паркоместа" v-model="response.data.parking"  @change="changeInputs"></v-text-field>
+                <v-text-field label="Доп. кровати" v-model="response.data.beds" @change="changeInputs"></v-text-field>
                 <!--<v-text-field label="Статус номера" v-model="response.data.beds"></v-text-field>-->
                 <v-textarea label="Сообщение от клиента" v-model="response.data.message" auto-grow
-                            rows="1"></v-textarea>
+                            rows="1" @change="changeInputs"></v-textarea>
 
               </v-flex>
-              <v-flex lg12 sm12 md12 xs12>
-                <v-select
-                  label="Название письма"
-                  hint="Выберите письмо из списка, и его содержимое добавится"
-                  v-model="mail_select"
-                  :items="messages"
-                  item-text="title"
-                  return-object
+              <v-flex lg12 sm12 md12 xs12 v-if="!input_changed">
+                <v-layout align-center justify-space-around row fill-height>
+                  <v-select
+                    label="Название письма"
+                    hint="Выберите письмо из списка, и его содержимое добавится"
+                    v-model="mail_select"
+                    :items="messages"
+                    item-text="title"
+                    return-object
 
-                ></v-select>
+                  ></v-select>
+                  <v-btn flat icon @click="deleteMailSelect">
+                    <v-icon>delete</v-icon>
+                  </v-btn>
+                </v-layout>
+              </v-flex>
 
+              <v-flex lg12 sm12 md12 xs12 v-if="!input_changed">
                 <v-textarea
                   v-model="mail_select.info"
                   auto-grow
@@ -129,13 +136,20 @@
 
               <v-toolbar class="no-shadow">
                 <template v-if="!response.errors">
-                  <v-tooltip top>
+                  <v-tooltip top v-if="!input_changed">
                     <v-btn slot="activator" color="success" @click="saveRequest">Принять заявку</v-btn>
                     <span>Заявка будет принята, и перейдет в брони</span>
                   </v-tooltip>
                 </template>
 
                 <template v-if="response.errors">
+                  <v-tooltip top>
+                    <v-btn slot="activator" color="warning" @click="updateRequest">Обновить</v-btn>
+                    <span>Заявка будет обновлена, и пересчитана</span>
+                  </v-tooltip>
+                </template>
+
+                <template v-else-if="input_changed">
                   <v-tooltip top>
                     <v-btn slot="activator" color="warning" @click="updateRequest">Обновить</v-btn>
                     <span>Заявка будет обновлена, и пересчитана</span>
@@ -184,7 +198,7 @@
                   <v-text-field label="ФИО" v-model="response.data.full_name"></v-text-field>
                   <v-text-field label="Почта" v-model="response.data.email"></v-text-field>
                   <v-text-field label="Телефон" v-model="response.data.phone"></v-text-field>
-                  <v-text-field label="Паспорт" v-model="response.data.phone"></v-text-field>
+                  <v-text-field label="Паспорт" v-model="response.data.passport"></v-text-field>
                   <v-text-field label="Адрес" v-model="response.data.city"></v-text-field>
                   <v-textarea label="Информация" auto-grow rows="1" v-model="compare_client.info"></v-textarea>
                   <v-text-field label="Дата создания" v-model="compare_client.created_at"></v-text-field>
@@ -208,10 +222,9 @@
                   <v-text-field label="ФИО" v-model="compare.name"></v-text-field>
                   <v-text-field label="Почта" v-model="compare.email"></v-text-field>
                   <v-text-field label="Телефон" v-model="compare.phone"></v-text-field>
-                  <v-text-field label="Паспорт" v-model="compare.phone"></v-text-field>
-                  <v-text-field label="Адрес" v-model="compare.city"></v-text-field>
+                  <v-text-field label="Паспорт" v-model="compare.passport"></v-text-field>
+                  <v-text-field label="Адрес" v-model="compare.address"></v-text-field>
                   <v-textarea label="Информация" v-model="compare.info" auto-grow rows="1"></v-textarea>
-
                   <v-text-field label="Дата создания" hint="дата создания клиента"
                                 v-model="compare.created_at"></v-text-field>
                 </div>
@@ -255,6 +268,7 @@
   export default {
     data() {
       return {
+        input_changed: false,
         dialog: false,
         progress: true,
         mail_select: {
@@ -341,20 +355,8 @@
       }
     },
     watch: {
-      select_room(after, before) {
-        console.log('watcher select_room');
-        console.log('----');
-        console.log(before);
-        console.log(after);
-        console.log('----');
 
-      },
       mail_select(after, before) {
-        console.log('watcher mail_select');
-        console.log('----');
-        console.log(before);
-        console.log(after);
-        console.log('----');
         let order_num = 'Ваш номер брони - ' + this.getOrderNum(this.response.data.room, this.response.data.begin_date, this.response.data.end_date) + "; ";
         let begin_date = 'Дата заезда - ' + this.formatDate(this.response.data.begin_date) + "; ";
         let end_date = 'Дата выезда - ' + this.formatDate(this.response.data.end_date) + "; ";
@@ -369,6 +371,9 @@
       this.axios.get('reserves/' + this.$route.params.id + '/edit').then((response) => {
         console.log(response);
         this.response = response.data;
+        if (this.response.find_data) {
+          this.dialog = true;
+        }
         this.getRooms();
 
       }).catch((error) => {
@@ -383,12 +388,17 @@
 
 
     },
-    mounted() {
-      if (this.response.find_data) {
-        this.dialog = true;
-      }
-    },
+
     methods: {
+      changeInputs() {
+        this.input_changed = true;
+      },
+      deleteMailSelect() {
+        this.mail_select = {
+          info: null
+        };
+
+      },
       updateClient(client) {
 
         this.response.data.full_name = client.name;
@@ -410,6 +420,7 @@
       },
       updateRequest() {
         this.progress = true;
+        this.response.data.room = this.select_room.name;
         this.axios.patch('reserves/' + this.response.data.id, this.response.data).then((response) => {
           console.log(response.data);
           let id = response.data.id;
@@ -417,12 +428,18 @@
             console.log(response);
             this.response = response.data;
             this.progress = false;
-
+            this.input_changed = false;
+            if (this.response.find_data) {
+              this.dialog = true;
+            }
           }).catch((error) => {
             console.log(error.response);
             this.response = error.response.data;
             this.progress = false;
-
+            this.input_changed = false;
+            if (this.response.find_data) {
+              this.dialog = true;
+            }
           });
         });
 
@@ -439,12 +456,21 @@
         new_order.begin_date = this.formatDate(this.response.data.begin_date);
         new_order.end_date = this.formatDate(this.response.data.end_date);
 
+        // Отправка письма клиенту
+        if (this.mail_select.info != null) {
+          console.log('Письмо вложено');
+          new_order.client_mail = this.mail_select.info;
+          new_order.mail_select = this.mail_select;
+        }
+
 
         if (this.compare_client.id !== null) {
+          console.log('Есть готовый клиент');
           new_order.client_id = this.compare_client.id;
           this.postRequest(new_order);
         } else {
           //  Создать клиента и уже потом создать бронь с этим клиентом
+          console.log('Нужно создать клиента');
 
           let client = {};
           client.name = this.response.data.full_name;
@@ -455,18 +481,27 @@
           client.info = '';
 
           this.axios.post('clients', client).then((response) => {
+            console.log('Клиент успешно создан');
+
             new_order.client_id = response.data.client.id;
             this.postRequest(new_order);
           }).catch((error) => {
+            console.log('Ошибка при создании клиента');
             console.log(error);
           });
         }
 
       },
       postRequest(new_order) {
+        console.log('Создание брони');
+        console.log(new_order);
         this.axios.post('orders', new_order).then((response) => {
-          this.$router.push({name:'reservations-id', params:{id: response.data.id}})
+          console.log('Бронь успешно создана');
+
+          this.$router.push({name: 'reservations-id', params: {id: response.data.id}})
         }).catch((error) => {
+          console.log('Ошибка при создании брони');
+
           console.log(error.response);
           console.log(error.response.data);
         });
@@ -482,6 +517,7 @@
           this.progress = false;
         })
       },
+
       getOrderNum() {
         let format_date = '';
         format_date = this.response.data.room + this.formatDateOrder(this.response.data.begin_date) + this.formatDateOrder(this.response.data.end_date);
@@ -537,10 +573,4 @@
     padding: 10px !important;
   }
 
-  .progress_loader {
-    height: 200px;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-  }
 </style>

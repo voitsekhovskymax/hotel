@@ -2,15 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb792ee3-8c52-4b1a-8623-45d2df7218c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/requests/index.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/libs/utils.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/clients/edit/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clients/edit/_id.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/clients/new.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/clients/new.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pages/requests/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/requests/_id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/requests/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/requests/add.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservations/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservations/_id.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/requests/add.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/requests/new.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/table/_year/_month.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/table/_year/_month.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/tests/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/tests/index.vue" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +20,22 @@
   </component>
   <component name="DaemonCodeAnalyzer">
     <disable_hints>
-      <file url="file://$PROJECT_DIR$/pages/requests/add.vue" />
+      <file url="file://$PROJECT_DIR$/pages/requests/new.vue" />
     </disable_hints>
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="hotel" />
@@ -31,14 +45,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="787">
-              <caret line="470" column="43" lean-forward="true" selection-start-line="470" selection-start-column="43" selection-end-line="470" selection-end-column="43" />
+            <state relative-caret-position="709">
+              <caret line="441" column="13" selection-start-line="441" selection-start-column="13" selection-end-line="441" selection-end-column="13" />
               <folding>
+                <element signature="n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#6941#7318#0" />
-                <element signature="e#7406#8378#0" />
-                <element signature="e#11589#11965#0" />
-                <marker date="1545327687281" expanded="true" signature="7139:7243" ph="..." />
+                <marker date="1545652990601" expanded="true" signature="8153:8257" ph="..." />
               </folding>
             </state>
           </provider>
@@ -47,8 +59,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="247" column="8" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="8" />
+            <state relative-caret-position="772">
+              <caret line="144" column="12" selection-start-line="144" selection-start-column="12" selection-end-line="144" selection-end-column="12" />
               <folding>
                 <element signature="e#5202#8185#0" />
               </folding>
@@ -57,10 +69,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/clients/new.vue">
+        <entry file="file://$PROJECT_DIR$/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="818">
-              <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
+            <state relative-caret-position="128">
+              <caret line="265" column="6" lean-forward="true" selection-start-line="265" selection-start-column="6" selection-end-line="265" selection-end-column="6" />
+              <folding>
+                <element signature="n#v-navigation-drawer#0;n#v-app#0;n#template#0;n#!!top" />
+                <element signature="e#4034#8187#0" />
+                <marker date="1545659796250" expanded="true" signature="2912:3171" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/clients/edit/_id.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-838">
+              <caret line="122" column="26" lean-forward="true" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -69,34 +95,10 @@
         <entry file="file://$PROJECT_DIR$/TODO.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="207">
-                <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <first_editor relative-caret-position="161">
+                <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/table/_year/_month.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-682">
-              <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
-              <folding>
-                <element signature="n#v-flex#1;n#v-layout#0;n#v-card-text#0;n#v-card#1;n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/plugins/axios.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="207">
-              <caret line="9" column="36" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -105,36 +107,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modal_begin_date</find>
-      <find>updateTable</find>
-      <find>DataTable</find>
-      <find>drawer</find>
-      <find>value</find>
-      <find>generateTable</find>
-      <find>formateDate</find>
-      <find>date_update</find>
-      <find>menu_update</find>
-      <find>modal_update</find>
-      <find>loader</find>
-      <find>dialog_order</find>
-      <find>routerBack</find>
-      <find>order</find>
-      <find>page</find>
       <find>year</find>
       <find>querySelections</find>
       <find>editPeriod.end_date</find>
-      <find>getSearch</find>
-      <find>setClient</find>
       <find>request.begin_date</find>
       <find>request.end_date</find>
-      <find>progress</find>
       <find>message</find>
-      <find>dialog</find>
       <find>response.data</find>
       <find>text</find>
       <find>updateClient</find>
       <find>toolt</find>
       <find>редо</find>
+      <find>progress</find>
+      <find>progress_loader</find>
+      <find>reqie</find>
+      <find>!=</find>
+      <find>visibleRes</find>
+      <find>isLoading</find>
+      <find>client</find>
+      <find>dialog_client_data</find>
+      <find>setClient</find>
+      <find>search</find>
+      <find>keywords</find>
+      <find>mail</find>
+      <find>mailChange</find>
+      <find>dialog</find>
+      <find>input_changed</find>
+      <find>getSearch</find>
+      <find>results</find>
+      <find>info</find>
+      <find>autocompleteItemText</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -167,7 +169,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pages/login/index.vue" />
         <option value="$PROJECT_DIR$/assets/styles/home.css" />
         <option value="$PROJECT_DIR$/assets/data.js" />
         <option value="$PROJECT_DIR$/components/utils/utils.js" />
@@ -202,21 +203,22 @@
         <option value="$PROJECT_DIR$/store/index.js" />
         <option value="$PROJECT_DIR$/pages/queue/index.vue" />
         <option value="$PROJECT_DIR$/pages/reservations/index.vue" />
-        <option value="$PROJECT_DIR$/pages/table/_year/_month.vue" />
-        <option value="$PROJECT_DIR$/assets/styles/main.css" />
         <option value="$PROJECT_DIR$/pages/clients/_page/index.vue" />
         <option value="$PROJECT_DIR$/layouts/page.vue" />
-        <option value="$PROJECT_DIR$/pages/tests/index.vue" />
-        <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/pages/prices/index.vue" />
         <option value="$PROJECT_DIR$/pages/requests/add.vue" />
         <option value="$PROJECT_DIR$/pages/requests/index.vue" />
         <option value="$PROJECT_DIR$/libs/utils.js" />
         <option value="$PROJECT_DIR$/pages/clients/edit/_id.vue" />
-        <option value="$PROJECT_DIR$/pages/clients/new.vue" />
         <option value="$PROJECT_DIR$/pages/reservations/_id.vue" />
+        <option value="$PROJECT_DIR$/pages/requests/new.vue" />
+        <option value="$PROJECT_DIR$/pages/tests/index.vue" />
+        <option value="$PROJECT_DIR$/pages/clients/new.vue" />
         <option value="$PROJECT_DIR$/pages/requests/_id.vue" />
+        <option value="$PROJECT_DIR$/pages/table/_year/_month.vue" />
+        <option value="$PROJECT_DIR$/assets/styles/main.css" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/TODO.md" />
       </list>
     </option>
@@ -241,13 +243,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
@@ -264,13 +286,6 @@
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
               <item name="clients" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="clients" type="462c0819:PsiDirectoryNode" />
-              <item name="_page" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
@@ -307,12 +322,19 @@
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="plugins" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -329,7 +351,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="tasks" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -360,7 +382,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration />
+    <configuration>C:\Users\Max Voitsekhovsky\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -391,7 +413,8 @@
       <workItem from="1545040715911" duration="17174000" />
       <workItem from="1545067494965" duration="1165000" />
       <workItem from="1545126590106" duration="11829000" />
-      <workItem from="1545301511292" duration="26108000" />
+      <workItem from="1545301511292" duration="26388000" />
+      <workItem from="1545638587152" duration="20390000" />
     </task>
     <task id="LOCAL-00001" summary="Создание TODO.md в корне проекта. Туда будут записываться все задачи \ замечания. Наконец-то пофиксил обновление таблицы datatables.net, через пересоздание вьюхи.">
       <created>1544976081399</created>
@@ -421,11 +444,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545148750961</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Отчет &#10;&#10;- поправил создание клиента&#10;- сделал страницу заявки. Сделал фильтр по совпадению клиента. Создание нового клиента с заявки.  Осталось доделать отправку почты. &#10;- мелкие правки">
+      <created>1545328268794</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1545328268794</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="211577000" />
+    <option name="totallyTimeSpent" value="232247000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -438,9 +468,31 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09328358" />
+      <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09434968" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
+      <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32936078" />
+      <window_info anchor="bottom" id="Message" order="1" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.3280757" />
+      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="7" type="SLIDING" weight="0.49944258" />
+      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Version Control" order="10" type="SLIDING" visible="true" weight="0.32864866" />
+      <window_info anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="11" sideWeight="0.49946696" type="SLIDING" weight="0.41945946" />
+      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" type="SLIDING" weight="0.36343366" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Remote Host" order="3" weight="0.32995737" />
+      <window_info anchor="right" id="Database" order="4" weight="0.32995737" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09434968" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32936078" />
@@ -456,29 +508,6 @@
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="10" type="SLIDING" weight="0.32887402" />
       <window_info anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="11" sideWeight="0.49946696" type="SLIDING" weight="0.41917503" />
       <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" type="SLIDING" weight="0.36343366" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Remote Host" order="3" weight="0.32995737" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09221748" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
-      <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32936078" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" weight="0.3280757" />
-      <window_info anchor="bottom" id="Run" order="3" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" type="SLIDING" weight="0.49944258" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" auto_hide="true" id="Version Control" order="10" type="SLIDING" weight="0.32887402" />
-      <window_info anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="11" sideWeight="0.49946696" type="SLIDING" weight="0.41917503" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" weight="0.36343366" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -507,22 +536,13 @@
       <path value="$PROJECT_DIR$/nuxt-pwa-vuetify-starter" />
       <path value="$PROJECT_DIR$/sentry-module" />
     </ignored-roots>
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Создание TODO.md в корне проекта. Туда будут записываться все задачи \ замечания. Наконец-то пофиксил обновление таблицы datatables.net, через пересоздание вьюхи." />
     <MESSAGE value="Создал страницы для ошибок (неправильный запрос, неправильный рут), мелкие правки, начал заполнять страницу &quot;брони&quot;." />
     <MESSAGE value=" - Убрал outline  у кнопок (бесит) &#10; - На главной привязал API для клика по иконке &#10; - создал pages/test для создания модального окна (для главной)" />
     <MESSAGE value="Убрал навязчивую ошибку в layouts/default.vue &#10;Доработка вьюх, мелкие правки" />
-    <option name="LAST_COMMIT_MESSAGE" value="Убрал навязчивую ошибку в layouts/default.vue &#10;Доработка вьюх, мелкие правки" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/layouts/default.vue</url>
-          <line>63</line>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Отчет &#10;&#10;- поправил создание клиента&#10;- сделал страницу заявки. Сделал фильтр по совпадению клиента. Создание нового клиента с заявки.  Осталось доделать отправку почты. &#10;- мелкие правки" />
+    <option name="LAST_COMMIT_MESSAGE" value="Отчет &#10;&#10;- поправил создание клиента&#10;- сделал страницу заявки. Сделал фильтр по совпадению клиента. Создание нового клиента с заявки.  Осталось доделать отправку почты. &#10;- мелкие правки" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pages/login/index.vue" />
@@ -672,13 +692,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/clients/edit/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/payment/_begin_date/_end_date.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="483">
@@ -724,13 +737,6 @@
     <entry file="file://$PROJECT_DIR$/assets/css/home.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/styles/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="698">
-          <caret line="43" column="1" lean-forward="true" selection-start-line="43" selection-start-column="1" selection-end-line="43" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/sw.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -755,28 +761,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/tests/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
-          <caret line="116" column="15" selection-start-line="116" selection-start-column="15" selection-end-line="116" selection-end-column="15" />
-          <folding>
-            <element signature="e#4235#7625#0" />
-            <marker date="1545138287481" expanded="true" signature="966:967" ph="..." />
-            <marker date="1545138287481" expanded="true" signature="966:1175" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-575">
-          <caret line="113" column="15" selection-start-line="113" selection-start-column="15" selection-end-line="113" selection-end-column="15" />
-          <folding>
-            <element signature="n#v-toolbar#0;n#v-app#0;n#template#0;n#!!top" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -817,30 +801,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/plugins/axios.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="207">
-          <caret line="9" column="36" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/requests/add.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="376">
-          <caret line="191" column="30" selection-start-line="190" selection-start-column="6" selection-end-line="191" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/clients/edit/_id.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1781">
-          <caret line="93" lean-forward="true" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/clients/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="69">
@@ -858,23 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/table/_year/_month.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-682">
-          <caret line="119" column="24" selection-start-line="119" selection-start-column="24" selection-end-line="119" selection-end-column="24" />
-          <folding>
-            <element signature="n#v-flex#1;n#v-layout#0;n#v-card-text#0;n#v-card#1;n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/clients/new.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="818">
-          <caret line="113" column="5" lean-forward="true" selection-start-line="113" selection-start-column="5" selection-end-line="113" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/reservations/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -885,26 +828,98 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/axios.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="9" column="36" selection-start-line="9" selection-start-column="9" selection-end-line="9" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/requests/new.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="309" column="34" selection-start-line="309" selection-start-column="34" selection-end-line="309" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/tests/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="709">
+          <caret line="441" column="13" selection-start-line="441" selection-start-column="13" selection-end-line="441" selection-end-column="13" />
+          <folding>
+            <element signature="n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <marker date="1545652990601" expanded="true" signature="8153:8257" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/table/_year/_month.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4195">
+          <caret line="294" column="27" selection-start-line="294" selection-start-column="27" selection-end-line="294" selection-end-column="27" />
+          <folding>
+            <element signature="n#v-flex#1;n#v-layout#0;n#v-card-text#0;n#v-card#1;n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/clients/new.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="109" column="68" selection-start-line="109" selection-start-column="68" selection-end-line="109" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/styles/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="542">
+          <caret line="45" column="19" selection-start-line="45" selection-start-column="19" selection-end-line="45" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="247" column="8" lean-forward="true" selection-start-line="247" selection-start-column="8" selection-end-line="247" selection-end-column="8" />
+        <state relative-caret-position="772">
+          <caret line="144" column="12" selection-start-line="144" selection-start-column="12" selection-end-line="144" selection-end-column="12" />
           <folding>
             <element signature="e#5202#8185#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
+    <entry file="file://$PROJECT_DIR$/pages/clients/edit/index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="787">
-          <caret line="470" column="43" lean-forward="true" selection-start-line="470" selection-start-column="43" selection-end-line="470" selection-end-column="43" />
+        <state relative-caret-position="184">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/clients/edit/_id.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-838">
+          <caret line="122" column="26" lean-forward="true" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="265" column="6" lean-forward="true" selection-start-line="265" selection-start-column="6" selection-end-line="265" selection-end-column="6" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#6941#7318#0" />
-            <element signature="e#7406#8378#0" />
-            <element signature="e#11589#11965#0" />
-            <marker date="1545327687281" expanded="true" signature="7139:7243" ph="..." />
+            <element signature="n#v-navigation-drawer#0;n#v-app#0;n#template#0;n#!!top" />
+            <element signature="e#4034#8187#0" />
+            <marker date="1545659796250" expanded="true" signature="2912:3171" ph="..." />
           </folding>
         </state>
       </provider>
@@ -912,8 +927,8 @@
     <entry file="file://$PROJECT_DIR$/TODO.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="207">
-            <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <first_editor relative-caret-position="161">
+            <caret line="7" column="8" lean-forward="true" selection-start-line="7" selection-start-column="8" selection-end-line="7" selection-end-column="8" />
           </first_editor>
           <second_editor />
         </state>

@@ -293,14 +293,14 @@
             "room_status": {
               "id": null,
               "name": null,
-              "info": null,
+              "info": '',
               "created_at": null,
               "updated_at": null
             },
             "payment_type": {
               "id": null,
               "name": null,
-              "info": null,
+              "info": '',
               "created_at": null,
               "updated_at": null
             }
@@ -412,10 +412,5 @@
   .dataTables_info, .dataTables_filter {
     display: none !important;
   }
-.progress_loader{
-  height: 200px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
+
 </style>
