@@ -50,6 +50,12 @@ button {
   outline: none !important;
 }
 
+.liqpay_btn {
+  background: url(../img/liqpay5.png);
+  height: 38px;
+  width: 120px;
+  background-size: cover;
+}
 
 .progress_loader {
   height: 200px;
