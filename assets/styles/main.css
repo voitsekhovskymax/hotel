@@ -62,6 +62,16 @@ button {
   align-items: center;
   display: flex;
   justify-content: center;
+  display: flex !important;
+}
+.notifications{
+  position: fixed !important;
+  z-index: 300;
+}
+.notification-card{
+  border: 1px solid #ccc !important;
+  border-radius: 0px !important;
+  margin-top: 15px;
 }
 
 .card-content .flex {padding: 0px 10px;}

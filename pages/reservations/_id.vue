@@ -1,159 +1,227 @@
 <template>
   <div class="elevation-3">
-    <v-card>
-      <v-layout wrap>
-        <v-flex sm6 md6 xs12>
-          <v-toolbar class="no-shadow">
-            <v-btn icon @click="routerBack">
-              <v-icon>arrow_back</v-icon>
-            </v-btn>
-            <v-toolbar-title>Бронь <b>{{response.orderRoom.order_num}}</b></v-toolbar-title>
-            <v-spacer></v-spacer>
-          </v-toolbar>
-        </v-flex>
-
-        <v-flex sm6 md6 xs12>
-          <v-toolbar class="no-shadow">
-            <v-spacer></v-spacer>
-            <v-btn icon>
-              <v-icon>help_outline</v-icon>
-            </v-btn>
-          </v-toolbar>
-        </v-flex>
-      </v-layout>
-      <v-card-text class="card-content">
-        <!-- SUBTITLE INFO-->
-        <v-layout wrap>
-          <v-flex lg6 sm6 md6 xs12>
-            <v-text-field
-              v-model="response.orderRoom.room.name"
-              label="Номер отеля"
-              box
-              readonly
-            ></v-text-field>
-          </v-flex>
-          <v-flex lg6 sm6 md6 xs12>
-            <v-text-field
-              v-model="response.orderRoom.id"
-              label="Порядковый номер "
-              box
-              readonly
-            ></v-text-field>
-          </v-flex>
-        </v-layout>
-
-
-        <!--ORDER INFO-->
+    <template v-if="progress">
+      <v-card class="progress_loader">
+        <v-progress-circular :size="70" :width="7" color="purple" indeterminate></v-progress-circular>
+      </v-card>
+    </template>
+    <template v-else>
+      <v-card>
         <v-layout wrap>
           <v-flex sm6 md6 xs12>
-            <v-text-field label="ФИО" v-model="response.client.name"></v-text-field>
-
-            <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
-
-            <v-text-field label="Телефон" v-model="response.client.phone"></v-text-field>
-
-            <v-text-field label="Сумма без скидки" v-model="response.orderRoom.total_payment"></v-text-field>
-
-            <v-text-field label="Скидка" v-model="response.orderRoom.discount"></v-text-field>
-
-            <v-text-field label="Количество дней предоплаты"
-                          v-model="response.orderRoom.col_prepaid_days"></v-text-field>
-
-            <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
-            <v-layout wrap>
-
-              <v-text-field label="Получена предоплата" v-model="response.orderRoom.was_prepaid"></v-text-field>
-              <v-tooltip top>
-                <v-btn slot="activator" flat icon color="success" @click="dialogMail = true">
-                  <v-icon>mail_outline</v-icon>
-                </v-btn>
-                <span>Отправить письмо</span>
-              </v-tooltip>
-
-            </v-layout>
-
-            <v-text-field label="Доплата" v-model="response.orderRoom.was_payed"></v-text-field>
-
-            <v-text-field label="Уплачено всего" v-model="response.orderRoom.sum_payed"></v-text-field>
-
-            <!--<v-text-field label="Способ оплаты" v-model="response.orderRoom.payment_type.name"-->
-            <!--:hint="response.orderRoom.payment_type.info"></v-text-field>-->
-
-            <!--<v-text-field label="Статус номера" v-model="response.orderRoom.room_status.name"-->
-            <!--:hint="response.orderRoom.room_status.info"></v-text-field>-->
-
+            <v-toolbar class="no-shadow">
+              <v-btn icon @click="routerBack">
+                <v-icon>arrow_back</v-icon>
+              </v-btn>
+              <v-toolbar-title>Бронь <b>{{response.orderRoom.order_num}}</b></v-toolbar-title>
+              <v-spacer></v-spacer>
+            </v-toolbar>
           </v-flex>
 
           <v-flex sm6 md6 xs12>
-
-            <v-text-field label="Дата заезда" v-model="response.orderRoom.begin_date"></v-text-field>
-
-            <v-text-field label="Дата выезда" v-model="response.orderRoom.end_date"></v-text-field>
-
-            <v-text-field label="Взрослые" v-model="response.orderRoom.adult"></v-text-field>
-
-            <v-text-field label="Дети" v-model="response.orderRoom.kids"></v-text-field>
-
-            <v-text-field label="Паркоместа (не готово)"></v-text-field>
-
-            <v-text-field label="Дополнительные кровати" v-model="response.orderRoom.beds"></v-text-field>
-
-            <v-textarea
-              label="Информация"
-              v-model="response.orderRoom.info"
-              auto-grow
-              rows="1"
-            ></v-textarea>
-
-            <template>
-              <v-card color="grey lighten-3">
-
-                <v-card-title>Трансфер на вьезд</v-card-title>
-                <v-card-text>
-                  <v-text-field label="Сумма" v-model="response.orderRoom.sum_transfer"></v-text-field>
-                  <v-textarea
-                    label="Информация"
-                    v-model="response.orderRoom.info_transfer"
-                    hint="Информация о трансфере на вьезд"
-                    auto-grow
-                    rows="1"
-                  ></v-textarea>
-                  <v-text-field label="Дата" v-model="response.orderRoom.date_transfer"></v-text-field>
-                </v-card-text>
-              </v-card>
-            </template>
-
-            <template>
-              <v-card color="grey lighten-3 mt-2">
-
-                <v-card-title>Трансфер на выезд</v-card-title>
-                <v-card-text>
-                  <v-text-field label="Сумма" v-model="response.orderRoom.sum_transfer_back"></v-text-field>
-                  <v-textarea
-                    label="Информация"
-                    v-model="response.orderRoom.info_transfer_back"
-                    hint="Информация о трансфере на выезд"
-                    auto-grow
-                    rows="1"
-                  ></v-textarea>
-                  <v-text-field label="Дата" v-model="response.orderRoom.date_transfer_back"></v-text-field>
-                </v-card-text>
-              </v-card>
-            </template>
+            <v-toolbar class="no-shadow">
+              <v-spacer></v-spacer>
+              <v-btn icon>
+                <v-icon>help_outline</v-icon>
+              </v-btn>
+            </v-toolbar>
           </v-flex>
         </v-layout>
+        <v-card-text class="card-content">
+          <!-- SUBTITLE INFO-->
+          <v-layout wrap>
+            <v-flex lg6 sm6 md6 xs12>
+              <v-text-field
+                v-model="response.orderRoom.room.name"
+                label="Номер отеля"
+                box
+                readonly
+              ></v-text-field>
+            </v-flex>
+            <v-flex lg6 sm6 md6 xs12>
+              <v-text-field
+                v-model="response.orderRoom.id"
+                label="Порядковый номер "
+                box
+                readonly
+              ></v-text-field>
+            </v-flex>
+          </v-layout>
 
 
-      </v-card-text>
-      <v-card-actions>
-        <v-btn color="success">Сохранить</v-btn>
-        <v-btn flat color="error">Удалить</v-btn>
-        <v-spacer></v-spacer>
-        <v-btn class="liqpay_btn" @click="dialogLiqpay=true"></v-btn>
-      </v-card-actions>
-    </v-card>
+          <!--ORDER INFO-->
+          <v-layout wrap>
+            <v-flex sm6 md6 xs12>
+              <div class="card_user_reservation">
+                <v-text-field label="ФИО" v-model="response.client.name"></v-text-field>
 
-    <v-dialog v-model="dialogMail">
+                <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
+
+                <v-text-field label="Телефон" v-model="response.client.phone"></v-text-field>
+              </div>
+              <v-text-field label="Сумма без скидки" v-model="response.orderRoom.total_payment"></v-text-field>
+
+              <v-text-field label="Скидка" v-model="response.orderRoom.discount"></v-text-field>
+
+              <v-text-field label="Количество дней предоплаты"
+                            v-model="response.orderRoom.col_prepaid_days"></v-text-field>
+
+              <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
+              <v-layout wrap>
+
+                <v-text-field label="Получена предоплата" v-model="response.orderRoom.was_prepaid"></v-text-field>
+                <v-tooltip top>
+                  <v-btn slot="activator" flat icon color="success" @click="dialogMail = true">
+                    <v-icon>mail_outline</v-icon>
+                  </v-btn>
+                  <span>Отправить письмо</span>
+                </v-tooltip>
+
+              </v-layout>
+
+              <v-text-field label="Доплата" v-model="response.orderRoom.was_payed"></v-text-field>
+
+              <v-text-field label="Уплачено всего" v-model="response.orderRoom.sum_payed"></v-text-field>
+
+              <v-select
+                :items="payment_types"
+                v-model="response.orderRoom.payment_type_id"
+                label="Способ оплаты"
+                item-text="name"
+                item-value="id"
+              ></v-select>
+
+              <v-select
+                :items="room_statuses"
+                v-model="response.orderRoom.room_status_id"
+                label="Статус номера"
+                item-text="name"
+                item-value="id"
+              ></v-select>
+
+            </v-flex>
+
+            <v-flex sm6 md6 xs12>
+
+
+              <v-dialog ref="ref_modal_begin_date" v-model="modal_begin_date"
+                        :return-value.sync="response.orderRoom.begin_date" persistent lazy full-width
+                        width="290px">
+                <v-text-field slot="activator" v-model="response.orderRoom.begin_date" label="Дата заезда"
+                              required></v-text-field>
+                <v-date-picker v-model="response.orderRoom.begin_date" scrollable :first-day-of-week="1"
+                               locale="ru-ru">
+                  <v-spacer></v-spacer>
+                  <v-btn flat color="primary" @click="modal_begin_date = false">Закрыть
+                  </v-btn>
+                  <v-btn color="success"
+                         @click="$refs.ref_modal_begin_date.save(response.orderRoom.begin_date)">
+                    Подтвердить
+                  </v-btn>
+                </v-date-picker>
+              </v-dialog>
+
+              <v-dialog ref="ref_modal_end_date" v-model="modal_end_date"
+                        :return-value.sync="response.orderRoom.end_date" persistent lazy full-width
+                        width="290px">
+                <v-text-field slot="activator" v-model="response.orderRoom.end_date" label="Дата выезда"
+                              readonly required></v-text-field>
+                <v-date-picker v-model="response.orderRoom.end_date" scrollable :first-day-of-week="1"
+                               :min="response.orderRoom.begin_date"
+                               locale="ru-ru">
+                  <v-spacer></v-spacer>
+                  <v-btn flat color="primary" @click="modal_end_date = false">Закрыть</v-btn>
+                  <v-btn color="success"
+                         @click="$refs.ref_modal_end_date.save(response.orderRoom.end_date)">Подтвердить
+                  </v-btn>
+                </v-date-picker>
+              </v-dialog>
+
+
+              <v-text-field label="Взрослые" v-model="response.orderRoom.adult"></v-text-field>
+
+              <v-text-field label="Дети" v-model="response.orderRoom.kids"></v-text-field>
+              <v-layout wrap>
+                <v-select :items="response.parking" label="Паркоместа" item-text="name" item-value="id"
+                          v-model="response.orderRoom.parking_number" multiple attach chips>
+                  <v-list-tile slot="prepend-item" ripple>
+                    <v-list-tile-title>Клиенту требуется паркомест - {{response.orderRoom.parking}}</v-list-tile-title>
+                  </v-list-tile>
+                  <v-list-tile slot="prepend-item" disabled>
+                    <v-list-tile-title>Выберите номер паркоместа из списка</v-list-tile-title>
+                  </v-list-tile>
+                  <v-divider slot="prepend-item" class="mt-2"></v-divider>
+
+                </v-select>
+                <v-tooltip left>
+                  <v-btn slot="activator" flat icon color="success" @click="response.orderRoom.parking_number = null">
+                    <v-icon>delete</v-icon>
+                  </v-btn>
+                  <span>Очистить паркоместа</span>
+                </v-tooltip>
+              </v-layout>
+              <v-text-field label="Дополнительные кровати" v-model="response.orderRoom.beds"></v-text-field>
+
+              <v-textarea
+                label="Информация"
+                v-model="response.orderRoom.info"
+                auto-grow
+                rows="1"
+              ></v-textarea>
+
+              <v-switch
+                label="Трансфер на приезд"
+                v-model="transfer_in"
+              ></v-switch>
+              <transition name="fade">
+                <v-card color="grey lighten-3" v-if="transfer_in">
+                  <v-card-text>
+                    <v-text-field label="Сумма" v-model="response.orderRoom.sum_transfer"></v-text-field>
+                    <v-textarea
+                      label="Информация"
+                      v-model="response.orderRoom.info_transfer"
+                      hint="Информация о трансфере на вьезд"
+                      auto-grow
+                      rows="1"
+                    ></v-textarea>
+                    <v-text-field label="Дата" v-model="response.orderRoom.date_transfer"></v-text-field>
+                  </v-card-text>
+                </v-card>
+              </transition>
+              <v-switch
+                label="Трансфер на выезд"
+                v-model="transfer_out"
+              ></v-switch>
+
+              <transition name="fade">
+                <v-card color="grey lighten-3 mt-2" v-if="transfer_out">
+                  <v-card-text>
+                    <v-text-field label="Сумма" v-model="response.orderRoom.sum_transfer_back"></v-text-field>
+                    <v-textarea
+                      label="Информация"
+                      v-model="response.orderRoom.info_transfer_back"
+                      hint="Информация о трансфере на выезд"
+                      auto-grow
+                      rows="1"
+                    ></v-textarea>
+                    <v-text-field label="Дата" v-model="response.orderRoom.date_transfer_back"></v-text-field>
+                  </v-card-text>
+                </v-card>
+              </transition>
+            </v-flex>
+          </v-layout>
+
+
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="success" @click="saveReservation">Сохранить</v-btn>
+          <v-btn flat color="error">Удалить</v-btn>
+          <v-spacer></v-spacer>
+          <v-btn class="liqpay_btn" @click="dialogLiqpay=true"></v-btn>
+        </v-card-actions>
+      </v-card>
+    </template>
+    <v-dialog v-model="dialogMail" width="500">
       <v-card>
         <v-layout wrap>
           <v-flex sm6 md6 xs12>
@@ -231,102 +299,118 @@
             </v-toolbar>
           </v-flex>
         </v-layout>
-        <v-card-text>
-          <v-tabs
-            slot="extension"
-            v-model="currentTab"
-            color="transparent"
-            fixed-tabs
-            slider-color="success"
-          >
-            <v-tab href="#paid"> Liqpay предоплата</v-tab>
-            <v-tab href="#prepaid"> Liqpay оплата</v-tab>
-          </v-tabs>
-          <v-tabs-items v-model="currentTab">
-            <v-tab-item id="paid">
-              <v-card>
-                <v-card-text>
-                  <v-layout wrap class="card-content ">
-                    <v-flex sm6 md6 xs12>
-                      <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
-                      <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
-                      <v-text-field label="order_id" v-model="response.orderRoom.order_num" readonly></v-text-field>
-                      <v-btn color="success" small>
-                        Отправить на LIQPAY
-                      </v-btn>
-                      <v-btn flat color="success" small>
-                        Перезапросить INVOICE
-                      </v-btn>
-                    </v-flex>
-                    <v-flex sm6 md6 xs12>
+        <template v-if="progress_dialog_liqpay">
+          <v-card class="progress_loader">
+            <v-progress-circular :size="70" :width="7" color="purple" indeterminate></v-progress-circular>
+          </v-card>
+        </template>
+        <template v-else>
+          <v-card-text>
+            <v-tabs
+              slot="extension"
+              v-model="currentTab"
+              color="transparent"
+              fixed-tabs
+              slider-color="success"
+            >
+              <v-tab href="#paid"> Liqpay предоплата</v-tab>
+              <v-tab href="#prepaid"> Liqpay оплата</v-tab>
+            </v-tabs>
+            <v-tabs-items v-model="currentTab">
+              <v-tab-item id="paid">
+                <v-card>
+                  <v-card-text>
+                    <v-layout wrap class="card-content ">
+                      <v-flex sm6 md6 xs12>
+                        <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
+                        <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
+                        <v-text-field label="order_id" v-model="response.orderRoom.order_num" readonly></v-text-field>
+                        <v-btn color="success" small @click="liqpay('prepaid')">
+                          Отправить предоплату на LIQPAY
+                        </v-btn>
+                        <v-btn flat color="success" small @click="liqpayReload('prepaid')">
+                          Перезапросить INVOICE предоплаты
+                        </v-btn>
+                      </v-flex>
+                      <v-flex sm6 md6 xs12>
 
-                      <v-btn flat color="success" small>
-                        Получить статус
-                      </v-btn>
+                        <v-btn flat color="success" small @click="liqpayStatus('prepaid')">
+                          Получить статус
+                        </v-btn>
 
-                      <div class="table_statuses">
-                        <v-data-table
-                          :headers="liqpay_paid_headers"
-                          :items="liqpay_paid_statuses"
-                          hide-actions
-                          class="elevation-1"
-                        >
-                          <template slot="items" slot-scope="props">
-                            <td>{{ props.item.key }}</td>
-                            <td class="text-xs-right">{{ props.item.value }}</td>
-                          </template>
-                        </v-data-table>
-                      </div>
+                        <template v-if="progress_liqpay_prepaid_statuses">
+                          <v-card class="progress_loader">
+                            <v-progress-circular :size="70" :width="7" color="purple"
+                                                 indeterminate></v-progress-circular>
+                          </v-card>
+                        </template>
+                        <template v-else>
+                          <v-card style="max-width: 400px;" v-if="liqpay_prepaid_statuses !== null">
+                            <v-card-title><h4>Данные инвойса</h4></v-card-title>
+                            <v-divider></v-divider>
+                            <v-list dense>
+                              <v-list-tile v-for="(value, key) in liqpay_prepaid_statuses">
+                                <v-list-tile-content><b>{{ key }}</b></v-list-tile-content>
+                                <v-list-tile-content class="align-end">{{ value }}</v-list-tile-content>
+                              </v-list-tile>
+                            </v-list>
+                          </v-card>
+                        </template>
 
-                    </v-flex>
-                  </v-layout>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
+                      </v-flex>
+                    </v-layout>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
 
-            <v-tab-item id="prepaid">
-              <v-card>
-                <v-card-text>
-                  <v-layout wrap class="card-content ">
-                    <v-flex sm6 md6 xs12>
-                      <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
-                      <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
-                      <v-text-field label="order_id" v-model="response.orderRoom.order_num" readonly></v-text-field>
-                      <v-btn color="success" small>
-                        Отправить на LIQPAY
-                      </v-btn>
-                      <v-btn flat color="success" small>
-                        Перезапросить INVOICE
-                      </v-btn>
-                    </v-flex>
-                    <v-flex sm6 md6 xs12>
+              <v-tab-item id="prepaid">
+                <v-card>
+                  <v-card-text>
+                    <v-layout wrap class="card-content ">
+                      <v-flex sm6 md6 xs12>
+                        <v-text-field label="Почта" v-model="response.client.email"></v-text-field>
+                        <v-text-field label="Сумма предоплаты" v-model="response.orderRoom.sum_prepaid"></v-text-field>
+                        <v-text-field label="order_id" v-model="response.orderRoom.order_num" readonly></v-text-field>
+                        <v-btn color="success" small @click="liqpay('paid')">
+                          Отправить оплату на LIQPAY
+                        </v-btn>
+                        <v-btn flat color="success" small @click="liqpayReload('paid')">
+                          Перезапросить INVOICE оплаты
+                        </v-btn>
+                      </v-flex>
+                      <v-flex sm6 md6 xs12>
 
-                      <v-btn flat color="success" small>
-                        Получить статус
-                      </v-btn>
+                        <v-btn flat color="success" small @click="liqpayStatus('paid')">
+                          Получить статус
+                        </v-btn>
 
-                      <div class="table_statuses">
-                        <v-data-table
-                          :headers="liqpay_paid_headers"
-                          :items="liqpay_paid_statuses"
-                          hide-actions
-                          class="elevation-1"
-                        >
-                          <template slot="items" slot-scope="props">
-                            <td>{{ props.item.key }}</td>
-                            <td class="text-xs-right">{{ props.item.value }}</td>
-                          </template>
-                        </v-data-table>
-                      </div>
 
-                    </v-flex>
-                  </v-layout>
-                </v-card-text>
-              </v-card>
-            </v-tab-item>
-          </v-tabs-items>
-        </v-card-text>
-
+                        <template v-if="progress_liqpay_paid_statuses">
+                          <v-card class="progress_loader">
+                            <v-progress-circular :size="70" :width="7" color="purple"
+                                                 indeterminate></v-progress-circular>
+                          </v-card>
+                        </template>
+                        <template v-else>
+                          <v-card style="max-width: 400px;" v-if="liqpay_paid_statuses !== null">
+                            <v-card-title><h4>Данные инвойса</h4></v-card-title>
+                            <v-divider></v-divider>
+                            <v-list dense>
+                              <v-list-tile v-for="(value, key) in liqpay_paid_statuses">
+                                <v-list-tile-content><b>{{ key }}</b></v-list-tile-content>
+                                <v-list-tile-content class="align-end">{{ value }}</v-list-tile-content>
+                              </v-list-tile>
+                            </v-list>
+                          </v-card>
+                        </template>
+                      </v-flex>
+                    </v-layout>
+                  </v-card-text>
+                </v-card>
+              </v-tab-item>
+            </v-tabs-items>
+          </v-card-text>
+        </template>
       </v-card>
     </v-dialog>
 
@@ -338,6 +422,14 @@
   export default {
     data() {
       return {
+        progress_dialog_liqpay:false,
+        progress_liqpay_prepaid_statuses: false,
+        progress_liqpay_paid_statuses: false,
+        progress: false,
+        modal_begin_date: false,
+        modal_end_date: false,
+        transfer_in: false,
+        transfer_out: false,
         liqpay_paid_headers: [
           {
             text: 'Ключ',
@@ -352,10 +444,7 @@
             value: 'value'
           },
         ],
-        liqpay_paid_statuses: [{
-          key: 'code',
-          value: 'Платеж не найден'
-        }],
+        liqpay_paid_statuses: null,
         liqpay_prepaid_headers: [
           {
             text: 'Ключ',
@@ -370,10 +459,7 @@
             value: 'value'
           },
         ],
-        liqpay_prepaid_statuses: [{
-          key: 'code',
-          value: 'Платеж не найден'
-        }],
+        liqpay_prepaid_statuses: null,
         currentTab: 'paid',
         dialogLiqpay: false,
         dialogMail: false,
@@ -474,7 +560,25 @@
             "20": "отсутствие предоплаты",
             "21": "уточнение брони"
           },
-          "liq_prepaid": null,
+          "liq_prepaid": {
+            "id": null,
+            "liq_pay_order_id": null,
+            "amount": null,
+            "email": null,
+            "description": null,
+            "href": null,
+            "status_json": null,
+            "cancel_json": null,
+            "send_json": null,
+            "order_type": null,
+            "order_room_id": null,
+            "is_prepaid": null,
+            "is_paid": null,
+            "iterator": null,
+            "deleted_at": null,
+            "created_at": null,
+            "updated_at": null
+          },
           "liq_paid": null
         },
         params_id: this.$route.params.id,
@@ -482,23 +586,68 @@
           info: null
         },
         messages: null,
-
+        payment_types: [],
+        room_statuses: [],
       };
     },
     mounted() {
-      console.log(this.$route.params.id);
-      this.axios.get('orders/' + this.$route.params.id + '/edit').then((response) => {
-        console.log(response);
-        this.response = response.data;
-      });
-      this.axios.get('messages').then((response) => {
-        this.messages = response.data.messages;
-      })
-
+      this.init();
     },
     methods: {
-      sendMail() {
+      init() {
+        this.progress = true;
+        this.axios.get('orders/' + this.$route.params.id + '/edit').then((response) => {
+          this.response = response.data;
+          this.response.orderRoom.parking_number = this.response.order_parking;
+          if (this.response.orderRoom.date_transfer !== null || this.response.orderRoom.info_transfer !== null || this.response.orderRoom.sum_transfer !== null) {
+            this.transfer_in = true;
+          }
+          if (this.response.orderRoom.date_transfer_back !== null || this.response.orderRoom.info_transfer_back !== null || this.response.orderRoom.sum_transfer_back !== null) {
+            this.transfer_out = true;
+          }
+          this.getPaymentTypes();
+          this.getRoomStatuses();
+          this.progress = false;
+        });
+        this.axios.get('messages').then((response) => {
+          this.messages = response.data.messages;
+        })
+      },
+      getRoomStatuses() {
+        this.axios.get('room-statuses').then((response) => {
+          this.room_statuses = response.data.room_statuses;
+        })
+      },
+      getPaymentTypes() {
+        this.axios.get('payment-types').then((response) => {
+          this.payment_types = response.data.payment_types;
+        })
+      },
+      saveReservation() {
+        console.log(this.response.orderRoom);
 
+        this.response.orderRoom.phone = this.response.client.phone;
+        this.response.orderRoom.email = this.response.client.email;
+
+
+        this.axios.patch('orders/' + this.$route.params.id, this.response.orderRoom).then((response) => {
+          console.log(response);
+          this.init();
+        })
+      },
+      sendMail() {
+        let request = {
+          email_client: this.response.client.email,
+          email_content: this.mail_select.info
+        };
+        console.log(request);
+        this.axios.post('send-single-email', request).then((response) => {
+          console.log('send-single-email');
+          console.log(response);
+        }).catch((error) => {
+          console.log(error.response);
+          this.response = error.response.data;
+        });
       },
       routerBack() {
         this.$router.go(-1);
@@ -508,6 +657,152 @@
           info: null
         };
       },
+      liqpay(order_type) {
+        this.progress_dialog_liqpay = true;
+        let iterator = null;
+        if (this.response.liq_prepaid != null) {
+          iterator += this.response.liq_prepaid.iterator;
+        } else {
+          iterator = '-1';
+        }
+
+        let request = {
+          email: this.response.client.email,
+          liqpay_order_id: this.response.orderRoom.order_num + '-' + this.response.orderRoom.room_id + '-' + order_type + iterator,
+          order_room_id: this.response.orderRoom.room_id,
+          sum_prepaid: this.response.orderRoom.sum_prepaid,
+          order_type: order_type,
+        };
+        console.log(request);
+        this.axios.post('liqpay', request).then((response) => {
+          console.log('liqpay');
+          console.log(response);
+          if (response.data.status == 1) {
+            this.$notify({
+              group: 'global',
+              type: 'success',
+              title: 'Внимание!',
+              text: response.data.text,
+            });
+            this.dialogLiqpay = false;
+
+          } else {
+            this.$notify({
+              group: 'global',
+              type: 'warning',
+              title: 'Внимание!',
+              text: response.data.text,
+            });
+          }
+          this.progress_dialog_liqpay = false;
+        }).catch((error) => {
+          console.log(error.response);
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Произошла ошибка!',
+            text: error.response,
+          });
+          this.progress_dialog_liqpay = false;
+        });
+      },
+      liqpayStatus(order_type) {
+
+
+        if (order_type == 'prepaid') {
+          this.progress_liqpay_prepaid_statuses = true;
+        }
+        if (order_type == 'paid') {
+          this.progress_liqpay_paid_statuses = true;
+        }
+
+        let iterator = null;
+        if (this.response.liq_prepaid != null) {
+          iterator += this.response.liq_prepaid.iterator;
+        } else {
+          iterator = '-1';
+        }
+
+        let request = {
+          liqpay_order_id: this.response.orderRoom.order_num + '-' + this.response.orderRoom.room_id + '-' + order_type + iterator,
+        };
+        this.axios.post('liqpay_status', request).then((response) => {
+          console.log(response.data.result);
+
+          if (order_type == 'prepaid') {
+            this.liqpay_prepaid_statuses = response.data.result;
+            this.progress_liqpay_prepaid_statuses = false;
+          }
+          if (order_type == 'paid') {
+            this.liqpay_paid_statuses = response.data.result;
+            this.progress_liqpay_paid_statuses = false;
+          }
+        }).catch((error) => {
+          console.log(error.response);
+          this.progress_liqpay_prepaid_statuses = false;
+          this.progress_liqpay_paid_statuses = false;
+
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Произошла ошибка!',
+            text: error.response,
+          });
+        });
+      },
+      liqpayReload(order_type) {
+        this.progress_dialog_liqpay = true;
+
+        let iterator = null;
+        if (this.response.liq_prepaid != null) {
+          iterator += this.response.liq_prepaid.iterator;
+        } else {
+          iterator = '-1';
+        }
+
+        let request = {
+          email: this.response.client.email,
+          liqpay_order_id: this.response.orderRoom.order_num + '-' + this.response.orderRoom.room_id + '-' + order_type + iterator,
+          order_room_id: this.response.orderRoom.room_id,
+          sum_prepaid: this.response.orderRoom.sum_prepaid,
+          order_type: order_type,
+        };
+        console.log(request);
+        this.axios.post('liqpay_reload', request).then((response) => {
+          console.log('liqpay_reload');
+          console.log(response);
+          if (response.data.status == 1) {
+            this.$notify({
+              group: 'global',
+              type: 'success',
+              title: 'Внимание!',
+              text: response.data.text,
+            });
+            this.dialogLiqpay = false;
+
+          } else {
+            this.$notify({
+              group: 'global',
+              type: 'warning',
+              title: 'Внимание!',
+              text: response.data.text,
+            });
+          }
+          this.progress_dialog_liqpay = false;
+
+        }).catch((error) => {
+          console.log(error.response);
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Произошла ошибка!',
+            text: error.response,
+
+          });
+          this.progress_dialog_liqpay = false;
+
+        });
+      }
     }
   }
 </script>
@@ -515,5 +810,14 @@
 <style scoped>
   .card-content .flex {
     padding: 10px !important;
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+
+  .fade-enter, .fade-leave-to /* .fade-leave-active до версии 2.1.8 */
+  {
+    opacity: 0;
   }
 </style>

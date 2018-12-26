@@ -46,7 +46,7 @@ export default {
         [
             "@nuxtjs/google-analytics",
             {
-                // TODO: Change this id to your Google Analytics ID
+                // TODO: вставить свою аналитику
                 id: "UA-XXXXX-X"
             }
         ],
@@ -59,13 +59,12 @@ export default {
 
     // https://github.com/nuxt-community/sentry-module#readme
     sentry: {
-        // TODO: Change this dsn to your dsn value
         //https://sentry.io
         dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
     },
 
     // https://nuxtjs.org/api/configuration-plugins
-    plugins: ["~/plugins/vuetify", "~/plugins/vee-validate", "~/plugins/axios"],
+    plugins: ["~/plugins/vuetify", "~/plugins/vee-validate", "~/plugins/axios", "~/plugins/vue-notification"],
 
     // https://nuxtjs.org/api/configuration-css
     css: ["~/assets/styles/fonts.css", "~/assets/styles/vuetify.styl", "~/assets/styles/main.css"],

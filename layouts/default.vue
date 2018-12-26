@@ -2,6 +2,26 @@
   <v-app>
 
 
+    <notifications group="global"
+                   position="top center"
+                   :duration="-1">
+      <template slot="body" slot-scope="props">
+        <v-card class="notification-card">
+          <v-toolbar flat :class="[props.item.type ,'white--text']">
+            <div>{{props.item.title}}</div>
+            <v-spacer></v-spacer>
+            <v-btn icon dark @click="props.close">
+              <v-icon>close</v-icon>
+            </v-btn>
+          </v-toolbar>
+          <v-card-text>
+            {{props.item.text}}
+          </v-card-text>
+        </v-card>
+
+      </template>
+    </notifications>
+
     <v-navigation-drawer v-model="drawer" clipped fixed app>
       <v-list dense>
         <v-list-tile>
@@ -277,7 +297,7 @@
           this.$router.push({name: 'clients-edit-id', params: {id: val.id}})
         }
         if (this.results_type == 'order_rooms') {
-            this.$router.push({name: 'reservations-id', params: {id: val.id}})
+          this.$router.push({name: 'reservations-id', params: {id: val.id}})
 
         }
       },

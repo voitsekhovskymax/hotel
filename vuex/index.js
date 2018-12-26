@@ -4,7 +4,7 @@ import actions from "./actions";
 
 const state = () => ({
   exampleState: null
-  // TODO: Add state
+
 });
 
 export default {
