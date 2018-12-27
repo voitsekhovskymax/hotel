@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb792ee3-8c52-4b1a-8623-45d2df7218c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/login/index.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/NavbarList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/layouts/default.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/default.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/layouts/page.vue" beforeDir="false" afterPath="$PROJECT_DIR$/layouts/auth.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/logout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/logout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/prices/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/prices/_id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/prices/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/prices/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/requests/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/requests/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/reservations/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservations/_id.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/table/_year/_month.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/table/_year/_month.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vuex/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/vuex/getters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vuex/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/vuex/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vuex/mutations.js" beforeDir="false" afterPath="$PROJECT_DIR$/vuex/mutations.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,22 +40,31 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/prices/index.vue">
+        <entry file="file://$PROJECT_DIR$/layouts/default.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="617">
-              <caret line="381" column="11" lean-forward="true" selection-start-line="373" selection-start-column="10" selection-end-line="381" selection-end-column="11" />
+            <state relative-caret-position="230">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
               <folding>
-                <marker date="1545909065279" expanded="true" signature="2904:3432" ph="..." />
+                <marker date="1545915690748" expanded="true" signature="1533:1792" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/pages/prices/_id.vue">
+        <entry file="file://$PROJECT_DIR$/components/NavbarList.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="247" column="38" lean-forward="true" selection-start-line="247" selection-start-column="38" selection-end-line="247" selection-end-column="38" />
+            <state relative-caret-position="381">
+              <caret line="295" column="18" selection-start-line="295" selection-start-column="18" selection-end-line="295" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/components/Component.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="46">
+              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -77,8 +73,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>предо</find>
-      <find>messages</find>
       <find>axios.patch</find>
       <find>card_user_reservation</find>
       <find>parking_places</find>
@@ -107,6 +101,8 @@
       <find>types</find>
       <find>outline</find>
       <find>newPrice</find>
+      <find>currentYear</find>
+      <find>this.currentDateISO</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -126,6 +122,7 @@
       <replace>deleteReservation</replace>
       <replace>end</replace>
       <replace>room_types</replace>
+      <replace>this.end_date</replace>
     </replaceStrings>
     <dirStrings>
       <dir>X:\projects\git\voitsekhovskymax@gmail.com\github\hotel\layouts</dir>
@@ -143,7 +140,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pages/transfer/_from/_to.vue" />
         <option value="$PROJECT_DIR$/pages/transfer/_from_date/_to_date.vue" />
         <option value="$PROJECT_DIR$/components/sidebar.vue" />
         <option value="$PROJECT_DIR$/components/m-sidebar.vue" />
@@ -188,12 +184,13 @@
         <option value="$PROJECT_DIR$/layouts/auth.vue" />
         <option value="$PROJECT_DIR$/pages/table/_year/_month.vue" />
         <option value="$PROJECT_DIR$/store/index.js" />
-        <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/pages/reservations/_id.vue" />
         <option value="$PROJECT_DIR$/assets/styles/main.css" />
         <option value="$PROJECT_DIR$/pages/requests/index.vue" />
         <option value="$PROJECT_DIR$/pages/prices/index.vue" />
         <option value="$PROJECT_DIR$/pages/prices/_id.vue" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
+        <option value="$PROJECT_DIR$/components/NavbarList.vue" />
       </list>
     </option>
   </component>
@@ -231,13 +228,25 @@
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="prices" type="462c0819:PsiDirectoryNode" />
+              <item name="transfer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="transfer" type="462c0819:PsiDirectoryNode" />
+              <item name="_begin_date" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -325,7 +334,7 @@
       <workItem from="1545301511292" duration="26388000" />
       <workItem from="1545638587152" duration="25863000" />
       <workItem from="1545810984355" duration="25572000" />
-      <workItem from="1545891918831" duration="17666000" />
+      <workItem from="1545891918831" duration="21332000" />
     </task>
     <task id="LOCAL-00001" summary="Создание TODO.md в корне проекта. Туда будут записываться все задачи \ замечания. Наконец-то пофиксил обновление таблицы datatables.net, через пересоздание вьюхи.">
       <created>1544976081399</created>
@@ -383,11 +392,18 @@
       <option name="project" value="LOCAL" />
       <updated>1545847095850</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Отчет &#10;&#10;- перемешал аутентификацию (токен)&#10;- вывел сумму в хедер&#10;- добавил лоадеры&#10;- layouts/page -&gt; layouts/auth - этот лайоут будет использоваться  только для аутентификации &#10;- переписал периоды и цены на номера &#10;- удаление заявки &#10;- удаление брони&#10;- pages/login вернулся. на индексе будет стоять middleware&#10;- почистил store">
+      <created>1545913269083</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1545913269083</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="280958000" />
+    <option name="totallyTimeSpent" value="284624000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -480,26 +496,10 @@
     <MESSAGE value="Отчет&#10;&#10;- сделан поиск при создании новой заявки&#10;- поиск в хедере &#10;- рассылка писем&#10;- прелоадеры и прочее." />
     <MESSAGE value="Отчет &#10;&#10;- модалка для liqpay" />
     <MESSAGE value="Отчет&#10;&#10;- подключил уведомления&#10;- подключил LIQPAY API  (не тестировал только callback после оплаты) &#10;- инициализировал TODO самого шторма. файл TODO.md остается,  туда будут скидываться общие задачи." />
-    <option name="LAST_COMMIT_MESSAGE" value="Отчет&#10;&#10;- подключил уведомления&#10;- подключил LIQPAY API  (не тестировал только callback после оплаты) &#10;- инициализировал TODO самого шторма. файл TODO.md остается,  туда будут скидываться общие задачи." />
+    <MESSAGE value="Отчет &#10;&#10;- перемешал аутентификацию (токен)&#10;- вывел сумму в хедер&#10;- добавил лоадеры&#10;- layouts/page -&gt; layouts/auth - этот лайоут будет использоваться  только для аутентификации &#10;- переписал периоды и цены на номера &#10;- удаление заявки &#10;- удаление брони&#10;- pages/login вернулся. на индексе будет стоять middleware&#10;- почистил store" />
+    <option name="LAST_COMMIT_MESSAGE" value="Отчет &#10;&#10;- перемешал аутентификацию (токен)&#10;- вывел сумму в хедер&#10;- добавил лоадеры&#10;- layouts/page -&gt; layouts/auth - этот лайоут будет использоваться  только для аутентификации &#10;- переписал периоды и цены на номера &#10;- удаление заявки &#10;- удаление брони&#10;- pages/login вернулся. на индексе будет стоять middleware&#10;- почистил store" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pages/payment/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="8" column="18" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/payment/_begin_date/_end_date.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="21" column="22" selection-start-line="18" selection-start-column="11" selection-end-line="21" selection-end-column="22" />
-          <folding>
-            <element signature="n#style#0;n#table#0;n#v-card#0;n#v-flex#0;n#v-layout#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/layouts/error_.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -799,18 +799,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="111" column="14" lean-forward="true" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
-          <folding>
-            <element signature="n#v-navigation-drawer#0;n#v-app#0;n#template#0;n#!!top" />
-            <element signature="e#4517#7999#0" />
-            <marker date="1545899816105" expanded="true" signature="3532:3791" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/styles/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="657">
@@ -873,8 +861,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pages/prices/_id.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="247" column="38" lean-forward="true" selection-start-line="247" selection-start-column="38" selection-end-line="247" selection-end-column="38" />
+        <state relative-caret-position="588">
+          <caret line="249" column="28" lean-forward="true" selection-start-line="249" selection-start-column="28" selection-end-line="249" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/Component.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <marker date="1545915690748" expanded="true" signature="1533:1792" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/components/NavbarList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="295" column="18" selection-start-line="295" selection-start-column="18" selection-end-line="295" selection-end-column="18" />
         </state>
       </provider>
     </entry>
