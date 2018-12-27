@@ -46,7 +46,7 @@
     </v-card>
     <div class="loader-table">
       <loading :active.sync="loader" :is-full-page="false" :backgroundColor="'#ffffff'" :opacity="1"></loading>
-      <table id="DataTable" ref="dataTable" class="table table-bordered home" style="width:100%">
+      <table id="HomeTable" ref="dataTable" class="table table-bordered home" style="width:100%">
         <thead>
         <tr>
           <th>#</th>
@@ -368,7 +368,7 @@
     methods: {
       generateTable() {
         $(document).ready(function () {
-          let DATATABLE = $('#DataTable').DataTable({
+          let DATATABLE = $('#HomeTable').DataTable({
             "ordering": false,
             paging: false,
             scrollY: $(window).height() - 250 + 'px',

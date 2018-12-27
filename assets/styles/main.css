@@ -76,3 +76,8 @@ button {
 
 .card-content .flex {padding: 0px 10px;}
 .nuxt-link-active {color: #1976d2}
+
+
+#DataTable_wrapper .dataTable tbody tr:hover {
+  background: rgba(76, 175, 80, 0.3) !important;
+}

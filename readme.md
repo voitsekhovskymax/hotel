@@ -1,14 +1,10 @@
-# Nuxt PWA Vuetify Starter
+# Hotel NUXT.js
 
-[![CircleCI Build Status](https://badgen.net/circleci/github/jefrydco/nuxt-pwa-vuetify-starter/master)](https://circleci.com/gh/jefrydco/nuxt-pwa-vuetify-starter)
-[![Azure Build Status](https://dev.azure.com/jefrydco/jefrydco/_apis/build/status/jefrydco.nuxt-pwa-vuetify-starter)](https://dev.azure.com/jefrydco/jefrydco/_build?definitionId=1)
-[![Coverage Status](https://badgen.net/codecov/c/github/jefrydco/nuxt-pwa-vuetify-starter/master)](https://codecov.io/gh/jefrydco/nuxt-pwa-vuetify-starter)
+> Nuxt.js + PWA + Vuetify.js 
 
-> Nuxt.js + PWA + Vuetify.js starter project
+## Общее
 
-## Features
-
-This starter project includes official Nuxt.js modules for best PWA project:
+Этот проект построен c помощью NUXT.js  и следующих nuxt-плагинов:
 
 - [Axios](https://github.com/nuxt-community/axios-module)
 - [Browserconfig](https://github.com/nuxt-community/modules/tree/master/packages/browserconfig)
@@ -18,43 +14,34 @@ This starter project includes official Nuxt.js modules for best PWA project:
 - [Sentry](https://github.com/nuxt-community/sentry-module)
 - [Sitemap](https://github.com/nuxt-community/sitemap-module)
 
-It is also enriched with the best Vue's UI framework:
+А так же Vue фреймворки:
 
 - [Vuetify](https://vuetifyjs.com)
 - [VeeValidate](https://baianat.github.io/vee-validate/)
 
-## Setup
+## Установка
 
 ```bash
-# install dependencies
-$ yarn # Or npm install
+# Установить зависимости
+$ npm install
 
-# serve with hot reload at localhost:3000
-$ yarn dev
+# Сервер в горячей перезагрузкой localhost:3000
+$ npm run dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# для продакшн сервера
+$ npm run build
+$ npm run start
 
-# generate static project
-$ yarn generate
-
-# Run unit test
-$ yarn test
-
-# Run e2e test
-$ yarn dev
-$ yarn test:e2e
+# Генерация статичного проекта для SHARED хостинга
+$ npm run generate
 ```
 
-## Getting Started
+## Не забудь
 
-Don't forget to add your sentry dsn and google analytics id in `nuxt.config.js` file.
-
-For detailed explanation on how things work, check out the [Nuxt.js](https://github.com/nuxt/nuxt.js) and [Vuetify.js](https://vuetifyjs.com/) documentation.
+Не забудьте добавить свой часовой Sentry DSN и идентификатор Google Analytics в `nuxt.config.js` file.
 
 ## License
 
 [MIT License](license.md)
 
-Copyright (c) Jefry Dewangga (@jefrydco)
+Copyright (c) Max Voitsekhovsky (@voitsekhovskymax)
