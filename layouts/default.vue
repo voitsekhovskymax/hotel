@@ -113,11 +113,10 @@
 
 
       <v-tooltip bottom>
-        <v-btn icon slot="activator">
-          <v-icon>credit_card</v-icon>
-          33333
+        <v-btn flat slot="activator">
+          {{$store.state.pay_without_prepaid}}
         </v-btn>
-        <span>Сумма полученных наличных денег, помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
+        <span>Сумма полученных наличных,    помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
       </v-tooltip>
       <v-spacer></v-spacer>
       <v-btn color="success" :to="{name:'requests-new'}">
@@ -277,19 +276,24 @@
         }
       }
     },
-    beforeCreate() {
+
+    created() {
+      // fixme
+      // middleware
       var token = this.$cookies.get('token');
       if (token != undefined) {
-        console.log('токен найден в куки');
+        console.log('токен найден в куки | default.vue');
         this.$store.commit('set', {type: 'token', value: token});
+      } else {
+        this.$router.push('/login')
       }
-    },
-    created() {
 
+      this.axios.get('app-load-show').then((response) => {
+        this.$store.commit('set', {type: 'pay_without_prepaid', value: response.data.pay_without_prepaid});
+      });
     },
 
     methods: {
-
       inputChange(val) {
         console.log('inputChange');
         console.log(val);

@@ -101,7 +101,7 @@
                 <v-text-field label="Название Периода" v-model="editPeriod.name" outline
                               required></v-text-field>
 
-                <v-dialog ref="ref_modal_edit_begin_date" v-model="edit_begin_date"
+                <v-dialog ref="ref_modal_edit_begin" v-model="edit_begin"
                           :return-value.sync="editPeriod.begin" persistent lazy full-width
                           width="290px">
                   <v-text-field slot="activator" v-model="editPeriod.begin"
@@ -110,16 +110,16 @@
                   <v-date-picker v-model="editPeriod.begin" scrollable :first-day-of-week="1"
                                  locale="ru-ru">
                     <v-spacer></v-spacer>
-                    <v-btn flat color="primary" @click="edit_begin_date = false">Закрыть
+                    <v-btn flat color="primary" @click="edit_begin = false">Закрыть
                     </v-btn>
                     <v-btn flat color="primary"
-                           @click="$refs.ref_modal_edit_begin_date.save(editPeriod.begin)">
+                           @click="$refs.ref_modal_edit_begin.save(editPeriod.begin)">
                       Подтвердить
                     </v-btn>
                   </v-date-picker>
                 </v-dialog>
 
-                <v-dialog ref="ref_modal_edit_end_date" v-model="edit_end_date"
+                <v-dialog ref="ref_modal_edit_end" v-model="edit_end"
                           :return-value.sync="editPeriod.end" persistent lazy full-width
                           width="290px">
                   <v-text-field slot="activator" v-model="editPeriod.end" label="Дата окончания периода"
@@ -128,9 +128,9 @@
                                  :min="editPeriod.begin"
                                  locale="ru-ru">
                     <v-spacer></v-spacer>
-                    <v-btn flat color="primary" @click="edit_end_date = false">Закрыть</v-btn>
+                    <v-btn flat color="primary" @click="edit_end = false">Закрыть</v-btn>
                     <v-btn flat color="primary"
-                           @click="$refs.ref_modal_edit_end_date.save(editPeriod.end)">
+                           @click="$refs.ref_modal_edit_end.save(editPeriod.end)">
                       Подтвердить
                     </v-btn>
                   </v-date-picker>
@@ -163,36 +163,36 @@
                 <v-text-field label="Название Периода" v-model="newPeriod.name" outline
                               required></v-text-field>
 
-                <v-dialog ref="ref_modal_new_begin_date" v-model="new_begin_date"
-                          :return-value.sync="newPeriod.begin_date" persistent lazy full-width
+                <v-dialog ref="ref_modal_new_begin" v-model="new_begin"
+                          :return-value.sync="newPeriod.begin" persistent lazy full-width
                           width="290px">
-                  <v-text-field slot="activator" v-model="newPeriod.begin_date"
+                  <v-text-field slot="activator" v-model="newPeriod.begin"
                                 label="Дата начала периода"
                                 outline required></v-text-field>
-                  <v-date-picker v-model="newPeriod.begin_date" scrollable :first-day-of-week="1"
+                  <v-date-picker v-model="newPeriod.begin" scrollable :first-day-of-week="1"
                                  locale="ru-ru">
                     <v-spacer></v-spacer>
-                    <v-btn flat color="primary" @click="new_begin_date = false">Закрыть
+                    <v-btn flat color="primary" @click="new_begin = false">Закрыть
                     </v-btn>
                     <v-btn flat color="primary"
-                           @click="$refs.ref_modal_new_begin_date.save(newPeriod.begin_date)">
+                           @click="$refs.ref_modal_new_begin.save(newPeriod.begin)">
                       Подтвердить
                     </v-btn>
                   </v-date-picker>
                 </v-dialog>
 
-                <v-dialog ref="ref_modal_new_end_date" v-model="new_end_date"
-                          :return-value.sync="newPeriod.end_date" persistent lazy full-width
+                <v-dialog ref="ref_modal_new_end" v-model="new_end"
+                          :return-value.sync="newPeriod.end" persistent lazy full-width
                           width="290px">
-                  <v-text-field slot="activator" v-model="newPeriod.end_date" label="Дата окончания периода"
+                  <v-text-field slot="activator" v-model="newPeriod.end" label="Дата окончания периода"
                                 readonly outline required></v-text-field>
-                  <v-date-picker v-model="newPeriod.end_date" scrollable :first-day-of-week="1"
-                                 :min="newPeriod.begin_date"
+                  <v-date-picker v-model="newPeriod.end" scrollable :first-day-of-week="1"
+                                 :min="newPeriod.begin"
                                  locale="ru-ru">
                     <v-spacer></v-spacer>
-                    <v-btn flat color="primary" @click="new_end_date = false">Закрыть</v-btn>
+                    <v-btn flat color="primary" @click="new_end = false">Закрыть</v-btn>
                     <v-btn flat color="primary"
-                           @click="$refs.ref_modal_new_end_date.save(newPeriod.end_date)">
+                           @click="$refs.ref_modal_new_end.save(newPeriod.end)">
                       Подтвердить
                     </v-btn>
                   </v-date-picker>
@@ -266,20 +266,20 @@
         ],
         newPeriod: {
           name: '',
-          begin_date: '',
-          end_date: '',
+          begin: '',
+          end: '',
           info: '',
         },
         editPeriod: {
           name: '',
-          begin_date: '',
-          end_date: '',
+          begin: '',
+          end: '',
           info: '',
         },
         deletePeriod: {
           name: '',
-          begin_date: '',
-          end_date: '',
+          begin: '',
+          end: '',
           info: '',
 
         },
@@ -287,34 +287,14 @@
         dialogNew: false,
         dialogEdit: false,
         dialogDelete: false,
-        edit_end_date: false,
-        edit_begin_date: false,
-        new_end_date: false,
-        new_begin_date: false,
+        edit_end: false,
+        edit_begin: false,
+        new_end: false,
+        new_begin: false,
       };
     },
     created() {
-      this.currentYear = new Date().getFullYear();
-
-      this.axios.get('periods',).then((response) => {
-        this.response = response.data;
-
-        //Заполнения массива лет (years) для выбора периодов за определенный год
-        for (let i = 0; i <= this.response.length; i++) {
-          let isset = false;
-          for (let j = 0; j < this.years.length; j++) {
-            if (this.response[i].period === this.years[j]) {
-              isset = true;
-            }
-          }
-          if (!isset) {
-            this.years.push(this.response[i].period)
-          }
-        }
-
-
-        console.log(this.response)
-      });
+      this.getPeriods();
     },
     beforeMount: function () {
     },
@@ -322,6 +302,28 @@
 
     },
     methods: {
+      getPeriods() {
+        this.currentYear = new Date().getFullYear();
+
+        this.axios.get('periods',).then((response) => {
+          this.response = response.data;
+          console.log(this.response);
+          //Заполнения массива лет (years) для выбора периодов за определенный год
+          for (let i = 0; i <= this.response.length; i++) {
+            let isset = false;
+            for (let j = 0; j < this.years.length; j++) {
+              if (this.response[i].period === this.years[j]) {
+                isset = true;
+              }
+            }
+            if (!isset) {
+              this.years.push(this.response[i].period)
+            }
+          }
+
+          console.log(this.response)
+        });
+      },
       openEditDialog(period) {
         this.dialogEdit = true;
         this.editPeriod = period;
@@ -336,21 +338,68 @@
         this.dialogNew = true;
       },
       saveNewPeriod() {
-        this.dialogNew = false;
         this.axios.post('periods', this.newPeriod).then((response) => {
-          console.log(response)
+          console.log(response);
+          this.dialogNew = false;
+          this.getPeriods();
+          this.$notify({
+            group: 'global',
+            type: 'success',
+            title: 'Успешно',
+            text: "Новый период создан",
+          });
+        }).catch((error) => {
+
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Ошибка',
+            text: error.response.data.status,
+          });
+          console.log(error.response);
         });
       },
-      saveEditPeriod(){
-        this.dialogEdit = false;
-        this.axios.put('periods', this.editPeriod).then((response) => {
+      saveEditPeriod() {
+
+        this.axios.patch('periods/' + this.editPeriod.id, this.editPeriod).then((response) => {
           console.log(response)
+          this.dialogEdit = false;
+          this.$notify({
+            group: 'global',
+            type: 'success',
+            title: 'Успешно',
+            text: "Период сохранен",
+          });
+          this.getPeriods();
+        }).catch((error) => {
+          console.log(error.response);
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Ошибка',
+            text: error.response.data.status,
+          });
         });
       },
-      deleteSelectedPeriod(){
-        this.dialogDelete = false;
-        this.axios.delete('periods', this.deletePeriod).then((response) => {
+      deleteSelectedPeriod() {
+        this.axios.delete('periods/' + this.deletePeriod.id).then((response) => {
           console.log(response)
+          this.dialogDelete = false;
+          this.$notify({
+            group: 'global',
+            type: 'success',
+            title: 'Успешно',
+            text: "Период удален",
+          });
+          this.getPeriods();
+        }).catch((error) => {
+          this.$notify({
+            group: 'global',
+            type: 'error',
+            title: 'Ошибка',
+            text: error.response.data.status,
+          });
+          console.log(error.response);
         });
       }
     }

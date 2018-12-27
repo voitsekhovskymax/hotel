@@ -3,8 +3,8 @@ import mutations from "./mutations";
 import actions from "./actions";
 
 const state = () => ({
-  exampleState: null
-
+  authentication: null, // содержит обьект пользователя
+  token: null,
 });
 
 export default {

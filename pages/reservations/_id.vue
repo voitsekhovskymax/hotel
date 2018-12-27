@@ -215,12 +215,13 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="success" @click="saveReservation">Сохранить</v-btn>
-          <v-btn flat color="error">Удалить</v-btn>
+          <v-btn flat color="error" @click="dialogDelete = true">Удалить</v-btn>
           <v-spacer></v-spacer>
           <v-btn class="liqpay_btn" @click="dialogLiqpay=true"></v-btn>
         </v-card-actions>
       </v-card>
     </template>
+
     <v-dialog v-model="dialogMail" width="500">
       <v-card>
         <v-layout wrap>
@@ -279,6 +280,33 @@
       </v-card>
     </v-dialog>
 
+    <v-dialog v-model="dialogDelete" width="500">
+      <v-card>
+        <v-layout wrap>
+          <v-flex>
+            <v-toolbar class="no-shadow warning " dark>
+              <v-toolbar-title>Внимание</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialogDelete = false">
+                <v-icon>close</v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-flex>
+        </v-layout>
+        <v-card-text>
+            Вы действительно хотите удалить бронь #<b>{{response.orderRoom.order_num}}</b> ?
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="error"
+            @click="deleteReservation"
+          >
+            Удалить
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
     <v-dialog v-model="dialogLiqpay" fullscreen hide-overlay transition="dialog-bottom-transition">
       <v-card>
@@ -349,7 +377,7 @@
                             <v-card-title><h4>Данные инвойса</h4></v-card-title>
                             <v-divider></v-divider>
                             <v-list dense>
-                              <v-list-tile v-for="(value, key) in liqpay_prepaid_statuses">
+                              <v-list-tile v-for="(value, key) in liqpay_prepaid_statuses" :key="key">
                                 <v-list-tile-content><b>{{ key }}</b></v-list-tile-content>
                                 <v-list-tile-content class="align-end">{{ value }}</v-list-tile-content>
                               </v-list-tile>
@@ -396,7 +424,7 @@
                             <v-card-title><h4>Данные инвойса</h4></v-card-title>
                             <v-divider></v-divider>
                             <v-list dense>
-                              <v-list-tile v-for="(value, key) in liqpay_paid_statuses">
+                              <v-list-tile v-for="(value, key) in liqpay_paid_statuses" :key="key">
                                 <v-list-tile-content><b>{{ key }}</b></v-list-tile-content>
                                 <v-list-tile-content class="align-end">{{ value }}</v-list-tile-content>
                               </v-list-tile>
@@ -422,7 +450,7 @@
   export default {
     data() {
       return {
-        progress_dialog_liqpay:false,
+        progress_dialog_liqpay: false,
         progress_liqpay_prepaid_statuses: false,
         progress_liqpay_paid_statuses: false,
         progress: false,
@@ -463,6 +491,7 @@
         currentTab: 'paid',
         dialogLiqpay: false,
         dialogMail: false,
+        dialogDelete: false,
         response: {
           "orderRoom": {
             "id": null,
@@ -594,6 +623,18 @@
       this.init();
     },
     methods: {
+      deleteReservation() {
+        this.axios.delete('orders/' + this.$route.params.id).then((response) => {
+          console.log(response);
+          this.$notify({
+            group: 'global',
+            type: 'success',
+            title: 'Внимание!',
+            text: 'Бронь успешно удалена!',
+          });
+          this.$router.push({name: 'reservations'})
+        });
+      },
       init() {
         this.progress = true;
         this.axios.get('orders/' + this.$route.params.id + '/edit').then((response) => {

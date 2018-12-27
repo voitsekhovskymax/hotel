@@ -1,41 +1,49 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 Vue.use(Vuex)
 
 const store = () => new Vuex.Store({
 
-    state: {
-        auth: null,
-        token:null,
-        date:{
-          object:null,
-          year:null,
-          month:null,
-          day:null,
-        },
-        snackbar:{
-          state:null,
-          color:null,
-          timeout:null,
-          text:null,
-        }
-    },
-    getters: {
-        getUser(state) {
-            return  state.auth;
-        },
-        getToken(state) {
-            return  state.token;
-        }
-    },
+  state: {
+    authentication: null, // содержит обьект пользователя
+    token: null,
 
-    mutations: {
-        set(state, {type, value}) {
-            state[type] = value;
-        },
+    pay_without_prepaid: null
 
+  },
+  getters: {
+    getUser(state) {
+      return state.authentication;
+    },
+    getPayWithoutPrepaid(state) {
+      return state.pay_without_prepaid;
+    },
+    getToken(state) {
+      return state.token;
     }
+  },
+
+  mutations: {
+    //Универсальная мутация
+    set(state, {type, value}) {
+      state[type] = value;
+    },
+    // Для установки токена
+    setToken(state, token) {
+      // var ax = axios.create({
+      //   baseURL: process.env.API_URL,
+      //   headers: {
+      //     'Access-Control-Allow-Origin': '*',
+      //     "X-Requested-With": "XMLHttpRequest",
+      //     'Authorization': 'Bearer ' + token
+      //   }
+      // });
+      // Vue.use(VueAxios, ax);
+    }
+  }
 })
 
 export default store

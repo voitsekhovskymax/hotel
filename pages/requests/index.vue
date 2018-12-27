@@ -43,7 +43,7 @@
               <v-btn color="primary" :to="{name:'requests-id', params:{id:request.id}}">Бронь</v-btn>
             </td>
             <td>
-              <v-btn  icon>
+              <v-btn icon @click="dialogDeleteReservation(request)">
                 <v-icon color="grey">delete_outline</v-icon>
               </v-btn>
             </td>
@@ -52,6 +52,73 @@
         </table>
       </v-card>
     </v-flex>
+    <v-dialog v-model="dialogDelete" width="500">
+      <v-card>
+        <v-layout wrap>
+          <v-flex>
+            <v-toolbar class="no-shadow warning " dark>
+              <v-toolbar-title>Внимание</v-toolbar-title>
+              <v-spacer></v-spacer>
+              <v-btn icon @click="dialogDelete = false">
+                <v-icon>close</v-icon>
+              </v-btn>
+            </v-toolbar>
+          </v-flex>
+        </v-layout>
+        <v-card-text>
+          Вы действительно хотите удалить заявку?
+        </v-card-text>
+        <v-divider></v-divider>
+        <v-list dense>
+          <v-list-tile>
+            <v-list-tile-content>ФИО:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.full_name }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Дата заезда:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.begin_date }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Дата выезда:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.end_date }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Email:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.email }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Телефон:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.phone }}</v-list-tile-content>
+          </v-list-tile>
+
+          <v-list-tile>
+            <v-list-tile-content>Адресс:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.city }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Номер комнаты:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.room }}</v-list-tile-content>
+          </v-list-tile>
+          <v-list-tile>
+            <v-list-tile-content>Сообщение от клиента:</v-list-tile-content>
+            <v-list-tile-content class="align-end">{{deleteReservation.message }}</v-list-tile-content>
+          </v-list-tile>
+
+        </v-list>
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="error"
+            @click="deleteRequest"
+          >
+            Удалить
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
   </v-layout>
 </template>
 
@@ -84,6 +151,25 @@
           "is_queue": null,
           "is_answer": null
         },
+        dialogDelete: false,
+        deleteReservation: {
+          "id": null,
+          "full_name": null,
+          "email": null,
+          "phone": null,
+          "city": null,
+          "message": null,
+          "begin_date": null,
+          "end_date": null,
+          "room": null,
+          "adult": null,
+          "kids": null,
+          "parking": null,
+          "beds": null,
+          "is_get": null,
+          "is_queue": null,
+          "is_answer": null
+        },
       };
     },
     beforeMount() {
@@ -94,6 +180,13 @@
     },
 
     methods: {
+      dialogDeleteReservation(reservation) {
+        this.dialogDelete = true;
+        this.deleteReservation = reservation;
+      },
+      deleteRequest() {
+
+      },
       generateTable() {
         $(document).ready(function () {
           window.JSZip = JSZip;

@@ -24,7 +24,7 @@
 
     export default {
         name: 'logout',
-        layout: 'page',
+        layout: 'auth',
         data() {
             return {};
         },

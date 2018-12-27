@@ -45,7 +45,7 @@
 
     </v-card>
     <div class="loader-table">
-      <loading :active.sync="loader" :is-full-page="false"></loading>
+      <loading :active.sync="loader" :is-full-page="false" :backgroundColor="'#ffffff'" :opacity="1"></loading>
       <table id="DataTable" ref="dataTable" class="table table-bordered home" style="width:100%">
         <thead>
         <tr>
@@ -129,7 +129,8 @@
 
               <v-text-field label="Скидка" v-model="order.orderRoom.discount"></v-text-field>
 
-              <v-text-field label="Количество дней предоплаты" v-model="order.orderRoom.col_prepaid_days"></v-text-field>
+              <v-text-field label="Количество дней предоплаты"
+                            v-model="order.orderRoom.col_prepaid_days"></v-text-field>
 
               <v-text-field label="Сумма предоплаты" v-model="order.orderRoom.sum_prepaid"></v-text-field>
 
@@ -186,7 +187,7 @@
                 </v-card>
               </template>
 
-              <template >
+              <template>
                 <v-card color="grey lighten-3 mt-2">
 
                   <v-card-title>Трансфер на выезд</v-card-title>
@@ -345,20 +346,18 @@
         //helpers
         date_update: new Date().toISOString().substr(0, 7),
         modal_update: false,
-        loader: false,
+        loader: true,
         progress: false,
       }
     },
+
     created() {
-      this.loader = true;
+
     },
     beforeMount() {
     },
     mounted() {
-      console.log('created');
       this.axios.get('table/' + this.$route.params.month + '/' + this.$route.params.year).then((response) => {
-        console.log('Данные получены');
-        console.log(response.data);
         this.response = response.data;
         this.date_update = new Date(this.response.current_year, this.response.current_month).toISOString().substr(0, 7);
         this.generateTable();
@@ -394,7 +393,6 @@
         });
       },
       getUpdate(date_update) {
-        console.log(date_update);
         let arrayDATE = date_update.split("-");
         this.$router.push({name: 'table-year-month', params: {year: arrayDATE[0], month: arrayDATE[1]}});
       }
