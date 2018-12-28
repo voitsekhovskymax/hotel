@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/../../../../ftp/hotel_server/app/Http/Controllers/LiqPayController.php" description="$lp-&gt;is_prepaid = true;" line="87" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="eb792ee3-8c52-4b1a-8623-45d2df7218c0" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/.idea/front.hotel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/reservations/_id.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/reservations/_id.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/users/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/users/index.vue" afterDir="false" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -36,12 +41,30 @@
     <favorites_list name="hotel" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pages/users/index.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="548">
               <caret line="197" column="33" selection-start-line="197" selection-start-column="33" selection-end-line="197" selection-end-column="33" />
+=======
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4462">
+              <caret line="686" column="29" selection-start-line="686" selection-start-column="29" selection-end-line="686" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="432">
+              <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
             </state>
           </provider>
         </entry>
@@ -77,9 +100,15 @@
       <find>dialog_client_progress</find>
       <find>activateClientDialog</find>
       <find>messages</find>
+<<<<<<< HEAD
       <find>search</find>
       <find>noti</find>
       <find>Mail</find>
+=======
+      <find>newUser</find>
+      <find>parki</find>
+      <find>parking_number</find>
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
     </findStrings>
     <replaceStrings>
       <replace />
@@ -157,19 +186,23 @@
         <option value="$PROJECT_DIR$/pages/logout/index.vue" />
         <option value="$PROJECT_DIR$/layouts/auth.vue" />
         <option value="$PROJECT_DIR$/store/index.js" />
-        <option value="$PROJECT_DIR$/pages/reservations/_id.vue" />
         <option value="$PROJECT_DIR$/pages/requests/index.vue" />
         <option value="$PROJECT_DIR$/pages/prices/index.vue" />
         <option value="$PROJECT_DIR$/pages/prices/_id.vue" />
-        <option value="$PROJECT_DIR$/layouts/default.vue" />
         <option value="$PROJECT_DIR$/components/NavbarList.vue" />
         <option value="$PROJECT_DIR$/pages/table/_year/_month.vue" />
         <option value="$PROJECT_DIR$/assets/styles/main.css" />
         <option value="$PROJECT_DIR$/readme.md" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/pages/messages/templates.vue" />
         <option value="$PROJECT_DIR$/pages/messages/index.vue" />
         <option value="$PROJECT_DIR$/pages/users/index.vue" />
+=======
+        <option value="$PROJECT_DIR$/pages/users/index.vue" />
+        <option value="$PROJECT_DIR$/pages/reservations/_id.vue" />
+        <option value="$PROJECT_DIR$/layouts/default.vue" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
       </list>
     </option>
   </component>
@@ -181,6 +214,9 @@
   </component>
   <component name="NamedScopeManager">
     <scope name="dev" pattern="(file[hotel]:assets/*||file[hotel]:components/*||file[hotel]:layouts/*||file[hotel]:libs/*||file[hotel]:middleware/*||file[hotel]:plugins/*||file[hotel]:static/*||file[hotel]:store/*||file[hotel]:test/*||file[hotel]:vuex/*||file[hotel]:pages/*||file[hotel]:pages//*||file[hotel]:static//*||file[hotel]:test//*||file[hotel]:assets//*)&amp;&amp;!file[hotel]:assets/datatables/*&amp;&amp;!file[hotel]:assets/datatables//*&amp;&amp;!file[hotel]:assets/Bootstrap-4-4.1.1//*||file:nuxt.config.js||file:package.json||file:TODO.md" />
+  </component>
+  <component name="PhpServers">
+    <servers />
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="260" />
@@ -196,40 +232,43 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="front.hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front.hotel" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+              <item name="front.hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front.hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="styles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="front.hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front.hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+<<<<<<< HEAD
+=======
             </path>
             <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="front.hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front.hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="reservations" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="front.hotel" type="b2602c69:ProjectViewProjectNode" />
+              <item name="front.hotel" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
               <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -243,11 +282,11 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="editor.config.ad.shown" value="true" />
     <property name="full.screen.before.presentation.mode" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../ftp/hotel_old" />
+    <property name="last_opened_file_path" value="C:/../../ftp/hotel_old" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.toDoOptions" />
+    <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -278,7 +317,7 @@
     </option>
   </component>
   <component name="SvnConfiguration">
-    <configuration>C:\Users\Max Voitsekhovsky\AppData\Roaming\Subversion</configuration>
+    <configuration>C:\Users\Vanobo\AppData\Roaming\Subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -404,7 +443,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="296044000" />
+=======
+    <option name="totallyTimeSpent" value="297030000" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -418,13 +461,17 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <layout>
+<<<<<<< HEAD
       <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09914712" />
+=======
+      <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.20735608" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32936078" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32756758" />
-      <window_info anchor="bottom" id="Run" order="3" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.32998884" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
@@ -434,7 +481,11 @@
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="10" weight="0.96756756" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" type="SLIDING" weight="0.36324325" />
       <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32972974" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="13" sideWeight="0.49946696" type="SLIDING" visible="true" weight="1.0" />
+=======
+      <window_info active="true" anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="13" sideWeight="0.49946696" type="SLIDING" visible="true" weight="0.8104794" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -483,6 +534,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/nuxt-pwa-vuetify-starter" />
       <path value="$PROJECT_DIR$/sentry-module" />
@@ -504,9 +556,13 @@
     <option name="LAST_COMMIT_MESSAGE" value="отчет&#10;&#10;- доделал отправку писем&#10;- начал страницу &quot;Пользователи&quot;" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/static/sw.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/static/sw.js" />
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
     <entry file="file://$PROJECT_DIR$/libs/utils.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="92">
@@ -549,9 +605,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="828">
           <caret line="36" column="21" selection-start-line="36" selection-start-column="21" selection-end-line="36" selection-end-column="68" />
-          <folding>
-            <marker date="1545053749604" expanded="true" signature="1069:1245" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -633,16 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="115">
           <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-299">
-          <caret line="14" column="31" selection-start-line="14" selection-start-column="31" selection-end-line="14" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -782,6 +825,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/layouts/default.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="575">
@@ -792,6 +836,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 62dd6060a030f9d6b5b956b98826afea7ef1c77f
     <entry file="file://$PROJECT_DIR$/pages/messages/new.vue" />
     <entry file="file://$PROJECT_DIR$/pages/clients/index.vue">
       <provider selected="true" editor-type-id="text-editor">
@@ -900,6 +946,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="548">
           <caret line="197" column="33" selection-start-line="197" selection-start-column="33" selection-end-line="197" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nuxt.config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="656">
+          <caret line="48" column="48" lean-forward="true" selection-start-line="48" selection-start-column="48" selection-end-line="48" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/users/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-349">
+          <caret line="116" lean-forward="true" selection-start-line="116" selection-end-line="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4462">
+          <caret line="686" column="29" selection-start-line="686" selection-start-column="29" selection-end-line="686" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/layouts/default.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="36" column="35" lean-forward="true" selection-start-line="36" selection-start-column="35" selection-end-line="36" selection-end-column="35" />
         </state>
       </provider>
     </entry>
