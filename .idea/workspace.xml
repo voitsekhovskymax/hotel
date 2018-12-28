@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eb792ee3-8c52-4b1a-8623-45d2df7218c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pages/messages/templates.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/messages/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/messages/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/table/_year/_month.vue" beforeDir="false" afterPath="$PROJECT_DIR$/pages/table/_year/_month.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,64 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/messages/templates.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="146" column="22" selection-start-line="146" selection-start-column="21" selection-end-line="146" selection-end-column="22" />
-              <folding>
-                <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#v-dialog#1;n#div#0;n#template#0;n#!!top" />
-                <marker date="1545924133569" expanded="true" signature="2978:3738" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/TODO.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="345">
-                <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/readme.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="506">
-                <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/package.json">
+        <entry file="file://$PROJECT_DIR$/pages/users/index.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="584">
-              <caret line="506" column="11" lean-forward="true" selection-start-line="497" selection-start-column="6" selection-end-line="506" selection-end-column="11" />
-              <folding>
-                <element signature="n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <marker date="1545652990601" expanded="true" signature="8153:8257" ph="..." />
-              </folding>
+            <state relative-caret-position="548">
+              <caret line="197" column="33" selection-start-line="197" selection-start-column="33" selection-end-line="197" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -108,9 +50,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>тре</find>
-      <find>error</find>
-      <find>отправить на</find>
       <find>tool</find>
       <find>liqpay</find>
       <find>liqpay_prepaid_statuses</find>
@@ -138,6 +77,9 @@
       <find>dialog_client_progress</find>
       <find>activateClientDialog</find>
       <find>messages</find>
+      <find>search</find>
+      <find>noti</find>
+      <find>Mail</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -159,6 +101,7 @@
       <replace>room_types</replace>
       <replace>this.end_date</replace>
       <replace>HomeTable</replace>
+      <replace>User</replace>
     </replaceStrings>
     <dirStrings>
       <dir>X:\projects\git\voitsekhovskymax@gmail.com\github\hotel\layouts</dir>
@@ -176,7 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pages/parking/_begin_date/_end_date.vue" />
         <option value="$PROJECT_DIR$/pages/transfer/index.vue" />
         <option value="$PROJECT_DIR$/pages/parking/index.vue" />
         <option value="$PROJECT_DIR$/pages/prepaid/_begin_date/_end_date.vue" />
@@ -199,7 +141,6 @@
         <option value="$PROJECT_DIR$/pages/tests/index.vue" />
         <option value="$PROJECT_DIR$/pages/clients/new.vue" />
         <option value="$PROJECT_DIR$/pages/requests/_id.vue" />
-        <option value="$PROJECT_DIR$/TODO.md" />
         <option value="$PROJECT_DIR$/plugins/vue-notification.js" />
         <option value="$PROJECT_DIR$/assets/Bootstrap-4-4.1.1/js/bootstrap.js" />
         <option value="$PROJECT_DIR$/nuxt.config.js" />
@@ -224,9 +165,11 @@
         <option value="$PROJECT_DIR$/components/NavbarList.vue" />
         <option value="$PROJECT_DIR$/pages/table/_year/_month.vue" />
         <option value="$PROJECT_DIR$/assets/styles/main.css" />
-        <option value="$PROJECT_DIR$/pages/messages/index.vue" />
-        <option value="$PROJECT_DIR$/pages/messages/templates.vue" />
         <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/TODO.md" />
+        <option value="$PROJECT_DIR$/pages/messages/templates.vue" />
+        <option value="$PROJECT_DIR$/pages/messages/index.vue" />
+        <option value="$PROJECT_DIR$/pages/users/index.vue" />
       </list>
     </option>
   </component>
@@ -281,19 +224,7 @@
               <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
               <item name="hotel" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="messages" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="prices" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="hotel" type="b2602c69:ProjectViewProjectNode" />
-              <item name="hotel" type="462c0819:PsiDirectoryNode" />
-              <item name="pages" type="462c0819:PsiDirectoryNode" />
-              <item name="requests" type="462c0819:PsiDirectoryNode" />
+              <item name="users" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -381,7 +312,9 @@
       <workItem from="1545301511292" duration="26388000" />
       <workItem from="1545638587152" duration="25863000" />
       <workItem from="1545810984355" duration="25572000" />
-      <workItem from="1545891918831" duration="28537000" />
+      <workItem from="1545891918831" duration="32176000" />
+      <workItem from="1545980541720" duration="8000" />
+      <workItem from="1546007018913" duration="568000" />
     </task>
     <task id="LOCAL-00001" summary="Создание TODO.md в корне проекта. Туда будут записываться все задачи \ замечания. Наконец-то пофиксил обновление таблицы datatables.net, через пересоздание вьюхи.">
       <created>1544976081399</created>
@@ -453,11 +386,25 @@
       <option name="project" value="LOCAL" />
       <updated>1545916740258</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Отчет&#10;&#10;- добавлены письма">
+      <created>1545924696431</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1545924696431</updated>
+    </task>
+    <task id="LOCAL-00012" summary="отчет&#10;&#10;- доделал отправку писем&#10;- начал страницу &quot;Пользователи&quot;">
+      <created>1545928211537</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1545928211537</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="291829000" />
+    <option name="totallyTimeSpent" value="296044000" />
   </component>
   <component name="TodoView" selected-index="2">
     <todo-panel id="selected-file">
@@ -470,9 +417,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.096481875" />
+      <window_info content_ui="combo" x="841" y="71" width="237" height="897" id="Project" order="0" visible="true" weight="0.09914712" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.32995737" />
       <window_info active="true" anchor="bottom" id="Command Line Tools Console" order="0" weight="0.32936078" />
@@ -486,9 +432,9 @@
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" auto_hide="true" id="Version Control" order="10" weight="0.96756756" />
-      <window_info anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="11" sideWeight="0.49946696" type="SLIDING" weight="1.0" />
-      <window_info anchor="bottom" id="Event Log" order="12" sideWeight="0.50053304" side_tool="true" type="SLIDING" weight="0.36324325" />
-      <window_info anchor="bottom" id="Thumbnails" order="13" weight="0.32972974" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.50053304" side_tool="true" type="SLIDING" weight="0.36324325" />
+      <window_info anchor="bottom" id="Thumbnails" order="12" weight="0.32972974" />
+      <window_info active="true" anchor="bottom" auto_hide="true" x="-29" y="380" width="1876" height="376" id="Terminal" order="13" sideWeight="0.49946696" type="SLIDING" visible="true" weight="1.0" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -553,12 +499,11 @@
     <MESSAGE value="Отчет &#10;&#10;- перемешал аутентификацию (токен)&#10;- вывел сумму в хедер&#10;- добавил лоадеры&#10;- layouts/page -&gt; layouts/auth - этот лайоут будет использоваться  только для аутентификации &#10;- переписал периоды и цены на номера &#10;- удаление заявки &#10;- удаление брони&#10;- pages/login вернулся. на индексе будет стоять middleware&#10;- почистил store" />
     <MESSAGE value="Отчет&#10;&#10;Переписал меню. так проще передавать параметры в саом меню" />
     <MESSAGE value="Отчет&#10;&#10;Переписал меню. так проще передавать параметры в пункты меню" />
-    <option name="LAST_COMMIT_MESSAGE" value="Отчет&#10;&#10;Переписал меню. так проще передавать параметры в пункты меню" />
+    <MESSAGE value="Отчет&#10;&#10;- добавлены письма" />
+    <MESSAGE value="отчет&#10;&#10;- доделал отправку писем&#10;- начал страницу &quot;Пользователи&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="отчет&#10;&#10;- доделал отправку писем&#10;- начал страницу &quot;Пользователи&quot;" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/css/home.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/sw.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -739,13 +684,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/middleware/authenticated.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/middleware/authenticated.js" />
     <entry file="file://$PROJECT_DIR$/store/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -801,16 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="633" column="13" selection-start-line="628" selection-start-column="8" selection-end-line="633" selection-end-column="13" />
-          <folding>
-            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/prices/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="617">
@@ -863,9 +792,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/messages/new.vue">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/messages/new.vue" />
     <entry file="file://$PROJECT_DIR$/pages/clients/index.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="46">
@@ -890,58 +817,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pages/messages/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-943">
-          <caret line="19" column="68" selection-start-line="19" selection-start-column="68" selection-end-line="19" selection-end-column="68" />
-          <folding>
-            <element signature="n#v-autocomplete#0;n#v-card-text#0;n#v-card#0;n#template#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#v-textarea#0;n#v-card-text#0;n#v-card#0;n#template#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pages/prices/_id.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
           <caret line="175" column="15" lean-forward="true" selection-start-line="151" selection-end-line="175" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="584">
-          <caret line="506" column="11" lean-forward="true" selection-start-line="497" selection-start-column="6" selection-end-line="506" selection-end-column="11" />
-          <folding>
-            <element signature="n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <marker date="1545652990601" expanded="true" signature="8153:8257" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pages/messages/templates.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="146" column="22" selection-start-line="146" selection-start-column="21" selection-end-line="146" selection-end-column="22" />
-          <folding>
-            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#v-dialog#1;n#div#0;n#template#0;n#!!top" />
-            <marker date="1545924133569" expanded="true" signature="2978:3738" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/TODO.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="345">
-            <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-          </first_editor>
-          <second_editor />
         </state>
       </provider>
     </entry>
@@ -959,6 +838,68 @@
             <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/TODO.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="115">
+            <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/requests/_id.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="998">
+          <caret line="500" column="77" selection-start-line="500" selection-start-column="77" selection-end-line="500" selection-end-column="77" />
+          <folding>
+            <element signature="n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <marker date="1545652990601" expanded="true" signature="8153:8257" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/reservations/_id.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="410">
+          <caret line="633" column="13" lean-forward="true" selection-start-line="628" selection-start-column="8" selection-end-line="633" selection-end-column="13" />
+          <folding>
+            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/messages/templates.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="69">
+          <caret line="6" column="12" lean-forward="true" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
+          <folding>
+            <element signature="n#v-dialog#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#v-dialog#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#v-dialog#2;n#div#0;n#template#0;n#!!top" />
+            <marker date="1545924133569" expanded="true" signature="2978:3738" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/messages/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="841">
+          <caret line="298" column="12" selection-start-line="290" selection-start-column="12" selection-end-line="298" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#v-card-text#0;n#v-card#0;n#v-dialog#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pages/users/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="197" column="33" selection-start-line="197" selection-start-column="33" selection-end-line="197" selection-end-column="33" />
         </state>
       </provider>
     </entry>
