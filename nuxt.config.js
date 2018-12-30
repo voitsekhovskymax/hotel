@@ -63,6 +63,10 @@ export default {
         dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
     },
 
+  router: {
+    mode: 'hash'
+  },
+
     // https://nuxtjs.org/api/configuration-plugins
     plugins: ["~/plugins/vuetify", "~/plugins/vee-validate", "~/plugins/axios", "~/plugins/vue-notification"],
 

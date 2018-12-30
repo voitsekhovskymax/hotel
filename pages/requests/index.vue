@@ -133,24 +133,7 @@
     name: 'requests',
     data() {
       return {
-        response: {
-          "id": null,
-          "full_name": null,
-          "email": null,
-          "phone": null,
-          "city": null,
-          "message": null,
-          "begin_date": null,
-          "end_date": null,
-          "room": null,
-          "adult": null,
-          "kids": null,
-          "parking": null,
-          "beds": null,
-          "is_get": null,
-          "is_queue": null,
-          "is_answer": null
-        },
+        response: [],
         dialogDelete: false,
         deleteReservation: {
           "id": null,

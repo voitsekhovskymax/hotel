@@ -5,17 +5,20 @@
         <v-flex sm6 md6 xs12>
           <v-toolbar class="no-shadow">
             <v-toolbar-title>Пользователи</v-toolbar-title>
-            <v-spacer />
+            <v-spacer/>
           </v-toolbar>
         </v-flex>
 
         <v-flex sm6 md6 xs12>
           <v-toolbar class="no-shadow">
-            <v-spacer />
+            <v-spacer/>
             <v-btn color="success" @click="dialogNew = true;"
-              >Новый пользователь</v-btn
+            >Новый пользователь
+            </v-btn
             >
-            <v-btn icon> <v-icon>help_outline</v-icon> </v-btn>
+            <v-btn icon>
+              <v-icon>help_outline</v-icon>
+            </v-btn>
           </v-toolbar>
         </v-flex>
       </v-layout>
@@ -28,10 +31,12 @@
                   <v-list-tile-title>{{ user.name }}</v-list-tile-title>
                   <v-list-tile-sub-title>{{
                     user.email
-                  }}</v-list-tile-sub-title>
+                    }}
+                  </v-list-tile-sub-title>
                   <v-list-tile-sub-title>{{
                     getUserRole(user.role_id)
-                  }}</v-list-tile-sub-title>
+                    }}
+                  </v-list-tile-sub-title>
                 </v-list-tile-content>
 
                 <v-list-tile-action>
@@ -69,9 +74,9 @@
           <span class="headline">Новый пользователь</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field v-model="newUser.name" label="ФИО пользователя" />
-          <v-text-field v-model="newUser.password" label="Пароль" />
-          <v-text-field v-model="newUser.email" label="Email" />
+          <v-text-field v-model="newUser.name" label="ФИО пользователя"/>
+          <v-text-field v-model="newUser.password" label="Пароль"/>
+          <v-text-field v-model="newUser.email" label="Email"/>
 
           <v-select
             v-model="newUser.role_id"
@@ -83,7 +88,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="success" @click="saveNewUser">Сохранить</v-btn>
-          <v-spacer />
+          <v-spacer/>
           <v-btn @click="dialogNew = false;">Закрыть</v-btn>
         </v-card-actions>
       </v-card>
@@ -95,7 +100,7 @@
           <span class="headline">Редактирование письма</span>
         </v-card-title>
         <v-card-text>
-          <v-text-field v-model="editUser.title" label="Заголовок письма" />
+          <v-text-field v-model="editUser.title" label="Заголовок письма"/>
 
           <v-textarea
             v-model="editUser.info"
@@ -106,7 +111,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="success" @click="saveEditUser">Обновить</v-btn>
-          <v-spacer />
+          <v-spacer/>
           <v-btn @click="dialogEdit = false;">Закрыть</v-btn>
         </v-card-actions>
       </v-card>
@@ -116,11 +121,11 @@
       <v-card>
         <v-card-title>
           <span class="headline"
-            >Вы действительно хотите удалить это письмо?</span
+          >Вы действительно хотите удалить это письмо?</span
           >
         </v-card-title>
         <v-card-text>
-          <v-text-field v-model="deleteUser.title" label="Заголовок письма" />
+          <v-text-field v-model="deleteUser.title" label="Заголовок письма"/>
           <v-textarea
             v-model="deleteUser.info"
             auto-grow
@@ -130,7 +135,7 @@
         </v-card-text>
         <v-card-actions>
           <v-btn color="error" @click="saveDeleteUser">Удалить</v-btn>
-          <v-spacer />
+          <v-spacer/>
           <v-btn @click="dialogDelete = false;">Закрыть</v-btn>
         </v-card-actions>
       </v-card>
@@ -139,87 +144,90 @@
 </template>
 
 <script>
-export default {
-  name: "Users",
-  data() {
-    return {
-      // data
-      users: [],
-      roles: [],
-      //    helpers
-      editUser: {
-        name: null,
-        email: null,
-        password: null,
-        role_id: null
-      },
-      deleteUser: {
-        name: null,
-        email: null,
-        password: null,
-        role_id: null
-      },
-      newUser: {
-        name: null,
-        email: null,
-        password: null,
-        role_id: null
-      },
-      dialogEdit: false,
-      dialogDelete: false,
-      dialogNew: false
-    };
-  },
-  beforeMount: function() {},
-  mounted() {
-    this.getUsers();
-  },
-  methods: {
-    getUsers() {
-      this.axios.get("users").then(response => {
-        this.users = response.data.users;
-        this.roles = response.data.roles;
-      });
+  export default {
+    name: "Users",
+    data() {
+      return {
+        // data
+        users: [],
+        roles: [],
+        //    helpers
+        editUser: {
+          name: null,
+          email: null,
+          password: null,
+          role_id: null
+        },
+        deleteUser: {
+          name: null,
+          email: null,
+          password: null,
+          role_id: null
+        },
+        newUser: {
+          name: null,
+          email: null,
+          password: null,
+          role_id: null
+        },
+        dialogEdit: false,
+        dialogDelete: false,
+        dialogNew: false
+      };
     },
-    saveNewUser() {
-      this.axios
-        .post("users", this.newUser)
-        .then(response => {
-          console.log("saveNewUser");
-          console.log(response);
-          console.log("saveNewUser END");
-          this.$notify({
-            group: "global",
-            type: "success",
-            title: "Успешно",
-            text: "Новый пользователь создан"
-          });
-          this.getUsers();
-          this.dialogNew = false;
-        })
-        .catch(error => {
-          console.log(error.response);
-          this.$notify({
-            group: "global",
-            type: "error",
-            title: "Ошибка",
-            text: error.response
-          });
+    beforeMount: function () {
+    },
+    mounted() {
+      this.getUsers();
+    },
+    methods: {
+      getUsers() {
+        this.axios.get("users").then(response => {
+          this.users = response.data.users;
+          this.roles = response.data.roles;
         });
-    },
-    saveEditUser() {},
-    saveDeleteUser() {},
-    activeModalEdit(user) {
-      this.edit_dialog = true;
-      this.edit_user = user;
-    },
-    getUserRole(id) {
-      for (let i = 0; i < this.roles.length; i++) {
-        if (this.roles[i].id == id) {
-          return this.roles[i].name;
+      },
+      saveNewUser() {
+        this.axios
+          .post("users", this.newUser)
+          .then(response => {
+            console.log("saveNewUser");
+            console.log(response);
+            console.log("saveNewUser END");
+            this.$notify({
+              group: "global",
+              type: "success",
+              title: "Успешно",
+              text: "Новый пользователь создан"
+            });
+            this.getUsers();
+            this.dialogNew = false;
+          })
+          .catch(error => {
+            console.log(error.response);
+            this.$notify({
+              group: "global",
+              type: "error",
+              title: "Ошибка",
+              text: error.response
+            });
+          });
+      },
+      saveEditUser() {
+      },
+      saveDeleteUser() {
+      },
+      activeModalEdit(user) {
+        this.edit_dialog = true;
+        this.edit_user = user;
+      },
+      getUserRole(id) {
+        for (let i = 0; i < this.roles.length; i++) {
+          if (this.roles[i].id == id) {
+            return this.roles[i].name;
+          }
         }
       }
     }
-  }
-};
+  };
 </script>
