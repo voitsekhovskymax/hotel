@@ -50,6 +50,7 @@
           <thead>
           <tr>
             <th class="export">ФИО</th>
+            <th class="export">Телефон</th>
             <th class="export">Дата  заезда</th>
             <th class="export">Дата  выезда</th>
             <th class="export">Номер комнаты</th>
@@ -60,6 +61,7 @@
           <tbody>
           <tr v-for="order in response.clients">
             <td>{{order.client.name}}</td>
+            <td>{{order.client.phone}}</td>
             <td>{{order.begin_date}}</td>
             <td>{{order.end_date}}</td>
             <td>{{order.room.name}}</td>

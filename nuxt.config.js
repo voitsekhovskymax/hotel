@@ -1,9 +1,11 @@
 import nodeExternals from "webpack-node-externals";
 import VuetifyLoaderPlugin from "vuetify-loader/lib/plugin";
+import webpack  from 'webpack'
 
 export default {
     // https://nuxtjs.org/api/configuration-modern
-    modern: true,
+    // modern: true,
+    mode: 'spa',
 
     env: {
         baseUrl: process.env.BASE_URL || 'http://localhost:3000',
@@ -51,6 +53,7 @@ export default {
             }
         ],
         'cookie-universal-nuxt',
+        'intro.js',
     ],
     loading: {
         color: '#4caf50',
@@ -60,15 +63,25 @@ export default {
     // https://github.com/nuxt-community/sentry-module#readme
     sentry: {
         //https://sentry.io
-        dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
+        // dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
     },
 
-  router: {
-    mode: 'hash'
-  },
+    router: {
+        // mode: 'hash',
+        middleware: ['check-auth']
+    },
+
 
     // https://nuxtjs.org/api/configuration-plugins
-    plugins: ["~/plugins/vuetify", "~/plugins/vee-validate", "~/plugins/axios", "~/plugins/vue-notification"],
+    plugins: [
+        "~/plugins/vuetify",
+        "~/plugins/vee-validate",
+        "~/plugins/axios",
+        "~/plugins/vue-notification",
+        '~/plugins/vue-snotify.js',
+        '~/plugins/vue-intro.js',
+
+    ],
 
     // https://nuxtjs.org/api/configuration-css
     css: ["~/assets/styles/fonts.css", "~/assets/styles/vuetify.styl", "~/assets/styles/main.css"],
@@ -85,7 +98,12 @@ export default {
     build: {
         extractCSS: true,
         transpile: [/^vuetify/],
-        plugins: [new VuetifyLoaderPlugin()],
+        plugins: [
+            new VuetifyLoaderPlugin(),
+            new webpack.ProvidePlugin({
+                'introJs': ['intro.js', 'introJs']
+            })
+        ],
         extend(config, {isDev, isClient}) {
             if (isDev && isClient) {
                 // config.module.rules.push({

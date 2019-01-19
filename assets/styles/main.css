@@ -57,13 +57,13 @@ button {
   background-size: cover;
 }
 
-.progress_loader {
+.progress_loader, .progress-container {
   height: 200px;
   align-items: center;
   display: flex;
   justify-content: center;
-  display: flex !important;
 }
+
 .notifications{
   position: fixed !important;
   z-index: 300;
@@ -80,4 +80,31 @@ button {
 
 #DataTable_wrapper .dataTable tbody tr:hover {
   background: rgba(76, 175, 80, 0.3) !important;
+}
+
+
+
+.snotifyToast__inner {
+    padding: 10px 50px 10px 10px;
+}
+
+
+.snotifyToast__title {
+    font-size: 1.2em !important;
+    line-height: 1em !important;
+    font-weight: 600 !important;
+}
+
+.snotifyToast__body {
+    font-size: .9em;
+}
+
+.snotify-icon {
+    max-height: 30px;
+    max-width: 30px
+}
+
+
+.introjs-tooltipReferenceLayer {
+    font-size: 18px;
 }

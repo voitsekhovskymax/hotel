@@ -2,21 +2,28 @@
 <project version="4">
   <component name="PublishConfigData">
     <serverData>
-      <paths name="hotelmaj.ftp.tools">
+      <paths name="hotelmaj.ftp.tools/server">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="neogloba.ftp.tools">
+      <paths name="neogloba.ftp.tools/dev">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
-      <paths name="neogloba.ftp.tools (1)">
+      <paths name="voitse00.ftp.tools">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="voitse00.ftp.tools/laravel">
         <serverdata>
           <mappings>
             <mapping local="$PROJECT_DIR$" web="/" />

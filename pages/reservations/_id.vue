@@ -752,6 +752,7 @@ export default {
           "15": "предоплата получена",
           "16": "замена номера",
           "17": "снятие брони",
+          "17": "снятие брони",
           "18": "Трансфер",
           "19": "освободился номер",
           "20": "отсутствие предоплаты",
@@ -794,13 +795,8 @@ export default {
     deleteReservation() {
       this.axios.delete("orders/" + this.$route.params.id).then(response => {
         console.log(response);
-        this.$notify({
-          group: "global",
-          type: "success",
-          title: "Внимание!",
-          text: "Бронь успешно удалена!"
-        });
-        this.$router.push({ name: "reservations" });
+          this.$snotify.success('Бронь успешно удалена!', 'Успешно');
+          this.$router.push({ name: "reservations" });
       });
     },
     init() {

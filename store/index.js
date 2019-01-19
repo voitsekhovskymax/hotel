@@ -1,49 +1,28 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
+import Cookies from 'js-cookie'
+import { cookieFromRequest } from '~/utils'
 
-Vue.use(Vuex)
+export const actions = {
+  nuxtServerInit ({ commit }, { req }) {
+    const token = cookieFromRequest(req, 'token')
+    if (token) {
+      commit('auth/SET_TOKEN', token)
+    }
 
-const store = () => new Vuex.Store({
-
-  state: {
-    authentication: null, // содержит обьект пользователя
-    token: null,
-
-    pay_without_prepaid: null
-
-  },
-  getters: {
-    getUser(state) {
-      return state.authentication;
-    },
-    getPayWithoutPrepaid(state) {
-      return state.pay_without_prepaid;
-    },
-    getToken(state) {
-      return state.token;
+    const locale = cookieFromRequest(req, 'locale')
+    if (locale) {
+      commit('lang/SET_LOCALE', { locale })
     }
   },
 
-  mutations: {
-    //Универсальная мутация
-    set(state, {type, value}) {
-      state[type] = value;
-    },
-    // Для установки токена
-    setToken(state, token) {
-      // var ax = axios.create({
-      //   baseURL: process.env.API_URL,
-      //   headers: {
-      //     'Access-Control-Allow-Origin': '*',
-      //     "X-Requested-With": "XMLHttpRequest",
-      //     'Authorization': 'Bearer ' + token
-      //   }
-      // });
-      // Vue.use(VueAxios, ax);
+  nuxtClientInit ({ commit }) {
+    const token = Cookies.get('token')
+    if (token) {
+      commit('auth/SET_TOKEN', token)
+    }
+
+    const locale = Cookies.get('locale')
+    if (locale) {
+      commit('lang/SET_LOCALE', { locale })
     }
   }
-})
-
-export default store
+}
