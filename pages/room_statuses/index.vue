@@ -74,7 +74,6 @@
         </v-card>
 
         <v-dialog v-model="dialogNew" persistent max-width="600px">
-
             <v-card>
                 <v-layout wrap>
                     <v-flex>

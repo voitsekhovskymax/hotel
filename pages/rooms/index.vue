@@ -95,6 +95,10 @@
                     <v-text-field v-model="newRoom.quantity" type="number" label="Количество мест"/>
                     <v-select :items="room_types" v-model="newRoom.room_type_id" item-text="name" item-value="id"
                               label="Тип номера"></v-select>
+                    <v-select :items="locations" v-model="newRoom.location" item-text="text" item-value="value"
+                              label="Локация"></v-select>
+                    <v-select :items="blocks" v-model="newRoom.block" item-text="text" item-value="value"
+                              label="Блок"></v-select>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="success" @click="saveNewRoom">Сохранить</v-btn>
@@ -120,6 +124,10 @@
                     <v-text-field v-model="editRoom.quantity" type="number" label="Количество мест"/>
                     <v-select :items="room_types" v-model="editRoom.room_type_id" item-text="name" item-value="id"
                               label="Тип номера"></v-select>
+                    <v-select :items="locations" v-model="editRoom.location" item-text="text" item-value="value"
+                              label="Локация"></v-select>
+                    <v-select :items="blocks" v-model="editRoom.block" item-text="text" item-value="value"
+                              label="Блок"></v-select>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="success" @click="saveEditRoom">Обновить</v-btn>
@@ -142,13 +150,18 @@
                 </v-layout>
                 <v-card-text>
                     <v-alert :value="true" type="error" class="mb-3">
-                        Не рекомендуется удалять уже использованный номер. На нем могут быть завязаны заявки а так же отчеты.  Удаляйте только новые номера, созданные по ошибке.
+                        Не рекомендуется удалять уже использованный номер. На нем могут быть завязаны заявки а так же
+                        отчеты. Удаляйте только новые номера, созданные по ошибке.
                     </v-alert>
                     <b>Вы действительно хотите удалить этот номер?</b>
                     <v-text-field v-model="deleteRoom.name" label="Название номера" readonly/>
                     <v-text-field v-model="deleteRoom.quantity" type="number" label="Количество мест" readonly/>
                     <v-select :items="room_types" v-model="deleteRoom.room_type_id" item-text="name" item-value="id"
                               label="Тип номера" readonly></v-select>
+                    <v-select :items="locations" v-model="deleteRoom.location" item-text="text" item-value="value"
+                              label="Локация"></v-select>
+                    <v-select :items="blocks" v-model="deleteRoom.block" item-text="text" item-value="value"
+                              label="Блок"></v-select>
 
                 </v-card-text>
                 <v-card-actions>
@@ -168,6 +181,34 @@
                 rooms: [],
                 room_types: [],
                 //    helpers
+                locations: [
+                    {
+                        text: 'Старая локация',
+                        value: 1
+                    },
+                    {
+                        text: 'Новая локация',
+                        value: 2
+                    },
+                ],
+                blocks: [
+                    {
+                        text: 'Корпус 1. Номера №1-9',
+                        value: 1
+                    },
+                    {
+                        text: 'Корпус 2. Номера №101-301',
+                        value: 2
+                    },
+                    {
+                        text: 'Корпус 3. Номера №401-511',
+                        value: 3
+                    },
+                    {
+                        text: 'Корпус 4. Номера №601-700',
+                        value: 4
+                    },
+                ],
                 progress: true,
                 editRoom: {
                     name: null,
