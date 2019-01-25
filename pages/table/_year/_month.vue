@@ -112,7 +112,8 @@
                     <v-flex sm6 md6 xs12>
                         <v-toolbar class="no-shadow">
 
-                            <v-toolbar-title>Бронь <b>{{order.orderRoom.order_num}}</b> | id: {{order.orderRoom.id}}</v-toolbar-title>
+                            <v-toolbar-title>Бронь <b>{{order.orderRoom.order_num}}</b> | id: {{order.orderRoom.id}}
+                            </v-toolbar-title>
                             <v-spacer></v-spacer>
                         </v-toolbar>
                     </v-flex>
@@ -366,31 +367,47 @@
                 progress: false,
                 error: {
                     text: null,
-                }
+                },
+                //    tests
+                start_time: null
             }
         },
 
         created() {
-
+            this.start_time = new Date();
+            console.time();
+            console.log('Таймер запущен');
+            console.log("Страница создана. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
         },
         beforeMount() {
+
         },
         mounted() {
+            console.log("Страница монтируется. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
             let app = this;
+            console.log("Запрос данных... | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
             this.axios.get('table/' + this.$route.params.month + '/' + this.$route.params.year).then((response) => {
                 this.response = response.data;
                 this.date_update = new Date(this.response.current_year, this.response.current_month).toISOString().substr(0, 7);
+                console.log("Запрос данных завершен. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
+
                 this.generateTable();
             }).catch(function (error) {
                 console.log(error.response);
                 app.loader = false;
                 app.error.text = error.response.data.message;
+                console.log("Ошибка получения данных таблицы. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
+
             });
+            console.log("Страница смонтирована. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
+
         },
         updated: function () {
         },
         methods: {
             generateTable() {
+                console.log("Создаем таблицу. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
+
                 $(document).ready(function () {
                     let DATATABLE = $('#HomeTable').DataTable({
                         "ordering": false,
@@ -405,6 +422,10 @@
                         leftColumns: 1,
                         heightMatch: 'auto'
                     });
+                    console.log("Таблица создана. | " + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds());
+                    console.log('Таймер остановлен');
+                    console.timeEnd();
+
                 });
                 this.loader = false;
             },

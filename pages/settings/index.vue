@@ -129,6 +129,7 @@
         mounted: function () {
         },
         methods: {
+
             getData() {
                 this.axios.get('settings').then((response) => {
                     this.settings = response.data.data;

@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Snotify  from 'vue-snotify';
+import Snotify, { SnotifyPosition }  from 'vue-snotify';
 import '../node_modules/vue-snotify/styles/material.css'
 const options = {
     timeout: 5000,

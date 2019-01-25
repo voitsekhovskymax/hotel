@@ -1,6 +1,7 @@
 <template>
     <v-app>
 
+        <vue-snotify></vue-snotify>
         <v-navigation-drawer v-model="drawer" clipped fixed app>
             <navbar-list></navbar-list>
         </v-navigation-drawer>

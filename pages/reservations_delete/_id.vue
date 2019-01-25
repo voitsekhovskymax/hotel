@@ -282,7 +282,8 @@
                     this.$router.push({name: "reservations-id", params: {id: this.$route.params.id}});
                 }).catch((error) => {
                     this.$snotify.error(error.data, "Ошибка");
-
+                    console.log(error);
+                    console.log(error.response.data.errors);
                 });
             },
             init() {
