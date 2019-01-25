@@ -40,54 +40,57 @@
 }
 
 .theme--light.v-list .v-list__tile__mask {
-  color: rgb(0, 0, 0);
-  background: #d2d2d2;
-  border-radius: 5px;
-  padding: 0px 2px;
+    color: rgb(0, 0, 0);
+    background: #d2d2d2;
+    border-radius: 5px;
+    padding: 0px 2px;
 }
 
 button {
-  outline: none !important;
+    outline: none !important;
 }
 
 .liqpay_btn {
-  background: url(../img/liqpay5.png);
-  height: 38px;
-  width: 120px;
-  background-size: cover;
+    background: url(../img/liqpay5.png);
+    height: 38px;
+    width: 120px;
+    background-size: cover;
 }
 
 .progress_loader, .progress-container {
-  height: 200px;
-  align-items: center;
-  display: flex;
-  justify-content: center;
+    height: 200px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
-.notifications{
-  position: fixed !important;
-  z-index: 300;
-}
-.notification-card{
-  border: 1px solid #ccc !important;
-  border-radius: 0px !important;
-  margin-top: 15px;
+.notifications {
+    position: fixed !important;
+    z-index: 300;
 }
 
-.card-content .flex {padding: 0px 10px;}
-.nuxt-link-active {color: #1976d2}
+.notification-card {
+    border: 1px solid #ccc !important;
+    border-radius: 0px !important;
+    margin-top: 15px;
+}
 
+.card-content .flex {
+    padding: 0px 10px;
+}
+
+.nuxt-link-active {
+    color: #1976d2
+}
 
 #DataTable_wrapper .dataTable tbody tr:hover {
-  background: rgba(76, 175, 80, 0.3) !important;
+    background: rgba(76, 175, 80, 0.3) !important;
+    cursor: pointer;
 }
-
-
 
 .snotifyToast__inner {
     padding: 10px 50px 10px 10px;
 }
-
 
 .snotifyToast__title {
     font-size: 1.2em !important;
@@ -103,7 +106,6 @@ button {
     max-height: 30px;
     max-width: 30px
 }
-
 
 .introjs-tooltipReferenceLayer {
     font-size: 18px;

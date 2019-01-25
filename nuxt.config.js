@@ -77,7 +77,7 @@ export default {
         "~/plugins/vuetify",
         "~/plugins/vee-validate",
         "~/plugins/axios",
-        "~/plugins/vue-notification",
+        // "~/plugins/vue-notification",
         '~/plugins/vue-snotify.js',
         '~/plugins/vue-intro.js',
 

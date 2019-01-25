@@ -88,8 +88,8 @@
     data() {
       return {
         //data
-        begin_date: new Date().toISOString().substr(0, 10),
-        end_date: new Date().toISOString().substr(0, 10),
+        begin_date: null,
+        end_date: null,
         response: {
           date_str: [],
           count: 0,
@@ -100,6 +100,10 @@
         modal_end_date: false,
       };
     },
+      created(){
+          this.begin_date = this.$route.params.begin_date;
+          this.end_date = this.$route.params.end_date;
+      },
     beforeMount() {
       this.axios.post('parking', {
         begin_date: this.$route.params.begin_date,

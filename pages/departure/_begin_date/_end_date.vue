@@ -3,7 +3,7 @@
     <v-flex>
       <v-card color="grey lighten-4">
         <v-toolbar prominent class="no-shadow">
-          <v-toolbar-title>Трансфер</v-toolbar-title>
+          <v-toolbar-title>Отчет по выездам</v-toolbar-title>
           <v-spacer />
           <span>C </span>
           <v-dialog
@@ -32,8 +32,8 @@
               <v-spacer />
               <v-btn flat color="primary" 
 @click="modal_begin_date = false;"
-                >Закрыть</v-btn
-              >
+                >Закрыть
+              </v-btn>
               <v-btn
                 color="primary"
                 @click="$refs.ref_modal_begin_date.save(begin_date);"
@@ -72,8 +72,8 @@
               <v-spacer />
               <v-btn flat color="primary" 
 @click="modal_end_date = false;"
-                >Закрыть</v-btn
-              >
+                >Закрыть
+              </v-btn>
               <v-btn
                 color="primary"
                 @click="$refs.ref_modal_end_date.save(end_date);"
@@ -81,9 +81,9 @@
               </v-btn>
             </v-date-picker>
           </v-dialog>
-          <v-btn color="primary" large @click="updateTable"> Подсчитать </v-btn>
+          <v-btn color="primary" large @click="updateTable"> Подсчитать</v-btn>
         </v-toolbar>
-        <!---->
+
         <table
           id="table"
           ref="table"
@@ -92,33 +92,49 @@
         >
           <thead>
             <tr>
+              <th class="export">Дата</th>
+              <th class="export">Номер комнаты</th>
               <th class="export">ФИО</th>
-              <th class="export">Номер телефона</th>
-              <th class="export">Номер заявки</th>
-              <th class="export">Дата трансфера приезд</th>
-              <th class="export">Сумма трансфера приезд</th>
-              <th class="export">Инфо трансфера приезд</th>
-              <th class="export">Дата трансфера выезд</th>
-              <th class="export">Сумма трансфера выезд</th>
-              <th class="export">Инфо трансфера выезд</th>
+              <th class="export">Паркоместо</th>
+              <th class="export">Количество дней заезда</th>
+              <th class="export">Взрослых</th>
+              <th class="export">Детей</th>
+              <th class="export">Телефон</th>
+              <th class="export">Примечание (Выезд)</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="transfer in response.orders">
-              <td>{{ transfer.client.name }}</td>
-              <td>{{ transfer.client.phone }}</td>
-              <td>{{ transfer.order_num }}</td>
-              <td>{{ transfer.date_transfer }}</td>
-              <td>{{ transfer.sum_transfer }}</td>
-              <td>{{ transfer.info_transfer }}</td>
-              <td>{{ transfer.date_transfer_back }}</td>
-              <td>{{ transfer.sum_transfer_back }}</td>
-              <td>{{ transfer.info_transfer_back }}</td>
+            <tr v-for="room in response.order_rooms">
+              <td data-field="date">{{ room.begin_date }}</td>
+              <td data-field="room">{{ room.room.name }}</td>
+              <td data-field="fio">{{ room.client.name }}</td>
+              <td data-field="parking">{{ room.parking_number }}</td>
+              <td data-field="departure_days">{{ room.count_days }}</td>
+              <td data-field="adult">{{ room.adult }}</td>
+              <td data-field="kids">{{ room.kids }}</td>
+              <td data-field="phone">{{ room.client.phone }}</td>
+              <td data-field="note">{{ room.info_transfer_back }}</td>
             </tr>
           </tbody>
         </table>
       </v-card>
     </v-flex>
+
+    <v-dialog v-model="dialogReservation" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">Перейти на бронь?</span>
+        </v-card-title>
+        <v-card-text>
+          {{ selectReservation.begin_date }} \ {{ selectReservation.end_date }}
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="success" @click="routeReservation">перейти</v-btn>
+          <v-spacer />
+          <v-btn @click="dialogReservation = false;">Закрыть</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-layout>
 </template>
 
@@ -126,41 +142,65 @@
 import $ from "jquery"; // подключаем jQuery
 import "datatables.net"; // подключаем сам плагин
 import "datatables.net-buttons/js/buttons.html5.min";
-import "datatables.net-buttons/js/buttons.html5.min";
 import JSZip from "jszip";
 import { datePickerFormat } from "~~/libs/utils";
 
 export default {
-  name: "Transfer",
+  name: "Payment",
   data() {
     return {
       // data
-      begin_date: new Date().toISOString().substr(0, 10),
-      end_date: new Date().toISOString().substr(0, 10),
-      response: {
-        date_str: [],
-        count: 0,
-        clients: []
-      },
+      begin_date: null,
+      end_date: null,
+      response: {},
       // helpers
       modal_begin_date: false,
-      modal_end_date: false
+      modal_end_date: false,
+      dialogReservation: false,
+      selectReservation: {
+        begin_date: null,
+        end_date: null
+      }
     };
   },
+    created(){
+        this.begin_date = this.$route.params.begin_date;
+        this.end_date = this.$route.params.end_date;
+    },
   beforeMount() {
     this.axios
-      .post("transfer", {
+      .post("departure", {
         begin_date: this.$route.params.begin_date,
         end_date: this.$route.params.end_date
       })
       .then(response => {
         this.response = response.data;
+
+        for (let i = 0; i < this.response.order_rooms.length; i++) {
+          const begin = new Date(this.response.order_rooms[i].begin_date);
+          const end = new Date(this.response.order_rooms[i].end_date);
+          this.response.order_rooms[i].count_days = (end - begin) / 86400000;
+          console.log(this.response.order_rooms[i].count_days);
+        }
+
         this.begin_date = datePickerFormat(response.data.date_str[0]);
         this.end_date = datePickerFormat(response.data.date_str[1]);
         this.generateTable();
       });
   },
   methods: {
+    routeReservation() {},
+    getReservation(order_num) {
+      this.axios
+        .post("data-search", {
+          keywords: order_num
+        })
+        .then(response => {
+          console.log(response);
+          this.selectReservation = response.data;
+          this.dialogReservation = true;
+        });
+    },
     generateTable() {
       $(document).ready(function() {
         window.JSZip = JSZip;
@@ -192,7 +232,7 @@ export default {
     },
     updateTable() {
       this.$router.push({
-        name: "transfer-begin_date-end_date",
+        name: "departure-begin_date-end_date",
         params: { begin_date: this.begin_date, end_date: this.end_date }
       });
     }
@@ -201,3 +241,36 @@ export default {
 </script>
 <style src="~/assets/Bootstrap-4-4.1.1/css/bootstrap.min.css" scoped />
 <style src="~/assets/datatables/css/dataTables.bootstrap4.css" scoped />
+<style scoped>
+.selectors > div {
+  padding: 0px 15px;
+}
+
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td,
+#customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#customers tr:hover {
+  background-color: #ddd;
+}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4caf50;
+  color: white;
+}
+</style>

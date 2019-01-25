@@ -51,8 +51,10 @@
                       v-model="request.full_name"
                       label="ФИО"
                       hint="Вы можете подставить значения, воспользовавшись поиском выше"
-                      outline
-                      required
+                      :error="errors.has('full_name')"
+                      :error-messages="errors.collect('full_name')"
+                      v-validate="'required|min:3'" name="full_name"
+                      data-vv-as="full_name">
                     ></v-text-field>
 
 
@@ -60,7 +62,10 @@
                               :return-value.sync="request.begin_date" persistent lazy full-width
                               width="290px">
                       <v-text-field slot="activator" v-model="request.begin_date" label="Дата заезда"
-                                    outline required></v-text-field>
+                                       :error="errors.has('begin_date')"
+                                    :error-messages="errors.collect('begin_date')"
+                                    v-validate="'required'" name="begin_date"
+                                    data-vv-as="begin_date"></v-text-field>
                       <v-date-picker v-model="request.begin_date" scrollable :first-day-of-week="1"
                                      locale="ru-ru">
                         <v-spacer></v-spacer>
@@ -77,7 +82,10 @@
                               :return-value.sync="request.end_date" persistent lazy full-width
                               width="290px">
                       <v-text-field slot="activator" v-model="request.end_date" label="Дата выезда"
-                                    readonly outline required></v-text-field>
+                                    readonly   :error="errors.has('end_date')"
+                                    :error-messages="errors.collect('end_date')"
+                                    v-validate="'required'" name="end_date"
+                                    data-vv-as="end_date"></v-text-field>
                       <v-date-picker v-model="request.end_date" scrollable :first-day-of-week="1"
                                      :min="request.begin_date"
                                      locale="ru-ru">
@@ -93,23 +101,32 @@
                       v-model="request.email"
                       label="Email"
                       hint="Нужен для рассылки писем, и приглашений"
-                      outline
-                      required
+                       
+                      :error="errors.has('email')"
+                      :error-messages="errors.collect('email')"
+                      v-validate="'required'" name="email"
+                      data-vv-as="email"
                     ></v-text-field>
 
 
                     <v-text-field
                       v-model="request.phone"
                       label="Телефон"
-                      outline
-                      required
+                       
+                                            :error="errors.has('phone')"
+                      :error-messages="errors.collect('phone')"
+                      v-validate="'required'" name="phone"
+                      data-vv-as="phone"
                     ></v-text-field>
 
 
                     <v-text-field
                       v-model="request.city"
                       label="Адрес"
-                      outline
+                      :error="errors.has('city')"
+                      :error-messages="errors.collect('city')"
+                      v-validate="'required'" name="city"
+                      data-vv-as="city"
                     ></v-text-field>
 
                   </v-flex>
@@ -121,24 +138,28 @@
                       item-text="name"
                       item-value="name"
                       v-model="request.room"
-
                       label="Номер отеля"
-                      outline
-                      required
+                       
+                      :error="errors.has('room')"
+                      :error-messages="errors.collect('room')"
+                      v-validate="'required'" name="room"
+                      data-vv-as="room"
                     ></v-select>
 
                     <v-text-field
                       label="Количество взрослых"
                       v-model="request.adult"
                       type="number"
-                      outline
+                      :error="errors.has('adult')"
+                      :error-messages="errors.collect('adult')"
+                      v-validate="'required'" name="adult"
+                      data-vv-as="adult"
                     ></v-text-field>
 
                     <v-text-field
                       label="Количество детей"
                       v-model="request.kids"
                       type="number"
-                      outline
                     ></v-text-field>
 
                     <v-text-field
@@ -146,7 +167,7 @@
                       hint="Количество паркомест"
                       v-model="request.parking"
                       type="number"
-                      outline
+                       
                     ></v-text-field>
 
                     <v-text-field
@@ -154,7 +175,7 @@
                       hint="Количество дополнительных кроватей"
                       v-model="request.beds"
                       type="number"
-                      outline
+                       
                     ></v-text-field>
 
                   </v-flex>
@@ -328,12 +349,22 @@
     },
     methods: {
       saveRequests() {
-        this.progress = true;
-        this.axios.post('reserves', this.request).then((response) => {
-          console.log(response);
-          this.progress = false;
-          this.$router.push({name: 'requests'})
-        })
+          this.$validator.validateAll().then(result => {
+              if (result) {
+                  this.progress = true;
+                  this.axios.post('reserves', this.request).then((response) => {
+                      console.log(response);
+                      this.$router.push({name: 'requests'})
+                  }).catch((error) => {
+                      this.progress = false;
+                      console.log(error.data);
+                  })
+              }
+              else {
+                  this.$snotify.error('Заполните все поля правильно!',);
+                  return;
+              }
+          })
       },
       getSearch() {
         this.axios.post('client-search', {
@@ -354,7 +385,6 @@
         this.request.email = this.search.email;
         this.request.phone = this.search.phone;
         this.dialogClient = false;
-
       },
     }
   };
