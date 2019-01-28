@@ -970,17 +970,20 @@
                     iterator = "-1";
                 }
 
-                const request = {
-                    liqpay_order_id:
-                        this.response.orderRoom.order_num +
-                        "-" +
-                        this.response.orderRoom.room_id +
-                        "-" +
-                        order_type +
-                        iterator
-                };
+                let request = {}
+
+                // В  январе 2019, изменилась строка liqpay
+                if (parseInt(this.response.orderRoom.end_date.substr(0, 4)) < 2019) {
+                    request.liq_pay_order_id = this.response.orderRoom.order_num + this.response.orderRoom.room_id + order_type + iterator;
+                }
+                else {
+                    request.liq_pay_order_id = this.response.orderRoom.order_num + "-" + this.response.orderRoom.room_id + "-" + order_type + iterator;
+                }
+
+                console.log('Получение статуса. Отправляем такой обьект');
+                console.log(request);
                 this.axios
-                    .post("liqpay_status", request)
+                    .post("liqpay-status", request)
                     .then(response => {
                         console.log(response.data.result);
 
@@ -1031,9 +1034,9 @@
                 };
                 console.log(request);
                 this.axios
-                    .post("liqpay_reload", request)
+                    .post("liqpay-reload", request)
                     .then(response => {
-                        console.log("liqpay_reload");
+                        console.log("liqpay-reload");
                         console.log(response);
                         if (response.data.status == 1) {
                             this.$notify({

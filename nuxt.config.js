@@ -48,8 +48,7 @@ export default {
         [
             "@nuxtjs/google-analytics",
             {
-                // TODO: вставить свою аналитику
-                id: "UA-XXXXX-X"
+                id: "UA-129407621-2"
             }
         ],
         'cookie-universal-nuxt',
@@ -63,7 +62,7 @@ export default {
     // https://github.com/nuxt-community/sentry-module#readme
     sentry: {
         //https://sentry.io
-        // dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
+        dsn: "https://8c4e4de69876440cb6c108bbbff78fe7@sentry.io/1331423"
     },
 
     router: {
