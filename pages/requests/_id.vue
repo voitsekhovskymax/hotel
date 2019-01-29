@@ -163,6 +163,7 @@
                                         v-model="response.prepaid"
                                         label="Предоплата"
                                         @change="changeInputs"
+                                        readonly
                                 />
                                 <v-text-field
                                         v-model="discount"
