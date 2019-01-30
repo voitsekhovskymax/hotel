@@ -28,7 +28,12 @@
 
 <script>
     export default {
-
+        name:'reset',
+        head() {
+            return {
+                title: 'Сброс пароля'
+            }
+        },
         layout: 'page',
         data: () => ({
             snackbar: false,

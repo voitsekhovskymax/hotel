@@ -3,7 +3,7 @@
         <v-flex>
             <v-card color="grey lighten-4">
                 <v-toolbar prominent class="no-shadow">
-                    <v-toolbar-title>Удаленные брони</v-toolbar-title>
+                    <v-toolbar-title>Удаленные заявки</v-toolbar-title>
                     <v-spacer/>
                 </v-toolbar>
 
@@ -50,6 +50,11 @@
 
     export default {
         name: 'requests-delete',
+        head() {
+            return {
+                title: 'Удаленные заявки'
+            }
+        },
         data() {
             return {
                 response: null

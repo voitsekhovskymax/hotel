@@ -131,6 +131,11 @@
 
   export default {
     name: 'requests',
+      head() {
+          return {
+              title: 'Новые заявки'
+          }
+      },
     data() {
       return {
         response: [],

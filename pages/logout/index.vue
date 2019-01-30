@@ -25,6 +25,11 @@
     export default {
         name: 'logout',
         layout: 'auth',
+        head() {
+            return {
+                title: 'Выход из приложения'
+            }
+        },
         data() {
             return {};
         },

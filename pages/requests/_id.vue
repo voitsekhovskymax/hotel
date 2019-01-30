@@ -393,6 +393,12 @@
 
 <script>
     export default {
+        name: 'requests-id',
+        head() {
+            return {
+                title: 'Заявка №' + this.getOrderNum(this.response.data.room, this.response.data.begin_date, this.response.data.end_date)
+            }
+        },
         data() {
             return {
                 input_changed: false,
@@ -560,6 +566,17 @@
                     "Подставлен клиент с базы (новый клиент не будет создан)";
             },
             queueRequest() {
+                console.log(this.response.data.id);
+
+                this.axios.post('queue', this.response.data).then((response) => {
+                    console.log(response);
+                    console.log('Заявка была перемещена в очередь');
+                    this.$snotify.success('Заявка была перемещена в очередь', 'Внимание');
+                    // this.$router.push({name: 'requests'})
+                }).catch((error) => {
+                    console.log(error.data);
+                    this.$snotify.success(error.data, 'Ошибка');
+                })
             },
             updateRequest() {
                 this.progress = true;

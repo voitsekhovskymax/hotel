@@ -170,6 +170,12 @@
 
 <script>
     export default {
+        name:'reservations_delete-id',
+        head() {
+            return {
+                title: 'Удаленная бронь №' + this.response.order_num
+            }
+        },
         data() {
             return {
                 progress_dialog_liqpay: false,

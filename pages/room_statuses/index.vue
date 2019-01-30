@@ -148,6 +148,11 @@
 <script>
     export default {
         name: "room_statuses",
+        head() {
+            return {
+                title: 'Статусы комнат'
+            }
+        },
         data() {
             return {
                 // data

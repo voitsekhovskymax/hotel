@@ -208,6 +208,11 @@
 
   export default {
     name: 'messages',
+      head() {
+          return {
+              title: 'Письма'
+          }
+      },
     data() {
       return {
         progress: false,

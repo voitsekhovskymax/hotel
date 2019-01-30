@@ -1,6 +1,6 @@
 import nodeExternals from "webpack-node-externals";
 import VuetifyLoaderPlugin from "vuetify-loader/lib/plugin";
-import webpack  from 'webpack'
+import webpack from 'webpack'
 
 export default {
     // https://nuxtjs.org/api/configuration-modern
@@ -15,7 +15,7 @@ export default {
     // https://nuxtjs.org/api/configuration-head
     head: {
         titleTemplate: title =>
-            title ? `${title} - Отель "Маяк"` : "Отель \"Маяк\"",
+            title ? `${title} - Отель "Маяк"` : 'Отель "Маяк"',
         meta: [
             {charset: "utf-8"},
             {name: "viewport", content: "width=device-width, initial-scale=1"},
@@ -23,7 +23,6 @@ export default {
             {hid: "description", name: "description", content: ""}
         ]
     },
-
     // https://nuxtjs.org/api/configuration-modules
     modules: [
         // https://axios.nuxtjs.org/
@@ -125,3 +124,8 @@ export default {
         }
     }
 };
+
+
+// для отображения рутов на сервере
+// -- Примеры конфигурирования серверов https://router.vuejs.org/ru/guide/essentials/history-mode.html
+

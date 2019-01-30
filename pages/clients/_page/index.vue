@@ -61,6 +61,11 @@
 
   export default {
     name: 'clients',
+      head() {
+          return {
+              title: 'Клиенты'
+          }
+      },
     data() {
       return {
         response: {

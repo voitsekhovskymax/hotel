@@ -101,6 +101,11 @@
 
     export default {
         name: 'settings',
+        head() {
+            return {
+                title: 'Настройки'
+            }
+        },
         data() {
             return {
                 settings: {

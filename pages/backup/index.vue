@@ -12,6 +12,11 @@
 
     export default {
         name:'backup',
+        head() {
+            return {
+                title: 'Восстановление данных'
+            }
+        },
         data() {
             return {};
         }

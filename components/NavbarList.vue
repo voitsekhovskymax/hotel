@@ -1,7 +1,8 @@
 <template>
     <v-list dense>
         <v-list-tile>
-            <nuxt-link to="/" class="navigation-link">
+            <nuxt-link :to="{name: 'table-year-month', params: {year: currentYear, month: currentMonth}}"
+                       class="navigation-link">
                 <v-list-tile-action>
                     <v-icon>home</v-icon>
                 </v-list-tile-action>
@@ -317,6 +318,16 @@
         </v-list-group>
 
         <v-list-tile>
+            <nuxt-link :to="{ name: 'logs-page', params: { page: 1 } }" class="navigation-link">
+                <v-list-tile-action>
+                    <v-icon>find_in_page</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title> Журнал действий</v-list-tile-title>
+                </v-list-tile-content>
+            </nuxt-link>
+        </v-list-tile>
+        <v-list-tile>
             <nuxt-link :to="{ name: 'settings' }" class="navigation-link">
                 <v-list-tile-action>
                     <v-icon>settings</v-icon>
@@ -344,6 +355,9 @@
     export default {
         data() {
             return {
+
+                currentYear: null,
+                currentMonth: null,
                 begin_date: new Date().getFullYear() + "-01-01",
                 end_date: new Date().toISOString().substr(0, 10),
                 menu_models: {
@@ -352,6 +366,17 @@
                     settings_applications: false
                 }
             };
+        },
+        created() {
+            let currentDate = new Date();
+            this.currentYear = currentDate.getFullYear();
+            if (currentDate.getMonth() < 9) {
+                this.currentMonth = '0' + (currentDate.getMonth() + 1);
+            }
+            else {
+                this.currentMonth = currentDate.getMonth() + 1;
+
+            }
         }
     };
 </script>

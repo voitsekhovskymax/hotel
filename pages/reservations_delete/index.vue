@@ -51,7 +51,12 @@
     import JSZip from "jszip";
 
     export default {
-        name: 'reservations-delete',
+        name: 'reservations_delete',
+        head() {
+            return {
+                title: 'Удаленные брони'
+            }
+        },
         data() {
             return {
                 response: null

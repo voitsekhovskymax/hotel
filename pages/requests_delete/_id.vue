@@ -123,6 +123,12 @@
 
 <script>
     export default {
+        name: 'requests_delete-id',
+        head() {
+            return {
+                title: 'Удаленная заявка №' + this.getOrderNum(this.response.room, this.response.begin_date, this.response.end_date)
+            }
+        },
         data() {
             return {
                 response: {

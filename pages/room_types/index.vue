@@ -149,6 +149,11 @@
 <script>
     export default {
         name: "room_types",
+        head() {
+            return {
+                title: 'Типы номеров'
+            }
+        },
         data() {
             return {
                 // data

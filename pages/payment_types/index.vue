@@ -150,6 +150,11 @@
 <script>
     export default {
         name: "payment_types",
+        head() {
+            return {
+                title: 'Типы отплат'
+            }
+        },
         data() {
             return {
                 // data

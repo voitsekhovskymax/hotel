@@ -9,7 +9,7 @@
       <template v-else>
         <v-card color="grey lighten-4">
           <v-toolbar prominent>
-            <v-toolbar-title>Новая заявка</v-toolbar-title>
+            <v-toolbar-title>Создание заявки</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
             <v-autocomplete v-model="search" :items="results" :loading="isLoading" :search-input.sync="keywords"
@@ -278,7 +278,12 @@
 <script>
 
   export default {
-    name: 'reservations-add',
+    name: 'reservations-new',
+      head() {
+          return {
+              title: 'Создание заявки'
+          }
+      },
     data() {
       return {
         dialog_client_progress: false,

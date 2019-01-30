@@ -87,6 +87,11 @@
 
   export default {
     name: 'prepaid',
+      head() {
+          return {
+              title: 'Отчет по предоплатам'
+          }
+      },
     data() {
       return {
         //data

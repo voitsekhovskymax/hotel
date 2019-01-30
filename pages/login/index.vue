@@ -50,6 +50,11 @@
 
         layout: 'auth',
         name: 'login',
+        head() {
+            return {
+                title: 'Авторизация'
+            }
+        },
         data: () => ({
             progress: false,
             snackbar: false,

@@ -255,6 +255,11 @@
 
     export default {
         name: "Payment",
+        head() {
+            return {
+                title: 'Отчет по оплатам'
+            }
+        },
         data() {
             return {
                 // data
