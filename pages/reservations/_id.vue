@@ -932,8 +932,8 @@
                         this.init()
                     }).catch(error => {
                     console.log('Ошибка сервера')
-                    console.log(error)
-                    this.$snotify.success('Бронь успешно сохранена!', 'Ошибка сервера')
+                    console.log(error.response)
+                    this.$snotify.error('Бронь успешно сохранена!', 'Ошибка сервера')
 
                 })
             },

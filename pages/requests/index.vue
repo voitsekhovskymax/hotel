@@ -171,6 +171,7 @@
       dialogDeleteReservation(reservation) {
         this.dialogDelete = true;
         this.deleteReservation = reservation;
+      //  todo
       },
       deleteRequest() {
 

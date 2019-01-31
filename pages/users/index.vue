@@ -1,4 +1,5 @@
 <template>
+    <!-- todo доделать-->
     <div class="elevation-3">
         <v-card>
             <v-layout wrap>
