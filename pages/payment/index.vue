@@ -1,6 +1,7 @@
 <template>
   <v-layout>
     <h1>Payment</h1>
+
   </v-layout>
 </template>
 
@@ -9,7 +10,9 @@
   export default {
     name: 'Payment',
     data() {
-      return {};
+      return {
+          begin_date
+      };
     },
 
     beforeMount() {

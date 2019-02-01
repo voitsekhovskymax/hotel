@@ -42,7 +42,7 @@
                                         >Тип номера: {{ room.room_type.name }}
                                         </v-list-tile-sub-title>
                                         <v-list-tile-sub-title
-                                        >Количетсво мест: {{ room.quantity }}
+                                        >Количество мест: {{ room.quantity }}
                                         </v-list-tile-sub-title>
                                     </v-list-tile-content>
 
@@ -95,33 +95,13 @@
                     </v-flex>
                 </v-layout>
                 <v-card-text>
-                    <v-text-field v-model="newRoom.name" label="Название номера"/>
-                    <v-text-field
-                            v-model="newRoom.quantity"
-                            type="number"
-                            label="Количество мест"
-                    />
-                    <v-select
-                            :items="room_types"
-                            v-model="newRoom.room_type_id"
-                            item-text="name"
-                            item-value="id"
-                            label="Тип номера"
-                    />
-                    <v-select
-                            :items="locations"
-                            v-model="newRoom.location"
-                            item-text="text"
-                            item-value="value"
-                            label="Локация"
-                    />
-                    <v-select
-                            :items="blocks"
-                            v-model="newRoom.block"
-                            item-text="text"
-                            item-value="value"
-                            label="Блок"
-                    />
+                    <v-text-field v-model="newRoom.name" label="Название номера" :counter="50"/>
+                    <v-text-field v-model="newRoom.quantity" type="number" label="Количество мест"/>
+                    <v-select :items="room_types" v-model="newRoom.room_type_id" item-text="name" item-value="id"
+                              label="Тип номера"/>
+                    <v-select :items="locations" v-model="newRoom.location" item-text="text" item-value="value"
+                              label="Локация"/>
+                    <v-select :items="blocks" v-model="newRoom.block" item-text="text" item-value="value" label="Блок"/>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="success" @click="saveNewRoom">Сохранить</v-btn>

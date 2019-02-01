@@ -21,7 +21,7 @@ export default {
             {name: "viewport", content: "width=device-width, initial-scale=1"},
             {name: "author", content: "@voitsekhovskymax @vanobo"},
             {hid: "description", name: "description", content: ""}
-        ]
+        ],
     },
     // https://nuxtjs.org/api/configuration-modules
     modules: [
@@ -78,6 +78,7 @@ export default {
         // "~/plugins/beautify-scrollbar",
         '~/plugins/vue-snotify.js',
         '~/plugins/vue-intro.js',
+        '~/plugins/developer.js',
 
     ],
 

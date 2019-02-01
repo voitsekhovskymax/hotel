@@ -4,7 +4,18 @@
             <v-layout wrap>
                 <v-flex sm6 md6 xs12>
                     <v-toolbar class="no-shadow">
-
+                        <v-tooltip bottom>
+                            <v-btn flat icon color="grey" slot="activator" @click="getUpdateYear('prev')">
+                                <v-icon>first_page</v-icon>
+                            </v-btn>
+                            <span>Предыдущий год</span>
+                        </v-tooltip>
+                        <v-tooltip bottom>
+                            <v-btn flat icon color="grey" slot="activator" @click="getUpdateMonth('prev')">
+                                <v-icon>chevron_left</v-icon>
+                            </v-btn>
+                            <span>Предыдущий месяц</span>
+                        </v-tooltip>
                         <v-dialog
                                 ref="dialog_update"
                                 v-model="modal_update"
@@ -18,7 +29,6 @@
                                     slot="activator"
                                     v-model="date_update"
                                     label="Выбор даты"
-                                    prepend-icon="event"
                                     solo
                                     readonly
                             ></v-text-field>
@@ -29,6 +39,18 @@
                                 <v-btn color="success" @click="getUpdate(date_update)">Подтвердить</v-btn>
                             </v-date-picker>
                         </v-dialog>
+                        <v-tooltip bottom>
+                            <v-btn flat icon color="grey" slot="activator" @click="getUpdateMonth('next')">
+                                <v-icon>chevron_right</v-icon>
+                            </v-btn>
+                            <span>Следующий месяц</span>
+                        </v-tooltip>
+                        <v-tooltip bottom>
+                            <v-btn flat icon color="grey" slot="activator" @click="getUpdateYear('next')">
+                                <v-icon>last_page</v-icon>
+                            </v-btn>
+                            <span>Следующий год</span>
+                        </v-tooltip>
                         <v-spacer></v-spacer>
                     </v-toolbar>
                 </v-flex>
@@ -68,8 +90,8 @@
                     <template v-for="(day, index) in response.days">
                         <td v-if="typeof room.day !== 'undefined' && typeof room.day[index+1] !== 'undefined'"
                             :class="[ room.day[index+1].class, 'order_table' ]"
-                            @click="getOrder(room.day[index+1])">
-                            {{room.day[index+1].id}}
+                            @click="room.day[index+1].id !== undefined ? getOrder(room.day[index+1]) : ''">
+                            <!--{{room.day[index+1].id}}-->
                         </td>
                         <td v-else></td>
                         <!--<td>{{typeof room.day}}</td>-->
@@ -110,8 +132,12 @@
                     <v-flex sm6 md6 xs12>
                         <v-toolbar class="no-shadow">
 
-                            <v-toolbar-title>Бронь <b>{{order.orderRoom.order_num}}</b> | id: {{order.orderRoom.id}}
+                            <v-toolbar-title>Краткая информация по брони №<b>{{order.orderRoom.order_num}}</b>
                             </v-toolbar-title>
+
+                            <v-btn color="success"
+                                   :to="{name:'reservations-id', params:{id: order.orderRoom.id}}">Перейти
+                            </v-btn>
                             <v-spacer></v-spacer>
                         </v-toolbar>
                     </v-flex>
@@ -151,11 +177,11 @@
 
                             <v-text-field label="Уплачено всего" v-model="order.orderRoom.sum_payed"></v-text-field>
 
-                            <v-text-field label="Способ оплаты" v-model="order.orderRoom.payment_type.name"
-                                          :hint="order.orderRoom.payment_type.info"></v-text-field>
+                            <!--<v-text-field label="Способ оплаты" v-model="order.orderRoom.payment_type.name"-->
+                                          <!--:hint="order.orderRoom.payment_type.info"></v-text-field>-->
 
-                            <v-text-field label="Статус номера" v-model="order.orderRoom.room_status.name"
-                                          :hint="order.orderRoom.room_status.info"></v-text-field>
+                            <!--<v-text-field label="Статус номера" v-model="order.orderRoom.room_status.name"-->
+                                          <!--:hint="order.orderRoom.room_status.info"></v-text-field>-->
 
                         </v-flex>
 
@@ -169,9 +195,6 @@
 
                             <v-text-field label="Дети" v-model="order.orderRoom.kids"></v-text-field>
 
-                            <v-text-field label="Паркоместа (не готово)"></v-text-field>
-
-                            <v-text-field label="Дополнительные кровати" v-model="order.orderRoom.beds"></v-text-field>
 
                             <v-textarea
                                     label="Информация"
@@ -179,46 +202,6 @@
                                     auto-grow
                                     rows="1"
                             ></v-textarea>
-
-                            <template>
-                                <v-card color="grey lighten-3">
-
-                                    <v-card-title>Трансфер на вьезд</v-card-title>
-                                    <v-card-text>
-                                        <v-text-field label="Сумма"
-                                                      v-model="order.orderRoom.sum_transfer"></v-text-field>
-                                        <v-textarea
-                                                label="Информация"
-                                                v-model="order.orderRoom.info_transfer"
-                                                hint="Информация о трансфере на вьезд"
-                                                auto-grow
-                                                rows="1"
-                                        ></v-textarea>
-                                        <v-text-field label="Дата"
-                                                      v-model="order.orderRoom.date_transfer"></v-text-field>
-                                    </v-card-text>
-                                </v-card>
-                            </template>
-
-                            <template>
-                                <v-card color="grey lighten-3 mt-2">
-
-                                    <v-card-title>Трансфер на выезд</v-card-title>
-                                    <v-card-text>
-                                        <v-text-field label="Сумма"
-                                                      v-model="order.orderRoom.sum_transfer_back"></v-text-field>
-                                        <v-textarea
-                                                label="Информация"
-                                                v-model="order.orderRoom.info_transfer_back"
-                                                hint="Информация о трансфере на выезд"
-                                                auto-grow
-                                                rows="1"
-                                        ></v-textarea>
-                                        <v-text-field label="Дата"
-                                                      v-model="order.orderRoom.date_transfer_back"></v-text-field>
-                                    </v-card-text>
-                                </v-card>
-                            </template>
                         </v-flex>
                     </v-layout>
                 </v-card-text>
@@ -260,104 +243,116 @@
                 },
                 dialog: false,
                 order: {
-                    'orderRoom': {
-                        'id': null,
-                        'room_id': null,
-                        'client_id': null,
-                        'room_status_id': null,
-                        'payment_type_id': null,
-                        'date_checkin': null,
-                        'date_prepaid': null,
-                        'days_count': null,
-                        'discount': null,
-                        'order_num': null,
-                        'total_payment': null,
-                        'sum_nal': null,
-                        'sum_besnal': null,
-                        'sum_payed': null,
-                        'sum_prepaid': null,
-                        'was_payed': null,
-                        'was_prepaid': null,
-                        'info_prepaid': null,
-                        'is_payed': null,
-                        'is_close': null,
-                        'parking': null,
-                        'parking_current_count': null,
-                        'parking_number': null,
-                        'adult': null,
-                        'kids': null,
-                        'beds': null,
-                        'begin_date': null,
-                        'end_date': null,
-                        'date_transfer': null,
-                        'sum_transfer': null,
-                        'info_transfer': null,
-                        'date_transfer_back': null,
-                        'sum_transfer_back': null,
-                        'info_transfer_back': null,
-                        'col_prepaid_days': null,
-                        'info': null,
-                        'order_author': null,
-                        'is_queue': null,
-                        'deleted_at': null,
-                        'created_at': null,
-                        'updated_at': null,
-                        'room': {
-                            'id': null,
-                            'name': null,
-                            'room_type_id': null,
-                            'quantity': null,
-                            'type': null,
-                            'created_at': null,
-                            'updated_at': null
+                    "orderRoom": {
+                        "id": null,
+                        "room_id": null,
+                        "client_id": null,
+                        "room_status_id": null,
+                        "payment_type_id": null,
+                        "date_checkin": null,
+                        "date_prepaid": null,
+                        "days_count": null,
+                        "discount": null,
+                        "order_num": null,
+                        "total_payment": null,
+                        "sum_nal": null,
+                        "sum_besnal": null,
+                        "sum_payed": null,
+                        "sum_prepaid": null,
+                        "was_payed": null,
+                        "was_prepaid": null,
+                        "info_prepaid": null,
+                        "is_payed": null,
+                        "is_close": null,
+                        "parking": null,
+                        "parking_current_count": null,
+                        "parking_number": null,
+                        "adult": null,
+                        "kids": null,
+                        "beds": null,
+                        "begin_date": null,
+                        "end_date": null,
+                        "date_transfer": null,
+                        "sum_transfer": null,
+                        "info_transfer": null,
+                        "date_transfer_back": null,
+                        "sum_transfer_back": null,
+                        "info_transfer_back": null,
+                        "col_prepaid_days": null,
+                        "info": null,
+                        "order_author": null,
+                        "is_queue": null,
+                        "is_cron": null,
+                        "deleted_at": null,
+                        "created_at": null,
+                        "updated_at": null,
+                        "client": {
+                            "id": null,
+                            "name": null,
+                            "passport": null,
+                            "phone": null,
+                            "email": null,
+                            "address": null,
+                            "info": null,
+                            "is_black_list": null,
+                            "deleted_at": null,
+                            "created_at": null,
+                            "updated_at": null
                         },
-                        'room_status': {
-                            'id': null,
-                            'name': null,
-                            'info': '',
-                            'created_at': null,
-                            'updated_at': null
+                        "room": {
+                            "id": null,
+                            "name": null,
+                            "room_type_id": null,
+                            "quantity": null,
+                            "location": null,
+                            "block": null,
+                            "created_at": null,
+                            "updated_at": null
                         },
-                        'payment_type': {
-                            'id': null,
-                            'name': null,
-                            'info': '',
-                            'created_at': null,
-                            'updated_at': null
-                        }
+                        "room_status": {
+                            "id": null,
+                            "name": null,
+                            "info": null,
+                            "created_at": null,
+                            "updated_at": null
+                        },
+                        "payment_type": null
                     },
-                    'client': {
-                        'id': null,
-                        'name': null,
-                        'passport': null,
-                        'phone': null,
-                        'email': null,
-                        'address': null,
-                        'info': null,
-                        'is_black_list': null,
-                        'deleted_at': null,
-                        'created_at': null,
-                        'updated_at': null
+                    "client": {
+                        "id": null,
+                        "name": null,
+                        "passport": null,
+                        "phone": null,
+                        "email": null,
+                        "address": null,
+                        "info": null,
+                        "is_black_list": null,
+                        "deleted_at": null,
+                        "created_at": null,
+                        "updated_at": null
                     },
-                    'parking': [],
-                    'order_parking': [],
-                    'busy_parking': [],
-                    'states': {
-                        '1': 'Весенняя скидка',
-                        '2': 'Майские праздники',
-                        '9': 'бронь',
-                        '13': 'Тест отправки письма',
-                        '14': 'очередь',
-                        '15': 'предоплата получена',
-                        '16': 'замена номера',
-                        '17': 'снятие брони',
-                        '18': 'Трансфер',
-                        '19': 'освободился номер',
-                        '20': 'отсутствие предоплаты',
-                        '21': 'уточнение брони'
-                    },
-                    'liq_prepaid': null,
-                    'liq_paid': null
+                    "parking": null,
+                    "order_parking": null,
+                    "liq_prepaid": null,
+                    "liq_paid": {
+                        "id": null,
+                        "liq_pay_order_id": null,
+                        "amount": null,
+                        "email": null,
+                        "description": null,
+                        "href": null,
+                        "status_json": null,
+                        "cancel_json": null,
+                        "send_json": null,
+                        "order_type": null,
+                        "order_room_id": null,
+                        "is_prepaid": null,
+                        "is_paid": null,
+                        "iterator": null,
+                        "deleted_at": null,
+                        "created_at": null,
+                        "updated_at": null
+                    }
                 },
                 not_data: {},
                 col_days: '',
@@ -391,7 +386,7 @@
             console.log('Запрос данных... | ' + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds())
             this.axios.get('table/' + this.$route.params.month + '/' + this.$route.params.year).then((response) => {
                 this.response = response.data
-                this.date_update = new Date(this.response.current_year, this.response.current_month).toISOString().substr(0, 7)
+                this.date_update = new Date(this.response.current_year, this.response.current_month).toISOString().substr(0, 7);
                 console.log('Запрос данных завершен. | ' + new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds())
                 this.generateTable()
             }).catch(function (error) {
@@ -413,7 +408,7 @@
                     let DATATABLE = $('#HomeTable').DataTable({
                         'ordering': false,
                         paging: false,
-                        scrollY: $(window).height() - 250 + 'px',
+                        scrollY: $(window).height() - 300 + 'px',
                         'scrollX': true,
                         scrollCollapse: true,
                         fixedHeader: true,
@@ -431,22 +426,55 @@
                 this.loader = false
             },
             getOrder(order) {
-
-                console.log('выбранная клетка')
-                console.log(order)
-                this.dialog = true
-                this.progress = true
+                console.log('Была выбранная клетка');
+                console.log(order);
+                console.log(order.id);
+                this.dialog = true;
+                this.progress = true;
                 this.axios.get('orders/' + order.id + '/edit').then((response) => {
                     console.log('Полученный номер с бекенда')
-                    console.log(response.data)
-
-                    this.order = response.data
-                    this.progress = false
+                    console.log(response.data);
+                    this.order = response.data;
+                    this.progress = false;
                 })
             },
             getUpdate(date_update) {
                 let arrayDATE = date_update.split('-')
                 this.$router.push({name: 'table-year-month', params: {year: arrayDATE[0], month: arrayDATE[1]}})
+            },
+            getUpdateMonth(state) {
+                if (state == 'next') {
+                    this.response.current_month++;
+                    this.$router.push({
+                        name: 'table-year-month',
+                        params: {year: this.response.current_year, month: this.response.current_month}
+                    })
+                }
+
+                if (state == 'prev') {
+                    this.response.current_month--;
+                    this.$router.push({
+                        name: 'table-year-month',
+                        params: {year: this.response.current_year, month: this.response.current_month}
+                    })
+                }
+            },
+            getUpdateYear(state) {
+                if (state == 'next') {
+                    this.response.current_year++;
+                    this.$router.push({
+                        name: 'table-year-month',
+                        params: {year: this.response.current_year, month: this.response.current_month}
+                    })
+                }
+
+                if (state == 'prev') {
+                    this.response.current_year--;
+                    this.$router.push({
+                        name: 'table-year-month',
+                        params: {year: this.response.current_year, month: this.response.current_month}
+                    })
+                }
             }
         }
     }

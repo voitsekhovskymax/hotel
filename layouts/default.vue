@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <v-app :dark="$store.state.developer.options.night_theme">
 
         <vue-snotify></vue-snotify>
         <v-navigation-drawer v-model="drawer" clipped fixed app>
@@ -37,7 +37,7 @@
 
             <v-tooltip bottom>
                 <v-btn flat slot="activator">
-                    {{$store.state.pay_without_prepaid}}
+                    {{response.pay_without_prepaid}}
                 </v-btn>
                 <span>Сумма полученных наличных,    помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
             </v-tooltip>
@@ -45,7 +45,19 @@
             <v-btn color="success" :to="{name:'requests-new'}">
                 Новая заявка
             </v-btn>
+            <v-toolbar-side-icon @click="developer_navbar = !developer_navbar" v-if="$store.state.developer.god_mode"/>
+
         </v-toolbar>
+
+        <v-navigation-drawer
+                temporary
+                :right="true"
+                v-model="developer_navbar"
+                fixed
+        >
+        <sidebar-developer></sidebar-developer>
+
+        </v-navigation-drawer>
 
         <v-content>
             <div class="pa-3">
@@ -58,11 +70,13 @@
 
 <script>
     import NavbarList from "../components/NavbarList"
+    import SidebarDeveloper from "../components/SidebarDeveloper"
 
     export default {
         middleware: 'auth',
         components: {
-            NavbarList
+            NavbarList,
+            SidebarDeveloper
         },
         data() {
             return {
@@ -94,7 +108,23 @@
                 results: [],
                 results_type: null,
                 keywords: null,
+                //app data
+                response: {
+                    pay_without_prepaid: null
+                }
             };
+        },
+        computed: {
+            developer_navbar: {
+                get() {
+                    return this.$store.state.developer.options.sidebar;
+                },
+                set(val) {
+
+                    this.$store.dispatch('developer/godModeOptions', {type: 'sidebar', value: val})
+                }
+            },
+
         },
         watch: {
             keywords(after, before) {
@@ -115,9 +145,8 @@
         },
 
         created() {
-
             this.axios.get('app-load-show').then((response) => {
-                this.$store.commit('set', {type: 'pay_without_prepaid', value: response.data.pay_without_prepaid});
+                this.response = response.data;
             });
         },
 

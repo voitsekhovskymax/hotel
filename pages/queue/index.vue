@@ -48,11 +48,11 @@
                                 >
                                     <v-icon>mail_outline</v-icon>
                                 </v-btn>
-                                <span>Отправить письмо</span>
+                                <span>{{queue.is_answer ? 'Письмо уже было отправлено' : 'Отправить письмо'}}</span>
                             </v-tooltip>
                         </td>
                         <td>
-                            <v-btn color="primary">Перейти</v-btn>
+                            <v-btn color="primary" :to="{name:'queue-id', params:{id:queue.id}}">Перейти</v-btn>
                         </td>
                     </tr>
                     </tbody>
@@ -118,9 +118,8 @@
 </template>
 
 <script>
-    import $ from 'jquery';  // подключаем jQuery
+    import $ from 'jquery'; // подключаем jQuery
     import 'datatables.net'; // подключаем сам плагин
-    import 'datatables.net-buttons/js/buttons.html5.min';
     import 'datatables.net-buttons/js/buttons.html5.min';
     import JSZip from 'jszip';
 
@@ -173,45 +172,29 @@
                     this.messages = response.data.messages;
                 });
             },
-            sendMail() {
+            async sendMail() {
                 const request = {
                     email_client: this.selected_queue.email,
                     email_content: this.mail_select.info
                 };
                 console.log(this.selected_queue);
-                // this.axios.post("send-single-email", request).then(response => {
-                this.selected_queue.is_answer = 1;
-                this.axios.patch("queue/" + this.selected_queue.id, this.selected_queue).then(response => {
-                    this.dialog_mail = false;
-                    this.$notify({
-                        group: "global",
-                        type: "success",
-                        title: "Успешно",
-                        text: 'Письмо отослано'
-                    });
-                    console.log(response);
-                    this.$router.push({name: 'queue'});
-
+                await this.axios.post("send-single-email", request).then(response => {
+                    this.$snotify.success('Сообщение отправлено', 'Успешно');
                 }).catch(error => {
                     console.log(error.response);
-                    this.response = error.response.data;
-                    this.$notify({
-                        group: "global",
-                        type: "error",
-                        title: "Ошибка",
-                        text: error.response.data
-                    });
+                    this.$snotify.error(error.response, 'Ошибка');
                 });
-                // }).catch(error => {
-                //   console.log(error.response);
-                //   this.response = error.response.data;
-                //   this.$notify({
-                //     group: "global",
-                //     type: "error",
-                //     title: "Ошибка",
-                //     text: error.response.data
-                //   });
-                // });
+
+                this.selected_queue.is_answer = 1;
+                await this.axios.patch("queue/" + this.selected_queue.id, this.selected_queue).then(response => {
+                    this.dialog_mail = false;
+                    this.$snotify.success('Письмо отмечено ответом', 'Успешно');
+                }).catch(error => {
+                    console.log(error.response);
+                    this.$snotify.error(error.response, 'Ошибка');
+
+                });
+
             },
             deleteMailSelect() {
                 this.mail_select = {

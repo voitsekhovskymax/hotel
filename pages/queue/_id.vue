@@ -9,7 +9,7 @@
                                 <v-icon>arrow_back</v-icon>
                             </v-btn>
                             <v-toolbar-title
-                            >Номер заявки №<b>{{
+                            >Очередь. Номер заявки №<b>{{
                                 getOrderNum(
                                 response.data.room,
                                 response.data.begin_date,
@@ -62,7 +62,7 @@
                                 <v-text-field
                                         v-model="response.data.full_name"
                                         label="ФИО"
-                                        @change="changeInputs"
+
                                 />
 
                                 <v-dialog
@@ -79,7 +79,7 @@
                                             v-model="response.data.begin_date"
                                             label="Дата заезда"
                                             required
-                                            @change="changeInputs"
+
                                     />
                                     <v-date-picker
                                             v-model="response.data.begin_date"
@@ -123,7 +123,7 @@
                                             label="Дата выезда"
                                             readonly
                                             required
-                                            @change="changeInputs"
+
                                     />
                                     <v-date-picker
                                             v-model="response.data.end_date"
@@ -152,23 +152,23 @@
                                 <v-text-field
                                         v-model="response.data.email"
                                         label="Почта"
-                                        @change="changeInputs"
+
                                 />
                                 <v-text-field
                                         v-model="response.data.phone"
                                         label="Телефон"
-                                        @change="changeInputs"
+
                                 />
                                 <v-text-field
                                         v-model="response.prepaid"
                                         label="Предоплата"
-                                        @change="changeInputs"
+
                                         readonly
                                 />
                                 <v-text-field
                                         v-model="discount"
                                         label="Скидка"
-                                        @change="changeInputs"
+
                                 />
                             </v-flex>
 
@@ -179,28 +179,28 @@
                                         label="Номер отеля"
                                         item-text="name"
                                         return-object
-                                        @change="changeInputs"
+
                                 />
 
                                 <v-text-field
                                         v-model="response.data.adult"
                                         label="Взрослые"
-                                        @change="changeInputs"
+
                                 />
                                 <v-text-field
                                         v-model="response.data.kids"
                                         label="Дети"
-                                        @change="changeInputs"
+
                                 />
                                 <v-text-field
                                         v-model="response.data.parking"
                                         label="Паркоместа"
-                                        @change="changeInputs"
+
                                 />
                                 <v-text-field
                                         v-model="response.data.beds"
                                         label="Доп. кровати"
-                                        @change="changeInputs"
+
                                 />
                                 <!--
                                   <v-text-field label="Статус номера" v-model="response.data.beds"></v-text-field>
@@ -210,84 +210,27 @@
                                         label="Сообщение от клиента"
                                         auto-grow
                                         rows="1"
-                                        @change="changeInputs"
+
                                 />
-                            </v-flex>
-                            <v-flex v-if="!input_changed" lg12 sm12 md12 xs12>
-                                <v-layout align-center justify-space-around row fill-height>
-                                    <v-select
-                                            v-model="mail_select"
-                                            :items="messages"
-                                            label="Название письма"
-                                            hint="Выберите письмо из списка, и его содержимое добавится"
-                                            item-text="title"
-                                            return-object
-                                    />
-                                    <v-btn flat icon @click="deleteMailSelect">
-                                        <v-icon>delete</v-icon>
-                                    </v-btn>
-                                </v-layout>
                             </v-flex>
 
-                            <v-flex v-if="!input_changed" lg12 sm12 md12 xs12>
-                                <v-textarea
-                                        v-model="mail_select.info"
-                                        auto-grow
-                                        label="Содержимое письма"
-                                        rows="1"
-                                />
-                            </v-flex>
                         </v-layout>
                     </v-card-text>
 
                     <v-layout wrap>
                         <v-flex>
                             <v-toolbar class="no-shadow">
-                                <template v-if="!response.errors">
-                                    <v-tooltip v-if="!input_changed" top>
-                                        <v-btn slot="activator" color="success"
-                                               @click="saveRequest"
-                                        >Принять заявку
-                                        </v-btn
-                                        >
-                                        <span>Заявка будет принята, и перейдет в брони</span>
-                                    </v-tooltip>
-                                </template>
 
-                                <template v-if="response.errors">
-                                    <v-tooltip top>
-                                        <v-btn
-                                                slot="activator"
-                                                color="warning"
-                                                @click="updateRequest"
-                                        >Обновить
-                                        </v-btn
-                                        >
-                                        <span>Заявка будет обновлена, и пересчитана</span>
-                                    </v-tooltip>
-                                </template>
-
-                                <template v-else-if="input_changed">
-                                    <v-tooltip top>
-                                        <v-btn
-                                                slot="activator"
-                                                color="warning"
-                                                @click="updateRequest"
-                                        >Обновить
-                                        </v-btn
-                                        >
-                                        <span>Заявка будет обновлена, и пересчитана</span>
-                                    </v-tooltip>
-                                </template>
+                                <v-tooltip top>
+                                    <v-btn slot="activator" color="success"
+                                           @click="saveRequest">Восстановить заявку
+                                    </v-btn>
+                                    <span>Будет пересчитаны даты, и выведена заявка</span>
+                                </v-tooltip>
 
                                 <v-spacer/>
                                 <v-tooltip top>
-                                    <v-btn slot="activator" color="primary"
-                                           @click="queueRequest"
-                                    >В очередь
-                                    </v-btn
-                                    >
-                                    <span>Заявка будет отправлена в очередь</span>
+                                    <v-btn slot="activator" color="error" @click="deleteRequest">Удалить</v-btn>
                                 </v-tooltip>
                             </v-toolbar>
                         </v-flex>
@@ -295,108 +238,17 @@
                 </template>
             </v-card>
 
-            <v-dialog
-                    v-model="dialog"
-                    persistent
-                    fullscreen
-                    hide-overlay
-                    transition="dialog-bottom-transition"
-            >
-                <v-card>
-                    <v-layout wrap>
-                        <v-flex sm6 md6 xs12>
-                            <v-toolbar class="no-shadow" color="error" dark>
-                                <v-toolbar-title>
-                                    <v-icon>error_outline</v-icon>
-                                    В базе данных есть совпадение клиента
-                                </v-toolbar-title>
-                                <v-spacer/>
-                            </v-toolbar>
-                        </v-flex>
-                        <v-flex sm6 md6 xs12>
-                            <v-toolbar class="no-shadow" color="error" dark>
-                                <v-spacer/>
-                                <v-btn icon @click="dialog = false;">
-                                    <v-icon>close</v-icon>
-                                </v-btn>
-                            </v-toolbar>
-                        </v-flex>
-                    </v-layout>
-                    <v-card-text>
-                        <div class="comparison-table">
-                            <div class="comparison-column">
-                                <div class="comparison-title" style="background: #4caf50">
-                                    Клиент в заявке
-                                </div>
-                                <div class="comparison-content">
-                                    <v-text-field v-model="compare_client.id" label="ID"/>
-                                    <v-text-field v-model="response.data.full_name" label="ФИО"/>
-                                    <v-text-field v-model="response.data.email" label="Почта"/>
-                                    <v-text-field v-model="response.data.phone" label="Телефон"/>
-                                    <v-text-field v-model="response.data.passport" label="Паспорт"/>
-                                    <v-text-field v-model="response.data.city" label="Адрес"/>
-                                    <v-textarea v-model="compare_client.info" label="Информация" auto-grow rows="1"/>
-                                    <v-text-field v-model="compare_client.created_at" label="Дата создания"/>
-                                </div>
-                                <div class="comparison-actions">
-                                    <v-tooltip top>
-                                        <v-btn slot="activator" :color="new_client.btn_color" small
-                                               @click="dialog = false">
-                                            {{ new_client.btn_text }}
-                                        </v-btn>
-                                        <span>{{ new_client.tooltip }}</span>
-                                    </v-tooltip>
-                                </div>
-                            </div>
 
-                            <div v-for="compare in response.find_data" class="comparison-column">
-                                <div class="comparison-title">Клиент в базе</div>
-                                <div class="comparison-content">
-                                    <v-text-field v-model="compare.id" label="ID"/>
-                                    <v-text-field v-model="compare.name" label="ФИО"/>
-                                    <v-text-field v-model="compare.email" label="Почта"/>
-                                    <v-text-field v-model="compare.phone" label="Телефон"/>
-                                    <v-text-field v-model="compare.passport" label="Паспорт"/>
-                                    <v-text-field v-model="compare.address" label="Адрес"/>
-                                    <v-textarea v-model="compare.info" label="Информация" auto-grow rows="1"/>
-                                    <v-text-field v-model="compare.created_at" label="Дата создания"
-                                                  hint="дата создания клиента"/>
-                                </div>
-                                <div class="comparison-actions">
-                                    <v-layout wrap>
-                                        <v-tooltip top>
-                                            <v-btn slot="activator" small color="primary"
-                                                   @click="updateClient(compare)">Выбрать
-                                            </v-btn>
-                                            <span>Подставить в заявку этого клиента (новый клиент не будет создан)</span>
-                                        </v-tooltip>
-                                        <v-spacer></v-spacer>
-                                        <v-tooltip top>
-                                            <v-btn slot="activator"
-                                                   :to="{ name: 'clients-edit-id', params: { id: compare.id } }"
-                                                   small target="_blank">Профиль
-                                            </v-btn>
-                                            <span>Обновить профиль этого клиента</span>
-                                        </v-tooltip>
-
-
-                                    </v-layout>
-                                </div>
-                            </div>
-                        </div>
-                    </v-card-text>
-                </v-card>
-            </v-dialog>
         </div>
     </div>
 </template>
 
 <script>
     export default {
-        name: 'requests-id',
+        name: 'queue-id',
         head() {
             return {
-                title: 'Заявка №' + this.getOrderNum(this.response.data.room, this.response.data.begin_date, this.response.data.end_date)
+                title: 'Очередь. Заявка №' + this.getOrderNum(this.response.data.room, this.response.data.begin_date, this.response.data.end_date)
             }
         },
         data() {
@@ -526,9 +378,6 @@
                 .then(response => {
                     console.log(response);
                     this.response = response.data;
-                    if (this.response.find_data && this.response.find_data.length > 0) {
-                        this.dialog = true;
-                    }
                     this.getRooms();
                 })
                 .catch(error => {
@@ -536,147 +385,35 @@
                     this.response = error.response.data;
                     this.getRooms();
                 });
-
-            this.axios.get("messages").then(response => {
-                this.messages = response.data.messages;
-            });
         },
 
         methods: {
-            changeInputs() {
-                this.input_changed = true;
-            },
-            deleteMailSelect() {
-                this.mail_select = {
-                    info: null
-                };
-            },
-            updateClient(client) {
-                this.response.data.full_name = client.name;
-                this.response.data.email = client.email;
-                this.response.data.phone = client.phone;
-                this.response.data.city = client.address;
 
-                // Если этот обьект будет не пустым - вставим client_id,  в создание брони
-                this.compare_client = client;
-                this.new_client.btn_text = "Обновить данные";
-                this.new_client.btn_color = "primary";
-                this.new_client.state = false;
-                this.new_client.tooltip =
-                    "Подставлен клиент с базы (новый клиент не будет создан)";
-            },
-            queueRequest() {
-                console.log(this.response.data.id);
-
-                this.axios.post('queue', this.response.data).then((response) => {
-                    console.log(response);
-                    console.log('Заявка была перемещена в очередь');
-                    this.$snotify.success('Заявка была перемещена в очередь', 'Внимание');
+            deleteRequest() {
+                this.axios.delete('queue/' + this.response.data.id).then((response) => {
+                    this.$snotify.success('Заявка была удалена', 'Внимание');
                     this.$router.push({name: 'queue'})
                 }).catch((error) => {
                     console.log(error.data);
                     this.$snotify.success(error.data, 'Ошибка');
                 })
             },
-            updateRequest() {
+            saveRequest() {
                 this.progress = true;
-                this.response.data.room = this.select_room.name;
-                console.log(this.response.data);
 
+                this.response.data.is_queue = false;
+                console.log(this.response.data);
                 this.axios
                     .patch("reserves/" + this.response.data.id, this.response.data)
                     .then(response => {
+                        this.$snotify.success('Заявка была восстановлена', 'Успешно');
+
                         console.log(response.data);
-                        const id = response.data.id;
-                        this.axios
-                            .get("reserves/" + id + "/edit")
-                            .then(response => {
-                                console.log(response);
-                                this.response = response.data;
-                                this.progress = false;
-                                this.input_changed = false;
-                                if (this.response.find_data) {
-                                    this.dialog = true;
-                                }
-                            })
-                            .catch(error => {
-                                console.log(error.response);
-                                this.response = error.response.data;
-                                this.progress = false;
-                                this.input_changed = false;
-                                if (this.response.find_data) {
-                                    this.dialog = true;
-                                }
-                            });
+                        this.$router.push({name: 'requests-id', params: {id: this.response.data.id}})
+
                     });
             },
-            saveRequest() {
-                this.progress = true;
-                const new_order = this.response.data;
 
-                new_order.order_num = this.getOrderNum();
-                new_order.discount = this.discount;
-                new_order.prepaid = this.response.prepaid;
-
-                new_order.begin_date = this.formatDate(this.response.data.begin_date);
-                new_order.end_date = this.formatDate(this.response.data.end_date);
-
-                // Отправка письма клиенту
-                if (this.mail_select.info != null) {
-                    console.log("Письмо вложено");
-                    new_order.client_mail = this.mail_select.info;
-                    new_order.mail_select = this.mail_select;
-                }
-
-                if (this.compare_client.id !== null) {
-                    console.log("Клиента создавать не нужно");
-                    new_order.client_id = this.compare_client.id;
-                    this.postRequest(new_order);
-                } else {
-                    //  Создать клиента и уже потом создать бронь с этим клиентом
-                    console.log("Нужно создать клиента");
-
-                    const client = {};
-                    client.name = this.response.data.full_name;
-                    client.passport = "";
-                    client.phone = this.response.data.phone;
-                    client.email = this.response.data.email;
-                    client.address = this.response.data.city;
-                    client.info = "";
-
-                    this.axios
-                        .post("clients", client)
-                        .then(response => {
-                            console.log("Клиент успешно создан");
-
-                            new_order.client_id = response.data.client.id;
-                            this.postRequest(new_order);
-                        })
-                        .catch(error => {
-                            console.log("Ошибка при создании клиента");
-                            console.log(error);
-                        });
-                }
-            },
-            postRequest(new_order) {
-                console.log("Создание брони");
-                console.log(new_order);
-                this.axios
-                    .post("orders", new_order)
-                    .then(response => {
-                        console.log("Бронь успешно создана");
-
-                        this.$router.push({
-                            name: "reservations-id",
-                            params: {id: response.data.id}
-                        });
-                    })
-                    .catch(error => {
-                        console.log("Ошибка при создании брони");
-                        console.log(error.response);
-                        console.log(error.response.data);
-                    });
-            },
             getRooms() {
                 this.axios.get("rooms").then(response => {
                     this.rooms = response.data.rooms;

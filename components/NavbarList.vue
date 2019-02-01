@@ -337,6 +337,16 @@
                 </v-list-tile-content>
             </nuxt-link>
         </v-list-tile>
+        <v-list-tile v-if="$store.state.developer.god_mode">
+            <nuxt-link :to="{ name: 'statistic' }" class="navigation-link">
+                <v-list-tile-action>
+                    <v-icon>timeline</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title> Статистика </v-list-tile-title>
+                </v-list-tile-content>
+            </nuxt-link>
+        </v-list-tile>
         <v-divider/>
         <v-list-tile>
             <nuxt-link :to="{ name: 'logout' }" class="navigation-link">

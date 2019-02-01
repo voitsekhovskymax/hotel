@@ -64,6 +64,10 @@ button {
     justify-content: center;
 }
 
+.progress_loader.v-card {
+    
+}
+
 .notifications {
     position: fixed !important;
     z-index: 300;
