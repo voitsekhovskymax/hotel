@@ -9,7 +9,8 @@ export default {
 
     env: {
         baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-        API_URL: 'https://server.hotel-majak.com.ua/api/'
+        API_URL: 'https://server.hotel-majak.com.ua/api/',
+        appLocale:'ru',
     },
 
     // https://nuxtjs.org/api/configuration-head
@@ -75,10 +76,11 @@ export default {
         "~/plugins/vuetify",
         "~/plugins/vee-validate",
         "~/plugins/axios",
-        // "~/plugins/beautify-scrollbar",
+        "~/plugins/responsive.js",
         '~/plugins/vue-snotify.js',
         '~/plugins/vue-intro.js',
         '~/plugins/developer.js',
+        '~/plugins/i18n.js',
 
     ],
 

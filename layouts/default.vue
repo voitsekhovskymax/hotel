@@ -17,7 +17,8 @@
                             return-object
                             flat
                             solo-inverted
-                            class="mx-3"
+                            smAndUp
+                            class="mx-3 "
                             clearable
                             :item-text="(results_type == 'clients' ) ? 'name' : 'order_num'"
                             label="Найти клиента.."
@@ -37,9 +38,9 @@
 
             <v-tooltip bottom>
                 <v-btn flat slot="activator">
-                    {{response.pay_without_prepaid}}
+                    ₴ {{response.pay_without_prepaid}}
                 </v-btn>
-                <span>Сумма полученных наличных,    помимо предоплаты, с 1 Января текущего  года по настоящий момент</span>
+                <span>Сумма полученных наличных,    помимо предоплаты, с 1 Января текущего  года по настоящий момент. UAH \ ГРН</span>
             </v-tooltip>
             <v-spacer></v-spacer>
             <v-btn color="success" :to="{name:'requests-new'}">

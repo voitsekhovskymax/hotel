@@ -192,15 +192,23 @@
         },
         methods: {
             updateClient() {
-                this.axios.post('clients', {client: this.client}).then((response) => {
+                this.axios.patch('clients/' + this.client.id, this.client).then((response) => {
                     console.log(response);
+                    this.$snotify.success('Данные клиенты обновлены', 'Успешно');
+                }).catch((error) => {
+                    console.log(error.response);
+                    this.$snotify.error('Ошибка при обновлении клиента', 'Ошибка');
                 });
             },
             deleteClient() {
                 this.dialog = false;
                 this.axios.delete('clients/' + this.$route.params.id).then((response) => {
                     console.log(response);
-                    this.$router.push()
+                    this.$snotify.success('Клиент удален', 'Успешно');
+                    this.$router.push({name: 'clients', params: {page: 1}})
+                }).catch((error) => {
+                    console.log(error.response);
+                    this.$snotify.error('Ошибка при удалении клиента', 'Ошибка');
                 });
             }
         }

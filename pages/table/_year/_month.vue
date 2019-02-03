@@ -156,17 +156,12 @@
                         <v-flex sm6 md6 xs12>
                             <v-text-field label="ФИО" v-model="order.client.name"></v-text-field>
 
-                            <v-text-field label="Почта" v-model="order.client.email"></v-text-field>
-
                             <v-text-field label="Телефон" v-model="order.client.phone"></v-text-field>
 
                             <v-text-field label="Сумма без скидки"
                                           v-model="order.orderRoom.total_payment"></v-text-field>
 
                             <v-text-field label="Скидка" v-model="order.orderRoom.discount"></v-text-field>
-
-                            <v-text-field label="Количество дней предоплаты"
-                                          v-model="order.orderRoom.col_prepaid_days"></v-text-field>
 
                             <v-text-field label="Сумма предоплаты" v-model="order.orderRoom.sum_prepaid"></v-text-field>
 
@@ -194,7 +189,6 @@
                             <v-text-field label="Взрослые" v-model="order.orderRoom.adult"></v-text-field>
 
                             <v-text-field label="Дети" v-model="order.orderRoom.kids"></v-text-field>
-
 
                             <v-textarea
                                     label="Информация"

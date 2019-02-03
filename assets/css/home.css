@@ -33,47 +33,47 @@ td.hover {
 }
 
 .blue_evening {
-    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, #fff 50%);
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 50%, transparent 50%);
     color: black;
 }
 
 .orange_evening {
-    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, #fff 50%);
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 50%, transparent 50%);
     color: black;
 }
 
 .red_evening {
-    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, #fff 50%);
+    background-image: -webkit-linear-gradient(bottom right, #f44336 50%, transparent 50%);
     color: black;
 }
 
 .green_evening {
-    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, #fff 50%);
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 50%, transparent 50%);
     color: black;
 }
 
 .blue_morning {
-    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #2196f3 50%);
+    background-image: -webkit-linear-gradient(bottom right, transparent 50%, #2196f3 50%);
     color: black;
 }
 
 .orange_morning {
-    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #fb8c00 50%);
+    background-image: -webkit-linear-gradient(bottom right, transparent 50%, #fb8c00 50%);
     color: black;
 }
 
 .red_morning {
-    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #f44336 50%);
+    background-image: -webkit-linear-gradient(bottom right, transparent 50%, #f44336 50%);
     color: black;
 }
 
 .green_morning {
-    background-image: -webkit-linear-gradient(bottom right, #fff 50%, #4caf50 50%);
+    background-image: -webkit-linear-gradient(bottom right, transparent 50%, #4caf50 50%);
     color: black;
 }
 
 .blue_evening.blue_morning {
-    background-image: -webkit-linear-gradient(bottom right, #2196f3 48%, #fff 50%, #2196f3 52%);
+    background-image: -webkit-linear-gradient(bottom right, #2196f3 48%, transparent 50%, #2196f3 52%);
     color: black;
 }
 
@@ -98,7 +98,7 @@ td.hover {
 }
 
 .orange_evening.orange_morning {
-    background-image: -webkit-linear-gradient(bottom right, #fb8c00 48%, #fff 50%, #fb8c00 52%);
+    background-image: -webkit-linear-gradient(bottom right, #fb8c00 48%, transparent 50%, #fb8c00 52%);
     color: black;
 }
 
@@ -123,7 +123,7 @@ td.hover {
 }
 
 .red_evening.red_morning {
-    background-image: -webkit-linear-gradient(bottom right, #f44336 48%, #fff 50%, #f44336 52%);
+    background-image: -webkit-linear-gradient(bottom right, #f44336 48%, transparent 50%, #f44336 52%);
     color: black;
 }
 
@@ -148,7 +148,7 @@ td.hover {
 }
 
 .green_evening.green_morning {
-    background-image: -webkit-linear-gradient(bottom right, #4caf50 48%, #fff 50%, #4caf50 52%);
+    background-image: -webkit-linear-gradient(bottom right, #4caf50 48%, transparent 50%, #4caf50 52%);
     color: black;
 }
 

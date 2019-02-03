@@ -114,3 +114,28 @@ button {
 .introjs-tooltipReferenceLayer {
     font-size: 18px;
 }
+
+table.DTFC_Cloned tr, div.DTFC_LeftFootWrapper table, div.DTFC_RightFootWrapper table, div.DTFC_LeftHeadWrapper table, div.DTFC_RightHeadWrapper table{
+     /*background-color: transparent  !important;*/
+}
+
+
+
+/* DARK THEME */
+
+
+.theme--dark .v-list__group--active {
+    background: #303030;
+}
+
+.theme--dark table.DTFC_Cloned tr,
+.theme--dark div.DTFC_LeftFootWrapper table,
+.theme--dark div.DTFC_RightFootWrapper table,
+.theme--dark div.DTFC_LeftHeadWrapper table,
+.theme--dark div.DTFC_RightHeadWrapper table{
+    background-color: #222  !important;
+}
+
+/*.theme--dark .table-bordered, .theme--dark .table-bordered td, .theme--dark .table-bordered th{*/
+    /*border: 1px solid #222 !important;*/
+/*}*/

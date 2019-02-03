@@ -42,7 +42,19 @@ export const actions = {
         Cookies.set('god_mode', godMode,)
 
     },
+    log({commit, dispatch, state}, params,) {
+        if (state.god_mode) {
+            console.log([
+                {type: 'Статус', value: params.status},
+                {type: 'Страница', value: params.page},
+                {type: 'Метод', value: params.method},
+                {type: 'Ответ метода', value: params.content},
+                {type: 'timestamp', value: new Date().toLocaleString() + ':' + new Date().getUTCMilliseconds()}
+            ]);
+        }
 
+
+    },
     godModeOptions({commit, dispatch}, {type, value}) {
         commit('UPDATE_OPTIONS', {type: type, value: value});
         Cookies.set(type, value)
