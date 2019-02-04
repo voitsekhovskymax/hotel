@@ -85,6 +85,13 @@
                 </v-toolbar>
 
                 <v-layout wrap class="selectors"/>
+
+                <v-alert
+                        :value="true"
+                        type="success"
+                >
+                    Всего к оплате: <b>{{total_payment}}</b>
+                </v-alert>
                 <table
                         id="table"
                         ref="table"
@@ -161,6 +168,7 @@
                 begin_date: new Date().toISOString().substr(0, 10),
                 end_date: new Date().toISOString().substr(0, 10),
                 response: {},
+                total_payment: null,
                 // helpers
                 modal_begin_date: false,
                 modal_end_date: false,
@@ -184,11 +192,12 @@
                         const begin = new Date(this.response.order_rooms[i].begin_date);
                         const end = new Date(this.response.order_rooms[i].end_date);
                         this.response.order_rooms[i].count_days = (end - begin) / 86400000;
-                        console.log(this.response.order_rooms[i].count_days);
+                        this.total_payment += this.response.order_rooms[i].total_payment;
+
                     }
 
-                    this.begin_date = datePickerFormat(response.data.date_str[0]);
-                    this.end_date = datePickerFormat(response.data.date_str[1]);
+                    this.begin_date = this.$route.params.begin_date;
+                    this.end_date = this.$route.params.end_date;
                     this.generateTable();
                 });
         },

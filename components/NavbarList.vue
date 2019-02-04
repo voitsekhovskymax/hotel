@@ -144,7 +144,7 @@
             <v-list-tile>
                 <nuxt-link
                         :to="{
-            name: 'arrival-begin_date-end_date',
+            name: 'departure-begin_date-end_date',
             params: { begin_date: begin_date, end_date: end_date }
           }"
                         class="navigation-link"
@@ -305,16 +305,16 @@
                 </nuxt-link>
             </v-list-tile>
 
-            <v-list-tile>
-                <nuxt-link :to="{ name: 'backup' }" class="navigation-link">
-                    <v-list-tile-action>
-                        <v-icon>backup</v-icon>
-                    </v-list-tile-action>
-                    <v-list-tile-content>
-                        <v-list-tile-title> Восстановление данных</v-list-tile-title>
-                    </v-list-tile-content>
-                </nuxt-link>
-            </v-list-tile>
+            <!--<v-list-tile>-->
+                <!--<nuxt-link :to="{ name: 'backup' }" class="navigation-link">-->
+                    <!--<v-list-tile-action>-->
+                        <!--<v-icon>backup</v-icon>-->
+                    <!--</v-list-tile-action>-->
+                    <!--<v-list-tile-content>-->
+                        <!--<v-list-tile-title> Восстановление данных</v-list-tile-title>-->
+                    <!--</v-list-tile-content>-->
+                <!--</nuxt-link>-->
+            <!--</v-list-tile>-->
         </v-list-group>
 
         <v-list-tile>
@@ -344,6 +344,17 @@
                 </v-list-tile-action>
                 <v-list-tile-content>
                     <v-list-tile-title> Статистика </v-list-tile-title>
+                </v-list-tile-content>
+            </nuxt-link>
+        </v-list-tile>
+
+        <v-list-tile v-if="$store.state.developer.god_mode">
+            <nuxt-link :to="{ name: 'version' }" class="navigation-link">
+                <v-list-tile-action>
+                    <v-icon>av_timer</v-icon>
+                </v-list-tile-action>
+                <v-list-tile-content>
+                    <v-list-tile-title> Версии проекта </v-list-tile-title>
                 </v-list-tile-content>
             </nuxt-link>
         </v-list-tile>

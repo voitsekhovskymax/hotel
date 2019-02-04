@@ -155,8 +155,8 @@
         data() {
             return {
                 // data
-                begin_date: null,
-                end_date: null,
+                begin_date: new Date().toISOString().substr(0, 10),
+                end_date: new Date().toISOString().substr(0, 10),
                 response: {},
                 // helpers
                 modal_begin_date: false,
@@ -167,10 +167,6 @@
                     end_date: null
                 }
             };
-        },
-        created() {
-            this.begin_date = this.$route.params.begin_date;
-            this.end_date = this.$route.params.end_date;
         },
         beforeMount() {
             this.axios
@@ -188,8 +184,8 @@
                         console.log(this.response.order_rooms[i].count_days);
                     }
 
-                    this.begin_date = datePickerFormat(response.data.date_str[0]);
-                    this.end_date = datePickerFormat(response.data.date_str[1]);
+                    this.begin_date = this.$route.params.begin_date;
+                    this.end_date = this.$route.params.end_date;
                     this.generateTable();
                 });
         },
