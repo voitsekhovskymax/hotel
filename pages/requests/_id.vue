@@ -298,30 +298,27 @@
             <v-dialog
                     v-model="dialog"
                     persistent
+                    scrollable
                     fullscreen
                     hide-overlay
                     transition="dialog-bottom-transition"
             >
                 <v-card>
-                    <v-layout wrap>
-                        <v-flex sm6 md6 xs12>
-                            <v-toolbar class="no-shadow" color="error" dark>
-                                <v-toolbar-title>
-                                    <v-icon>error_outline</v-icon>
-                                    В базе данных есть совпадение клиента
-                                </v-toolbar-title>
-                                <v-spacer/>
-                            </v-toolbar>
-                        </v-flex>
-                        <v-flex sm6 md6 xs12>
-                            <v-toolbar class="no-shadow" color="error" dark>
-                                <v-spacer/>
-                                <v-btn icon @click="dialog = false;">
-                                    <v-icon>close</v-icon>
-                                </v-btn>
-                            </v-toolbar>
-                        </v-flex>
-                    </v-layout>
+
+
+                    <v-toolbar class="zindex1" flat color="error" dark>
+                        <v-toolbar-title>
+                            <v-icon>error_outline</v-icon>
+                            <span class="hidden-xs-only">В базе данных есть совпадение клиента</span>
+                            <span class="d-xl-block">Совпадение </span>
+                        </v-toolbar-title>
+                        <v-spacer/>
+                        <v-btn icon @click="dialog = false;">
+                            <v-icon>close</v-icon>
+                        </v-btn>
+                    </v-toolbar>
+
+
                     <v-card-text>
                         <div class="comparison-table">
                             <div class="comparison-column">
@@ -329,14 +326,15 @@
                                     Клиент в заявке
                                 </div>
                                 <div class="comparison-content">
-                                    <v-text-field v-model="compare_client.id" label="ID"/>
-                                    <v-text-field v-model="response.data.full_name" label="ФИО"/>
-                                    <v-text-field v-model="response.data.email" label="Почта"/>
-                                    <v-text-field v-model="response.data.phone" label="Телефон"/>
-                                    <v-text-field v-model="response.data.passport" label="Паспорт"/>
-                                    <v-text-field v-model="response.data.city" label="Адрес"/>
-                                    <v-textarea v-model="compare_client.info" label="Информация" auto-grow rows="1"/>
-                                    <v-text-field v-model="compare_client.created_at" label="Дата создания"/>
+                                    <v-text-field disabled v-model="compare_client.id" label="ID"/>
+                                    <v-text-field disabled v-model="response.data.full_name" label="ФИО"/>
+                                    <v-text-field disabled v-model="response.data.email" label="Почта"/>
+                                    <v-text-field disabled v-model="response.data.phone" label="Телефон"/>
+                                    <v-text-field disabled v-model="response.data.passport" label="Паспорт"/>
+                                    <v-text-field disabled v-model="response.data.city" label="Адрес"/>
+                                    <v-textarea disabled v-model="compare_client.info" label="Информация" auto-grow
+                                                rows="1"/>
+                                    <v-text-field disabled v-model="compare_client.created_at" label="Дата создания"/>
                                 </div>
                                 <div class="comparison-actions">
                                     <v-tooltip top>
@@ -352,14 +350,14 @@
                             <div v-for="compare in response.find_data" class="comparison-column">
                                 <div class="comparison-title">Клиент в базе</div>
                                 <div class="comparison-content">
-                                    <v-text-field v-model="compare.id" label="ID"/>
-                                    <v-text-field v-model="compare.name" label="ФИО"/>
-                                    <v-text-field v-model="compare.email" label="Почта"/>
-                                    <v-text-field v-model="compare.phone" label="Телефон"/>
-                                    <v-text-field v-model="compare.passport" label="Паспорт"/>
-                                    <v-text-field v-model="compare.address" label="Адрес"/>
-                                    <v-textarea v-model="compare.info" label="Информация" auto-grow rows="1"/>
-                                    <v-text-field v-model="compare.created_at" label="Дата создания"
+                                    <v-text-field disabled v-model="compare.id" label="ID"/>
+                                    <v-text-field disabled v-model="compare.name" label="ФИО"/>
+                                    <v-text-field disabled v-model="compare.email" label="Почта"/>
+                                    <v-text-field disabled v-model="compare.phone" label="Телефон"/>
+                                    <v-text-field disabled v-model="compare.passport" label="Паспорт"/>
+                                    <v-text-field disabled v-model="compare.address" label="Адрес"/>
+                                    <v-textarea disabled v-model="compare.info" label="Информация" auto-grow rows="1"/>
+                                    <v-text-field disabled v-model="compare.created_at" label="Дата создания"
                                                   hint="дата создания клиента"/>
                                 </div>
                                 <div class="comparison-actions">
@@ -481,7 +479,7 @@
                 },
                 new_client: {
                     btn_color: "success",
-                    btn_text: "Создать новый профиль клиента",
+                    btn_text: "Создать клиента",
                     state: true, // true = создание нового клиента, false = обновление данных с базы
                     tooltip: "Будет создан новый клиент с такими параметрами"
                 }
@@ -489,25 +487,31 @@
         },
         watch: {
             mail_select(after, before) {
-                const order_num =
-                    "Ваш номер брони - " +
-                    this.getOrderNum(
-                        this.response.data.room,
-                        this.response.data.begin_date,
-                        this.response.data.end_date
-                    ) +
-                    "; ";
-                const begin_date =
-                    "Дата заезда - " +
-                    this.formatDate(this.response.data.begin_date) +
-                    "; ";
-                const end_date =
-                    "Дата выезда - " + this.formatDate(this.response.data.end_date) + "; ";
-                const adult = "Взрослых - " + this.response.data.adult + "; ";
-                const kids = "Детей  - " + this.response.data.kids + "; ";
-                const parking = "Парковочных мест - " + this.response.data.parking + "; ";
-                const beds =
-                    "Дополнительных кроватей - " + this.response.data.adult + "; ";
+
+                let order_num_locale = "Ваш номер брони - ";
+                let begin_date_locale = "Дата заезда - ";
+                let end_date_locale = "Дата выезда - ";
+                let adult_locale = "Взрослых - ";
+                let kids_locale = "Детей  - ";
+                let parking_locale = "Парковочных мест - ";
+                let beds_locale = "Дополнительных кроватей - ";
+
+                if (this.mail_select.lang == 'ua') {
+                    order_num_locale = "Ваш номер бронювання- ";
+                    begin_date_locale = "Дата заїзду - ";
+                    end_date_locale = "Дата виїзду - ";
+                    adult_locale = "Дорослих - ";
+                    kids_locale = "Дітей - ";
+                    parking_locale = "Паркувальних місць - ";
+                    beds_locale = "Додаткових ліжок - ";
+                }
+                const order_num = order_num_locale + this.getOrderNum(this.response.data.room, this.response.data.begin_date, this.response.data.end_date) + "; ";
+                const begin_date = begin_date_locale + this.formatDate(this.response.data.begin_date) + "; ";
+                const end_date = end_date_locale + this.formatDate(this.response.data.end_date) + "; ";
+                const adult = adult_locale + this.response.data.adult + "; ";
+                const kids = kids_locale + (this.response.data.kids !== null ? this.response.data.kids : 0) + "; ";
+                const parking = parking_locale + (this.response.data.parking !== null ? this.response.data.parking : 0) + "; ";
+                const beds = beds_locale + (this.response.data.beds !== null ? this.response.data.beds : 0) + "; ";
                 this.mail_select.info =
                     after.info +
                     " | " +
@@ -539,6 +543,9 @@
 
             this.axios.get("messages").then(response => {
                 this.messages = response.data.messages;
+                for (let i = 0; i < this.messages.length; i++) {
+                    this.messages[i].title = this.messages[i].title + ' | ' + this.messages[i].lang;
+                }
             });
         },
 
@@ -611,6 +618,8 @@
                     });
             },
             saveRequest() {
+                console.log("Принятие заявки..");
+
                 this.progress = true;
                 const new_order = this.response.data;
 
@@ -626,6 +635,8 @@
                     console.log("Письмо вложено");
                     new_order.client_mail = this.mail_select.info;
                     new_order.mail_select = this.mail_select;
+                    new_order.email_lang = this.mail_select.lang;
+
                 }
 
                 if (this.compare_client.id !== null) {
@@ -665,11 +676,20 @@
                     .post("orders", new_order)
                     .then(response => {
                         console.log("Бронь успешно создана");
-
-                        this.$router.push({
-                            name: "reservations-id",
-                            params: {id: response.data.id}
+                        let requests_id = response.data.id;
+                        this.axios.get('neworders').then((response) => {
+                            this.response = response.data;
+                            this.$store.dispatch('storage/set', {
+                                type: 'count_requests',
+                                value: response.data.data.length
+                            })
+                            this.$router.push({
+                                name: "reservations-id",
+                                params: {id: requests_id}
+                            });
                         });
+
+
                     })
                     .catch(error => {
                         console.log("Ошибка при создании брони");
@@ -738,10 +758,17 @@
         color: white;
     }
 
-    .comparison-content {
-    }
-
     .card-content .flex {
         padding: 10px !important;
+    }
+
+    .small-less .comparison-table {
+        display: block;
+        padding-top: 50px;
+    }
+
+    .small-less .comparison-column {
+        min-width: inherit !important;
+
     }
 </style>

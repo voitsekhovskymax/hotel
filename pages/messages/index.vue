@@ -284,6 +284,8 @@
             sendMail() {
                 this.progress = true;
                 this.request.email_content = this.mail_select.info;
+                this.request.email_lang= this.mail_select.lang;
+
                 if (this.sendTo == 'single') {
                     this.axios.post('send-single-email', this.request).then((response) => {
                         console.log(response);
@@ -292,7 +294,6 @@
                     }).catch((error) => {
                         console.log(error.response);
                         this.$snotify.error(error.response, 'Ошибка');
-
                     })
                 } else {
                     this.axios.post('send-multiple-email', this.request).then((response) => {

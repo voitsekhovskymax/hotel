@@ -10,7 +10,7 @@ export default {
     env: {
         baseUrl: process.env.BASE_URL || 'http://localhost:3000',
         API_URL: 'https://server.hotel-majak.com.ua/api/',
-        appLocale:'ru',
+        appLocale: 'ru',
     },
 
     // https://nuxtjs.org/api/configuration-head

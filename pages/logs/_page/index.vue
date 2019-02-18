@@ -18,6 +18,7 @@
                     >
                         <thead>
                         <tr>
+                            <th></th>
                             <th class="export">Тип записи</th>
                             <th class="export">Модель Записи</th>
                             <th class="export">Пользователь</th>
@@ -27,6 +28,7 @@
                         <tbody>
                         <tr v-for="item in response.data" :class="[getColor(item.type), 'type_row']"
                             @click="getRouterType(item)">
+                            <th>{{getText(item)}}</th>
                             <td data-field="date">{{ getType(item.type) }}</td>
                             <td data-field="room"> {{ getModel(item.model) }}</td>
                             <td data-field="fio">
@@ -108,6 +110,12 @@
                     case 'Queue':
                         router_type += 'queue';
                         break;
+                    case 'Reserve':
+                        router_type += 'reserve';
+                        break;
+                    case 'Cron':
+                        router_type += 'cron';
+                        break;
                     default:
                         router_type += 'model_undefined';
                         break;
@@ -154,8 +162,26 @@
                         return 'Брони';
                     case 'Queue':
                         return 'Очереди';
+                    case 'Reserve':
+                        return 'Заявки';
+                    case 'Cron':
+                        return 'CRON';
                     default:
                         return '(Модель записи не обнаружена)'
+                }
+            },
+            getText(item) {
+                if (item.model === 'OrderRoom' && item.type === "updated") {
+                    if (item.parameters.before.sum_payed < item.parameters.before.sum_prepaid && item.parameters.after.sum_payed === item.parameters.after.sum_prepaid) {
+                        return 'Предоплата';
+                    }
+                    if (item.parameters.before.was_payed !== null && parseInt(item.parameters.before.was_payed) > 0 && parseInt(item.parameters.before.was_payed) < parseInt(item.parameters.after.was_payed)) {
+                        return 'Доплата';
+                    }
+                    if(item.parameters.before.was_payed == null && parseInt(item.parameters.after.was_payed) > 0){
+                        return 'Доплата';
+                    }
+
                 }
             },
             updateTable() {
@@ -173,15 +199,15 @@
 <style src="~/assets/datatables/css/dataTables.bootstrap4.css" scoped/>
 <style scoped>
     .type_created {
-        background: rgba(40, 167, 69, 0.1);;
+        background: rgba(40, 167, 69, 0.2);
     }
 
     .type_updated {
-        background: rgb(240, 248, 255);
+        background: rgba(33, 150, 243, 0.22);
     }
 
     .type_deleted {
-        background: rgba(255, 0, 0, 0.5);
+        background: rgba(255, 0, 0, 0.3);
     }
 
     .type_row {

@@ -23,7 +23,18 @@
                                     <v-text-field id="password" prepend-icon="lock" name="password" label="Пароль"
                                                   type="password" v-model="auth.password"></v-text-field>
                                 </v-form>
+                                <v-select
+                                        :items="cookies_timer"
+                                        v-model="remember"
+                                        label="Запомнить сессию"
+                                        item-text="text"
+                                        item-value="value"
+                                        solo
+                                >
+                                </v-select>
+
                             </v-card-text>
+
                             <v-card-actions>
                                 <v-spacer></v-spacer>
                                 <v-btn color="primary" @click="login">Вход</v-btn>
@@ -64,7 +75,30 @@
             auth: {
                 email: null,
                 password: null,
-            }
+            },
+            remember: 0.5,
+            cookies_timer: [
+                {
+                    text: 'Запомнить на 12 часов',
+                    value: 0.5,
+                },
+                {
+                    text: 'Запомнить на 1 день',
+                    value: 1,
+                },
+                {
+                    text: 'Запомнить на 2 дня',
+                    value: 2,
+                },
+                {
+                    text: 'Запомнить на 7 дней',
+                    value: 7,
+                },
+                // {
+                //     text: 'До закрытия  браузера',
+                //     value: null,
+                // }
+            ]
         }),
         methods: {
             login() {
@@ -73,7 +107,7 @@
                 this.axios.post('login', this.auth).then((response) => {
                     if (response.data.token) {
                         console.log("Успешная авторизация");
-                        this.$store.dispatch('auth/saveToken', {token: response.data.token})
+                        this.$store.dispatch('auth/saveToken', {token: response.data.token, remember: this.remember})
                         this.progress = false;
                         let currentDate = new Date();
                         let currentYear = currentDate.getFullYear();

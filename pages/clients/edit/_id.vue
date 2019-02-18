@@ -1,5 +1,5 @@
 <template>
-    <div class="elevation-3">
+    <div >
         <v-card>
             <v-layout wrap>
                 <v-flex sm6 md6 xs12>
@@ -161,6 +161,45 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
+
+        <v-card class="mt-5">
+            <v-layout wrap>
+                <v-flex xs12>
+                    <v-toolbar flat>
+                        <v-toolbar-title>Все бронирования клиента <b>({{orders.length}})</b></v-toolbar-title>
+                        <v-spacer></v-spacer>
+                    </v-toolbar>
+                </v-flex>
+
+            </v-layout>
+            <v-card-text>
+                <v-list three-line>
+                    <v-list-tile
+                            v-for="order in orders"
+                            :key="order.id"
+                            avatar
+                            :to="{name:'reservations-id', params:{id: order.id}}"
+                            target="_blank"
+                    >
+
+                        <v-list-tile-avatar>
+                            <v-icon :class="getClass(order.room_status_id)" dark>{{
+                                getIcon(order.room_status_id)}}
+                            </v-icon>
+                        </v-list-tile-avatar>
+
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{ order.order_num }}</v-list-tile-title>
+                            <v-list-tile-sub-title>{{ order.begin_date }} | {{ order.end_date }}
+                            </v-list-tile-sub-title>
+                        </v-list-tile-content>
+
+                    </v-list-tile>
+                </v-list>
+            </v-card-text>
+
+        </v-card>
+
     </div>
 </template>
 
@@ -182,12 +221,14 @@
                     address: "",
                     info: "",
                 },
+                orders: []
             };
         },
         mounted() {
             this.axios.get('clients/' + this.$route.params.id + '/edit').then((response) => {
                 console.log(response);
                 this.client = response.data.client;
+                this.orders = response.data.orders;
             });
         },
         methods: {
@@ -210,7 +251,39 @@
                     console.log(error.response);
                     this.$snotify.error('Ошибка при удалении клиента', 'Ошибка');
                 });
-            }
+            },
+            getClass(status) {
+                switch (status) {
+                    case 1:
+                        return 'red ';
+                        break;
+                    case 2:
+                        return 'yellow darken-2 ';
+                        break;
+                    case 3:
+                        return 'green ';
+                        break;
+                    default:
+                        return 'blue ';
+                        break;
+                }
+            },
+            getIcon(status) {
+                switch (status) {
+                    case 1:
+                        return 'close';
+                        break;
+                    case 2:
+                        return 'credit_card ';
+                        break;
+                    case 3:
+                        return 'check';
+                        break;
+                    default:
+                        return 'info ';
+                        break;
+                }
+            },
         }
     }
 </script>

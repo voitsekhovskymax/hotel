@@ -27,9 +27,11 @@
                 </v-flex>
             </v-layout>
 
+
+
             <v-card v-for="mail in messages" :key="mail.id" class="mt-3">
                 <v-card-title>
-                    <h3 class="headline mb-0">{{mail.title}}</h3>
+                    <h3 class="headline mb-0">{{mail.title}} | {{mail.lang}}</h3>
                 </v-card-title>
                 <v-card-text>
                     <div class="mail_content">
@@ -58,6 +60,11 @@
                             label="Содержимое письма"
                             rows="1"
                     ></v-textarea>
+                    <v-select
+                            :items="languages"
+                            v-model="newMail.lang"
+                            label="Язык письма"
+                    ></v-select>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="success" @click="saveNewMail">Сохранить</v-btn>
@@ -82,6 +89,11 @@
                             label="Содержимое письма"
                             rows="1"
                     ></v-textarea>
+                    <v-select
+                            :items="languages"
+                            v-model="editMail.lang"
+                            label="Язык письма"
+                    ></v-select>
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="success" @click="saveEditMail">Обновить</v-btn>
@@ -104,6 +116,8 @@
                             label="Содержимое письма"
                             rows="1"
                     ></v-textarea>
+                    <v-text-field label="Язык письма" v-model="deleteMail.lang"></v-text-field>
+
                 </v-card-text>
                 <v-card-actions>
                     <v-btn color="error" @click="saveDeleteMail">Удалить</v-btn>
@@ -129,18 +143,25 @@
         },
         data() {
             return {
+                languages:[
+                    'ru',
+                    'ua'
+                ],
                 progress: false,
                 editMail: {
                     title: null,
-                    info: null
+                    info: null,
+                    lang:null,
                 },
                 deleteMail: {
                     title: null,
-                    info: null
+                    info: null,
+                    lang:null,
                 },
                 newMail: {
                     title: null,
-                    info: null
+                    info: null,
+                    lang:null,
                 },
                 dialogEdit: false,
                 dialogDelete: false,

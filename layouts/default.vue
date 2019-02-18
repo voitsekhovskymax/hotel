@@ -4,6 +4,22 @@
         <vue-snotify></vue-snotify>
         <v-navigation-drawer v-model="drawer" clipped fixed app>
             <navbar-list></navbar-list>
+
+            <div class="footer-navbar">
+                <v-tooltip top>
+                    <v-btn
+                            slot="activator"
+                            flat icon
+                            href="https://old.hotel-majak.com.ua"
+                            target="_blank" tabindex="-1"
+                    >
+                        <v-icon color="primary">open_in_new</v-icon>
+                    </v-btn>
+
+                    <span>Предыдущая версия</span>
+                </v-tooltip>
+            </div>
+
         </v-navigation-drawer>
 
         <v-toolbar clipped-left color="primary" dark="" fixed app>
@@ -55,8 +71,9 @@
                 :right="true"
                 v-model="developer_navbar"
                 fixed
+                v-if="$store.state.developer.god_mode"
         >
-        <sidebar-developer></sidebar-developer>
+            <sidebar-developer></sidebar-developer>
 
         </v-navigation-drawer>
 
@@ -127,7 +144,11 @@
             },
 
         },
+
         watch: {
+            '$route': function(){
+                this.getData();
+            },
             keywords(after, before) {
                 if (this.keywords != null) {
                     if (this.keywords.length > 2) {
@@ -145,13 +166,38 @@
             }
         },
 
-        created() {
-            this.axios.get('app-load-show').then((response) => {
-                this.response = response.data;
+        async created() {
+            //Обработка новых заявок
+            let app = this;
+            await this.axios.get('neworders').then((response) => {
+                if (response.data.data.length > 0) {
+                    this.$store.dispatch('storage/set', {type: 'count_requests', value: response.data.data.length})
+                    // this.$snotify.success(
+                    //     "Количество необработаных заявок : " + response.data.data.length,
+                    //     'Необработаные заявки', {
+                    //         timeout: 10000,
+                    //         showProgressBar: false,
+                    //         closeOnClick: true,
+                    //         pauseOnHover: true,
+                    //         // position:'centerCenter',
+                    //     }).on('click', function () {
+                    //     app.$router.push({name: 'requests'})
+                    // });
+
+                }
             });
+
+            await this.getData();
+
         },
 
         methods: {
+            getData() {
+                this.axios.get('app-load-show').then((response) => {
+                    this.response = response.data;
+                    console.log('app-load-show');
+                });
+            },
             inputChange(val) {
                 console.log('inputChange');
                 console.log(val);

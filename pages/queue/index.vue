@@ -175,7 +175,8 @@
             async sendMail() {
                 const request = {
                     email_client: this.selected_queue.email,
-                    email_content: this.mail_select.info
+                    email_content: this.mail_select.info,
+                    email_lang: this.mail_select.lang
                 };
                 console.log(this.selected_queue);
                 await this.axios.post("send-single-email", request).then(response => {

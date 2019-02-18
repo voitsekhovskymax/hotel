@@ -20,7 +20,10 @@
         >
             <v-list-tile slot="activator">
                 <v-list-tile-content>
-                    <v-list-tile-title> Заявки</v-list-tile-title>
+                    <v-list-tile-title>
+                        Заявки
+                        <span v-if="$store.state.storage.count_requests" class="count_requests">{{$store.state.storage.count_requests}}</span>
+                    </v-list-tile-title>
                 </v-list-tile-content>
             </v-list-tile>
             <v-list-tile>
@@ -29,7 +32,11 @@
                         <v-icon>add</v-icon>
                     </v-list-tile-action>
                     <v-list-tile-content>
-                        <v-list-tile-title> Новые заявки</v-list-tile-title>
+                        <v-list-tile-title>
+                            Новые заявки
+                            <span v-if="$store.state.storage.count_requests" class="count_requests">{{$store.state.storage.count_requests}}</span>
+
+                        </v-list-tile-title>
                     </v-list-tile-content>
                 </nuxt-link>
             </v-list-tile>
@@ -306,14 +313,14 @@
             </v-list-tile>
 
             <!--<v-list-tile>-->
-                <!--<nuxt-link :to="{ name: 'backup' }" class="navigation-link">-->
-                    <!--<v-list-tile-action>-->
-                        <!--<v-icon>backup</v-icon>-->
-                    <!--</v-list-tile-action>-->
-                    <!--<v-list-tile-content>-->
-                        <!--<v-list-tile-title> Восстановление данных</v-list-tile-title>-->
-                    <!--</v-list-tile-content>-->
-                <!--</nuxt-link>-->
+            <!--<nuxt-link :to="{ name: 'backup' }" class="navigation-link">-->
+            <!--<v-list-tile-action>-->
+            <!--<v-icon>backup</v-icon>-->
+            <!--</v-list-tile-action>-->
+            <!--<v-list-tile-content>-->
+            <!--<v-list-tile-title> Восстановление данных</v-list-tile-title>-->
+            <!--</v-list-tile-content>-->
+            <!--</nuxt-link>-->
             <!--</v-list-tile>-->
         </v-list-group>
 
@@ -343,7 +350,7 @@
                     <v-icon>timeline</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title> Статистика </v-list-tile-title>
+                    <v-list-tile-title> Статистика</v-list-tile-title>
                 </v-list-tile-content>
             </nuxt-link>
         </v-list-tile>
@@ -354,7 +361,7 @@
                     <v-icon>av_timer</v-icon>
                 </v-list-tile-action>
                 <v-list-tile-content>
-                    <v-list-tile-title> Версии проекта </v-list-tile-title>
+                    <v-list-tile-title> Версии проекта</v-list-tile-title>
                 </v-list-tile-content>
             </nuxt-link>
         </v-list-tile>
@@ -369,7 +376,14 @@
                 </v-list-tile-content>
             </nuxt-link>
         </v-list-tile>
+
+
+
+
     </v-list>
+    
+
+    
 </template>
 
 <script>
@@ -401,3 +415,12 @@
         }
     };
 </script>
+
+<style>
+    .count_requests {
+        background: #1976d2;
+        color: white;
+        padding: 2px 5px;
+        border-radius: 50px;
+    }
+</style>

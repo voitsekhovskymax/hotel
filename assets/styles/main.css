@@ -120,6 +120,27 @@ table.DTFC_Cloned tr, div.DTFC_LeftFootWrapper table, div.DTFC_RightFootWrapper 
 }
 
 
+.footer-navbar{
+    position: absolute;
+    bottom: 0px;
+    padding: 5px;
+    width: 100%;
+    font-size: 10px;
+}
+
+
+.zindex1{
+    z-index: 1;
+}
+
+.theme--light.v-input--is-disabled .v-label {
+    color: #7b7b7b !important;
+}
+.theme--light.v-input--is-disabled input,
+.theme--light.v-input--is-disabled textarea {
+    color:#000000 !important;
+}
+
 
 /* DARK THEME */
 

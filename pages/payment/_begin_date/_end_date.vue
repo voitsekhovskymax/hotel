@@ -97,72 +97,72 @@
                             <td>Всего дней за выбранный период</td>
                             <td>{{ response.all_data.days_count }}</td>
                             <td>{{ response.old_data.days_count }}</td>
-                            <td/>
+                            <td>{{ response.all_data.days_count - response.old_data.days_count }}</td>
                         </tr>
                         <tr>
                             <td>Количество заездов за выбранный период</td>
                             <td>{{ response.all_data.count_orders }}</td>
                             <td>{{ response.old_data.count_orders }}</td>
-                            <td/>
+                            <td>{{ response.all_data.count_orders - response.old_data.count_orders }}</td>
                         </tr>
                         <tr>
                             <td>Сумма по забронированным и занятым номерам</td>
-                            <td>{{ response.all_data.summ }}</td>
-                            <td>{{ response.old_data.summ }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.summ) }}</td>
+                            <td>{{ c(response.old_data.summ) }}</td>
+                            <td>{{ c(response.all_data.summ - response.old_data.summ ) }}</td>
                         </tr>
                         <tr>
                             <td>Сумма полученных наличных за выбранный период</td>
-                            <td>{{ response.all_data.nal_sum }}</td>
-                            <td>{{ response.old_data.nal_sum }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.nal_sum) }}</td>
+                            <td>{{ c(response.old_data.nal_sum) }}</td>
+                            <td>{{ c(response.all_data.nal_sum - response.old_data.nal_sum ) }}</td>
                         </tr>
                         <tr>
                             <td>Сумма полученных безналичных за выбранный период</td>
-                            <td>{{ response.all_data.besnal_sum }}</td>
-                            <td>{{ response.old_data.besnal_sum }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.besnal_sum) }}</td>
+                            <td>{{ c(response.old_data.besnal_sum) }}</td>
+                            <td>{{ c(response.all_data.besnal_sum - response.old_data.besnal_sum ) }}</td>
                         </tr>
                         <tr>
                             <td>Сумма оплаченная карточкой за выбранный период</td>
-                            <td>{{ response.all_data.card_sum }}</td>
-                            <td>{{ response.old_data.card_sum }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.card_sum) }}</td>
+                            <td>{{ c(response.old_data.card_sum) }}</td>
+                            <td>{{ c(response.all_data.card_sum - response.old_data.card_sum ) }}</td>
                         </tr>
                         <tr>
                             <td>Всего предоплат</td>
-                            <td>{{ response.all_data.sum_pred }}</td>
-                            <td>{{ response.old_data.sum_pred }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.sum_pred) }}</td>
+                            <td>{{ c(response.old_data.sum_pred) }}</td>
+                            <td>{{ c(response.all_data.sum_pred - response.old_data.sum_pred ) }}</td>
                         </tr>
                         <tr>
                             <td>Общая сумма поступлений</td>
                             <td>
-                                {{ response.all_data.summ - response.all_data.discount_sum }}
+                                {{ c(response.all_data.summ - response.all_data.discount_sum) }}
                             </td>
                             <td>
-                                {{ response.old_data.summ - response.old_data.discount_sum }}
+                                {{ c(response.old_data.summ - response.old_data.discount_sum) }}
                             </td>
-                            <td/>
+                            <td>{{ c((response.all_data.summ - response.all_data.discount_sum) - (response.old_data.summ - response.old_data.discount_sum)) }}</td>
                         </tr>
                         <tr>
                             <td>Всего скидка</td>
-                            <td>{{ response.all_data.discount_sum }}</td>
-                            <td>{{ response.old_data.discount_sum }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.discount_sum) }}</td>
+                            <td>{{ c(response.old_data.discount_sum) }}</td>
+                            <td>{{ c(response.all_data.discount_sum - response.old_data.discount_sum ) }}</td>
                         </tr>
 
                         <tr>
                             <td>Общая сумма поступлений без предоплат</td>
-                            <td>{{ response.all_data.sum_without_pred }}</td>
-                            <td>{{ response.old_data.sum_without_pred }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.sum_without_pred) }}</td>
+                            <td>{{ c(response.old_data.sum_without_pred) }}</td>
+                            <td>{{ c(response.all_data.sum_without_pred - response.old_data.sum_without_pred ) }}</td>
                         </tr>
                         <tr>
                             <td>Количество броней по которым осуществлена предоплата</td>
                             <td>{{ response.all_data.count_pred }}</td>
                             <td>{{ response.old_data.count_pred }}</td>
-                            <td/>
+                            <td>{{ c(response.all_data.count_pred - response.old_data.count_pred ) }}</td>
                         </tr>
                         <tr>
                             <td>
@@ -170,7 +170,7 @@
                             </td>
                             <td>{{ response.all_data.count_without_pred }}</td>
                             <td>{{ response.old_data.count_without_pred }}</td>
-                            <td/>
+                            <td>{{  response.all_data.count_without_pred - response.old_data.count_without_pred}}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -356,6 +356,10 @@
                     name: "payment-begin_date-end_date",
                     params: {begin_date: this.begin_date, end_date: this.end_date}
                 });
+            },
+            c(sum) {
+                // c - currency
+                return new Intl.NumberFormat('ru-RU', {style: 'currency', currency: 'UAH'}).format(sum);
             }
         }
     };

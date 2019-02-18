@@ -55,7 +55,7 @@
                     </v-toolbar>
                 </v-flex>
 
-                <v-flex sm6 md6 xs12>
+                <v-flex sm6 md6 xs12  class="hidden-sm-and-down">
                     <v-toolbar class="no-shadow">
                         <v-spacer></v-spacer>
                         <v-btn icon>
@@ -86,7 +86,7 @@
                 </thead>
                 <tbody>
                 <tr v-for="room in response.table">
-                    <td>{{room.name}}</td>
+                    <td>{{room.name}} <span class="quantity" v-if="room.quantity">({{room.quantity}})</span></td>
                     <template v-for="(day, index) in response.days">
                         <td v-if="typeof room.day !== 'undefined' && typeof room.day[index+1] !== 'undefined'"
                             :class="[ room.day[index+1].class, 'order_table' ]"
@@ -121,37 +121,27 @@
             </table>
         </div>
 
-        <v-dialog v-model="dialog" max-width="290" persistent fullscreen hide-overlay
+        <v-dialog v-model="dialog" max-width="290" persistent fullscreen hide-overlay scrollable
                   transition="dialog-bottom-transition">
             <v-card v-if="progress" class="progress_loader">
                 <v-progress-circular :size="70" :width="7" color="purple" indeterminate></v-progress-circular>
             </v-card>
 
-            <v-card v-else>
-                <v-layout wrap>
-                    <v-flex sm6 md6 xs12>
+            <v-card v-else class="order-info-dialog">
                         <v-toolbar class="no-shadow">
-
-                            <v-toolbar-title>Краткая информация по брони №<b>{{order.orderRoom.order_num}}</b>
+                            <v-toolbar-title class="hidden-sm-and-down">Краткая информация по брони №<b>{{order.orderRoom.order_num}}</b>
                             </v-toolbar-title>
 
                             <v-btn color="success"
                                    :to="{name:'reservations-id', params:{id: order.orderRoom.id}}">Перейти
                             </v-btn>
                             <v-spacer></v-spacer>
-                        </v-toolbar>
-                    </v-flex>
-
-                    <v-flex sm6 md6 xs12>
-                        <v-toolbar class="no-shadow">
-                            <v-spacer></v-spacer>
                             <v-btn icon @click="dialog = false">
                                 <v-icon>close</v-icon>
                             </v-btn>
                         </v-toolbar>
-                    </v-flex>
-                </v-layout>
-                <v-card-text class="card-content ">
+
+                <v-card-text class="card-content mt-3">
                     <v-layout wrap>
                         <v-flex sm6 md6 xs12>
                             <v-text-field label="ФИО" v-model="order.client.name"></v-text-field>
@@ -173,10 +163,10 @@
                             <v-text-field label="Уплачено всего" v-model="order.orderRoom.sum_payed"></v-text-field>
 
                             <!--<v-text-field label="Способ оплаты" v-model="order.orderRoom.payment_type.name"-->
-                                          <!--:hint="order.orderRoom.payment_type.info"></v-text-field>-->
+                            <!--:hint="order.orderRoom.payment_type.info"></v-text-field>-->
 
                             <!--<v-text-field label="Статус номера" v-model="order.orderRoom.room_status.name"-->
-                                          <!--:hint="order.orderRoom.room_status.info"></v-text-field>-->
+                            <!--:hint="order.orderRoom.room_status.info"></v-text-field>-->
 
                         </v-flex>
 
@@ -525,4 +515,13 @@
         background: transparent;
     }
 
+    .quantity {
+        font-weight: 600;
+    }
+
+
+
+    .order-info-dialog nav{
+        z-index: 1;
+    }
 </style>

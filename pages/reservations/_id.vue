@@ -39,20 +39,12 @@
                     <!-- SUBTITLE INFO -->
                     <v-layout wrap>
                         <v-flex lg6 sm6 md6 xs12>
-                            <v-text-field
-                                    v-model="response.orderRoom.room.name"
-                                    label="Номер отеля"
-                                    box
-                                    readonly
-                            />
+                            <v-text-field v-model="response.orderRoom.room.name" label="Номер отеля" box
+                                          readonly></v-text-field>
                         </v-flex>
                         <v-flex lg6 sm6 md6 xs12>
-                            <v-text-field
-                                    v-model="response.orderRoom.id"
-                                    label="Порядковый номер "
-                                    box
-                                    readonly
-                            />
+                            <v-text-field v-model="response.orderRoom.id" label="Порядковый номер " box
+                                          readonly></v-text-field>
                         </v-flex>
                     </v-layout>
 
@@ -66,61 +58,60 @@
 
                                 <v-text-field v-model="response.client.phone" label="Телефон"/>
                             </div>
-                            <v-text-field
-                                    v-model="response.orderRoom.total_payment"
-                                    label="Сумма без скидки"
-                            />
+                            <v-text-field v-model="response.orderRoom.total_payment" label="Сумма без скидки"
+                                          type="number" min="0" readonly></v-text-field>
 
-                            <v-text-field
-                                    v-model="response.orderRoom.discount"
-                                    label="Скидка"
-                            />
+                            <v-text-field v-model.lazy="response.orderRoom.discount" label="Скидка" type="number"
+                                          min="0" @input="recount"></v-text-field>
 
-                            <v-text-field
-                                    v-model="response.orderRoom.col_prepaid_days"
-                                    label="Количество дней предоплаты"
-                            />
+                            <v-text-field v-model="response.orderRoom.col_prepaid_days"
+                                          label="Количество дней предоплаты" type="number" min="0"
+                            ></v-text-field>
 
-                            <v-text-field
-                                    v-model="response.orderRoom.sum_prepaid"
-                                    label="Сумма предоплаты"
-                            />
+                            <v-text-field v-model="response.orderRoom.sum_prepaid"
+                                          label="Сумма предоплаты" type="number" min="0" readonly
+                            ></v-text-field>
                             <v-layout wrap>
-                                <v-text-field
-                                        v-model="response.orderRoom.was_prepaid"
-                                        label="Получена предоплата"
-                                />
+                                <v-text-field v-model="response.orderRoom.was_prepaid"
+                                              label="Получена предоплата" type="number" min="0" @input="recount" readonly
+                                ></v-text-field>
                                 <v-tooltip top>
-                                    <v-btn
-                                            slot="activator"
-                                            flat
-                                            icon
-                                            color="success"
-                                            @click="dialogMail = true;"
-                                    >
+                                    <v-btn slot="activator" flat icon color="success" @click="dialogMail = true;">
                                         <v-icon>mail_outline</v-icon>
                                     </v-btn>
                                     <span>Отправить письмо</span>
                                 </v-tooltip>
                             </v-layout>
 
-                            <v-text-field
-                                    v-model="response.orderRoom.was_payed"
-                                    label="Доплата"
-                            />
+
+                            <v-layout wrap>
+                                <v-text-field
+                                        v-model="response.orderRoom.was_payed"
+                                        label="Внесена Доплата"
+                                        type="number"
+                                        min="0"
+                                        @input="recount"
+                                ></v-text-field>
+                                <v-tooltip top>
+                                    <v-btn slot="activator" flat color="black">
+                                        {{surcharge}}
+                                    </v-btn>
+                                    <span>Требуемая доплата</span>
+                                </v-tooltip>
+                            </v-layout>
+
 
                             <v-text-field
+                                    ref="sum_payed"
                                     v-model="response.orderRoom.sum_payed"
                                     label="Уплачено всего"
+                                    type="number"
+                                    placeholder="Всего уплачено клиентом"
+                                    readonly
                             />
 
-                            <v-select
-                                    :items="payment_types"
-                                    v-model="response.orderRoom.payment_type_id"
-                                    label="Способ оплаты"
-                                    item-text="name"
-                                    item-value="id"
-                            />
+                            <v-select :items="payment_types" v-model="response.orderRoom.payment_type_id"
+                                      label="Способ оплаты" item-text="name" item-value="id"></v-select>
 
                             <v-select
                                     :items="room_statuses"
@@ -128,7 +119,7 @@
                                     label="Статус номера"
                                     item-text="name"
                                     item-value="id"
-                            />
+                            ></v-select>
                         </v-flex>
 
                         <v-flex sm6 md6 xs12>
@@ -180,13 +171,8 @@
                                     full-width
                                     width="290px"
                             >
-                                <v-text-field
-                                        slot="activator"
-                                        v-model="response.orderRoom.end_date"
-                                        label="Дата выезда"
-                                        readonly
-                                        required
-                                />
+                                <v-text-field slot="activator" v-model="response.orderRoom.end_date" label="Дата выезда"
+                                              readonly required/>
                                 <v-date-picker
                                         v-model="response.orderRoom.end_date"
                                         :first-day-of-week="1"
@@ -200,14 +186,9 @@
                                     >Закрыть
                                     </v-btn
                                     >
-                                    <v-btn
-                                            color="success"
-                                            @click="
-                      $refs.ref_modal_end_date.save(
-                        response.orderRoom.end_date
-                      );
-                    "
-                                    >Подтвердить
+                                    <v-btn color="success"
+                                           @click="$refs.ref_modal_end_date.save(response.orderRoom.end_date);">
+                                        Подтвердить
                                     </v-btn>
                                 </v-date-picker>
                             </v-dialog>
@@ -218,45 +199,46 @@
                             />
 
                             <v-text-field v-model="response.orderRoom.kids" label="Дети"/>
-                            <v-layout wrap>
-                                <v-select
-                                        :items="response.parking"
-                                        v-model="response.orderRoom.parking_number"
-                                        label="Паркоместа"
-                                        item-text="name"
-                                        item-value="id"
-                                        multiple
-                                        attach
-                                        chips
-                                >
-                                    <v-list-tile slot="prepend-item" ripple>
-                                        <v-list-tile-title
-                                        >Клиенту требуется паркомест -
-                                            {{ response.orderRoom.parking }}
-                                        </v-list-tile-title
-                                        >
-                                    </v-list-tile>
-                                    <v-list-tile slot="prepend-item" disabled>
-                                        <v-list-tile-title
-                                        >Выберите номер паркоместа из списка
-                                        </v-list-tile-title
-                                        >
-                                    </v-list-tile>
-                                    <v-divider slot="prepend-item" class="mt-2"/>
-                                </v-select>
-                                <v-tooltip left>
-                                    <v-btn
-                                            slot="activator"
-                                            flat
-                                            icon
-                                            color="success"
-                                            @click="response.orderRoom.parking_number = null;"
+
+                            <label v-if="response.orderRoom.parking>0"> Клиенту требуется паркомест -
+                                {{ response.orderRoom.parking }} </label>
+                            <v-select
+                                    :items="response.parking"
+                                    v-model="response.orderRoom.parking_number"
+                                    label="Паркоместа"
+                                    item-text="name"
+                                    item-value="id"
+                                    multiple
+                                    attach
+                                    chips
+                            >
+                                <v-list-tile slot="prepend-item" ripple>
+                                    <v-list-tile-title
+                                    >Клиенту требуется паркомест -
+                                        {{ response.orderRoom.parking }}
+                                    </v-list-tile-title
                                     >
-                                        <v-icon>delete</v-icon>
-                                    </v-btn>
-                                    <span>Очистить паркоместа</span>
-                                </v-tooltip>
-                            </v-layout>
+                                </v-list-tile>
+                                <v-list-tile slot="prepend-item" disabled>
+                                    <v-list-tile-title
+                                    >Выберите номер паркоместа из списка
+                                    </v-list-tile-title
+                                    >
+                                </v-list-tile>
+                                <v-divider slot="prepend-item" class="mt-2"/>
+                            </v-select>
+                            <!--<v-tooltip left>-->
+                            <!--<v-btn-->
+                            <!--slot="activator"-->
+                            <!--flat-->
+                            <!--icon-->
+                            <!--color="success"-->
+                            <!--@click="response.orderRoom.parking_number = null;"-->
+                            <!--&gt;-->
+                            <!--<v-icon>delete</v-icon>-->
+                            <!--</v-btn>-->
+                            <!--<span>Очистить паркоместа</span>-->
+                            <!--</v-tooltip>-->
                             <v-text-field
                                     v-model="response.orderRoom.beds"
                                     label="Дополнительные кровати"
@@ -676,7 +658,7 @@
 
 <script>
     export default {
-        name:'reservations-id',
+        name: 'reservations-id',
         head() {
             return {
                 title: 'Бронь №' + this.response.orderRoom.order_num
@@ -684,6 +666,7 @@
         },
         data() {
             return {
+                surcharge: 0, //сумма доплаты для вывода в плейсхолдер
                 progress_dialog_liqpay: false,
                 progress_liqpay_prepaid_statuses: false,
                 progress_liqpay_paid_statuses: false,
@@ -722,7 +705,7 @@
                     }
                 ],
                 liqpay_prepaid_statuses: null,
-                currentTab: 'paid',
+                currentTab: 'prepaid',
                 dialogLiqpay: false,
                 dialogMail: false,
                 dialogDelete: false,
@@ -736,15 +719,15 @@
                         date_checkin: null,
                         date_prepaid: null,
                         days_count: null,
-                        discount: null,
+                        discount: 0,
                         order_num: null,
-                        total_payment: null,
-                        sum_nal: null,
-                        sum_besnal: null,
-                        sum_payed: null,
-                        sum_prepaid: null,
-                        was_payed: null,
-                        was_prepaid: null,
+                        total_payment: 0,
+                        sum_nal: 0,
+                        sum_besnal: 0,
+                        sum_payed: 0,
+                        sum_prepaid: 0,
+                        was_payed: 0,
+                        was_prepaid: 0,
                         info_prepaid: null,
                         is_payed: null,
                         is_close: null,
@@ -757,10 +740,10 @@
                         begin_date: null,
                         end_date: null,
                         date_transfer: null,
-                        sum_transfer: null,
+                        sum_transfer: 0,
                         info_transfer: null,
                         date_transfer_back: null,
-                        sum_transfer_back: null,
+                        sum_transfer_back: 0,
                         info_transfer_back: null,
                         col_prepaid_days: null,
                         info: null,
@@ -856,9 +839,14 @@
             }
         },
         mounted() {
-            this.init()
+            this.init();
         },
         methods: {
+            recount() {
+                // this.response.orderRoom.discount = 0;
+                this.surcharge = this.response.orderRoom.total_payment - this.response.orderRoom.discount - this.response.orderRoom.was_prepaid;
+                this.response.orderRoom.sum_payed = parseInt(this.response.orderRoom.was_prepaid == null ? 0 : this.response.orderRoom.was_prepaid) + parseInt(this.response.orderRoom.was_payed == null ? 0 : this.response.orderRoom.was_payed)
+            },
             deleteReservation() {
                 this.axios.delete('orders/' + this.$route.params.id).then(response => {
                     console.log(response)
@@ -892,8 +880,27 @@
                             this.transfer_out = true
                         }
                         this.liqpay_sum_prepaid_without_discount = this.response.orderRoom.total_payment - this.response.orderRoom.was_prepaid - this.response.orderRoom.discount
-                        this.getPaymentTypes()
-                        this.getRoomStatuses()
+
+                        if (!this.response.orderRoom.payment_type_id) {
+                            this.response.orderRoom.payment_type_id = 1; // Если с бекенда не приходит выбранный тип, ставим наличку
+                        }
+
+                        //Пересчеты при изменениии
+                        this.surcharge = this.response.orderRoom.total_payment - this.response.orderRoom.discount - this.response.orderRoom.was_prepaid;
+                        this.response.orderRoom.sum_payed = parseInt(this.response.orderRoom.was_prepaid == null ? 0 : this.response.orderRoom.was_prepaid) + parseInt(this.response.orderRoom.was_payed == null ? 0 : this.response.orderRoom.was_payed)
+                        console.log('Пересчет паркомест')
+                        console.log(this.response.parking)
+
+                        for (let i = 0; i < this.response.parking.length; i++) {
+                            if (this.response.parking[i].name == null) {
+                                console.log(i)
+                                this.response.parking.splice(i, 1);
+                            }
+                        }
+                        console.log('после пересчета паркомест')
+
+                        console.log(this.response.parking)
+
                         this.progress = false
                         console.log('Загрузка данных завершена')
                     })
@@ -904,6 +911,8 @@
                 this.axios.get('messages').then(response => {
                     this.messages = response.data.messages
                 })
+                this.getPaymentTypes()
+                this.getRoomStatuses()
             },
             getRoomStatuses() {
                 this.axios.get('room-statuses').then(response => {
@@ -916,12 +925,56 @@
                 })
             },
             saveReservation() {
-                console.log('Отправлено на сервер')
-                console.log(this.response.orderRoom)
+                // if (this.response.orderRoom.parking > 0 && this.response.orderRoom.parking_number == null ) {
+                //
+                // }
+                // if(this.response.orderRoom.parking !== this.response.orderRoom.parking_number.length){
+                //     this.$snotify.error('Выберите требуемое количество паркомест', 'Ошибка');
+                //     return;
+                // }
+                //
+                // if(this.response.orderRoom.parking !== null  &&   this.response.orderRoom.parking_number[0] == null){
+                //     this.$snotify.error('Выберите требуемое количество паркомест', 'Ошибка');
+                //     return;
+                //
+                // }
 
-                this.response.orderRoom.phone = this.response.client.phone
-                this.response.orderRoom.email = this.response.client.email
+                if(this.response.orderRoom.parking !== null && this.response.orderRoom.parking > 0){
+                    if(this.response.orderRoom.parking_number == null){
+                        this.$snotify.error('Выберите требуемое количество паркомест', 'Ошибка');
+                        return;
+                    }
+                    else if (this.response.orderRoom.parking_number.length == 0){
+                        this.$snotify.error('Выберите требуемое количество паркомест', 'Ошибка');
+                        return;
+                    }
+                    else if(this.response.orderRoom.parking_number.length == 1 && this.response.orderRoom.parking_number[0] == null){
+                        this.$snotify.error('Выберите требуемое количество паркомест', 'Ошибка');
+                        return;
+                    }
+                }
 
+                this.response.orderRoom.phone = this.response.client.phone;
+                this.response.orderRoom.email = this.response.client.email;
+
+                let parking_item = [];
+
+                // fixme  Узкий момент.  Если в заявке еще не было выбрано паркомест то всё ок.  Если в заявке есть паркомест, то для селекта паркомест прилетакет массив обьектов (!!!), который потом трубется конвертировать в массив id-шек
+                if (this.response.orderRoom.parking_number !== null && this.response.orderRoom.parking_number.length > 0) {
+                    if (typeof this.response.orderRoom.parking_number[0] == 'object' && this.response.orderRoom.parking_number[0] !== null) {
+                        for (let i = 0; i < this.response.orderRoom.parking_number.length; i++) {
+                            parking_item.push(this.response.orderRoom.parking_number[i].name)
+                        }
+                        this.response.orderRoom.parking_number = parking_item;
+                    }
+                    this.response.orderRoom.parking_number = this.response.orderRoom.parking_number.filter(function (el) {
+                        return el != null;
+                    });
+                }
+
+
+                console.log('Отправлено на сервер');
+                console.log(this.response.orderRoom);
                 this.axios
                     .patch('orders/' + this.$route.params.id, this.response.orderRoom)
                     .then(response => {
@@ -933,14 +986,15 @@
                     }).catch(error => {
                     console.log('Ошибка сервера')
                     console.log(error.response)
-                    this.$snotify.error('Бронь успешно сохранена!', 'Ошибка сервера')
+                    this.$snotify.error(error.response, 'Ошибка сервера')
 
                 })
             },
             sendMail() {
                 const request = {
                     email_client: this.response.client.email,
-                    email_content: this.mail_select.info
+                    email_content: this.mail_select.info,
+                    email_lang: this.mail_select.lang
                 }
                 console.log(request)
                 this.axios
@@ -1040,7 +1094,7 @@
 
                 console.log('Получение статуса. Отправляем такой обьект')
                 console.log(request)
-
+                request.location = this.response.orderRoom.room.location;
                 this.axios
                     .post('liqpay-status', request)
                     .then(response => {
@@ -1098,6 +1152,12 @@
 </script>
 
 <style scoped>
+    v-input--is-disabled .v-label,
+    v-input--is-disabled input,
+    v-input--is-disabled textarea {
+        color: #000 !important;
+    }
+
     .card-content .flex {
         padding: 10px !important;
     }

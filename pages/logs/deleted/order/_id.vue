@@ -25,7 +25,7 @@
                 <table class="table table-hover">
                     <tbody>
                     <tr>
-                        <th>Дата и время обновления брони</th>
+                        <th>Дата и время удаления брони</th>
                         <td>{{response.created_at}}</td>
                     </tr>
                     <tr>
@@ -63,7 +63,7 @@
                 </table>
                 <v-card>
                     <v-toolbar flat>
-                        <v-toolbar-title>Таблица сравнения</v-toolbar-title>
+                        <v-toolbar-title>Подробно</v-toolbar-title>
                     </v-toolbar>
                     <table class="table  table-hover table-bordered">
                         <thead style="background: #ccc">

@@ -11,6 +11,7 @@
                        style="width:100%">
                     <thead>
                     <tr>
+                        <th class="export">id</th>
                         <th class="export">ФИО</th>
                         <th class="export">Заезд</th>
                         <th class="export">Выезд</th>
@@ -28,6 +29,7 @@
                     </thead>
                     <tbody>
                     <tr v-for="request in response.data">
+                        <td>{{request.id}}</td>
                         <td>{{request.full_name}}</td>
                         <td>{{request.begin_date}}</td>
                         <td>{{request.end_date}}</td>
@@ -103,29 +105,22 @@
                         <v-list-tile-content>Сообщение от клиента:</v-list-tile-content>
                         <v-list-tile-content class="align-end">{{deleteReservation.message }}</v-list-tile-content>
                     </v-list-tile>
-
                 </v-list>
                 <v-divider></v-divider>
-
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <v-btn
-                            color="error"
-                            @click="deleteRequest"
-                    >
+                    <v-btn color="error" @click="deleteRequest">
                         Удалить
                     </v-btn>
                 </v-card-actions>
             </v-card>
         </v-dialog>
-
     </v-layout>
 </template>
 
 <script>
-    import $ from 'jquery';  // подключаем jQuery
+    import $ from 'jquery'; // подключаем jQuery
     import 'datatables.net'; // подключаем сам плагин
-    import 'datatables.net-buttons/js/buttons.html5.min';
     import 'datatables.net-buttons/js/buttons.html5.min';
     import JSZip from 'jszip';
 
@@ -163,6 +158,13 @@
         beforeMount() {
             this.axios.get('neworders').then((response) => {
                 this.response = response.data;
+                console.log(this.response.data)
+                this.response.data.sort(function (a, b) {
+
+                    return parseInt(a.id) - parseInt(a.id);
+                });
+                console.log(this.response.data)
+                this.$store.dispatch('storage/set', {type: 'count_requests', value: response.data.data.length})
                 this.generateTable();
             });
         },
@@ -186,6 +188,7 @@
                         "paging": false,
                         "searching": false,
                         "info": false,
+                        "ordering": false,
                         scrollY: $(window).height() - 250 + "px",
                         scrollX: true,
                         scrollCollapse: true,

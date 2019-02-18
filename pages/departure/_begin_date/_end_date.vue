@@ -92,7 +92,7 @@
                 >
                     <thead>
                     <tr>
-                        <th class="export">Дата</th>
+                        <th class="export">Дата выезда</th>
                         <th class="export">Номер комнаты</th>
                         <th class="export">ФИО</th>
                         <th class="export">Паркоместо</th>
@@ -104,8 +104,8 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="room in response.order_rooms">
-                        <td data-field="date">{{ room.begin_date }}</td>
+                    <tr v-for="room in response.order_rooms" >
+                        <td data-field="date">{{ room.end_date }}</td>
                         <td data-field="room">{{ room.room.name }}</td>
                         <td data-field="fio">{{ room.client.name }}</td>
                         <td data-field="parking">{{ room.parking_number }}</td>
