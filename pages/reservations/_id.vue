@@ -73,7 +73,7 @@
                             ></v-text-field>
                             <v-layout wrap>
                                 <v-text-field v-model="response.orderRoom.was_prepaid"
-                                              label="Получена предоплата" type="number" min="0" @input="recount" readonly
+                                              label="Получена предоплата" type="number" min="0" @input="recount"
                                 ></v-text-field>
                                 <v-tooltip top>
                                     <v-btn slot="activator" flat icon color="success" @click="dialogMail = true;">
